@@ -12,5 +12,25 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/static/home');
+});
+
+Route::get('/contact', function () {
+    return view('/static/contact');
+});
+
+Route::get('/faq', function () {
+    return view('/static/faq');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/recuperar', function(){
+	return view('/password/user');
 });

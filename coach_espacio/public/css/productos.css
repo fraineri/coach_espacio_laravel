@@ -1,0 +1,19 @@
+
+
+/*----PRODUCTS----*/
+.containerProductos{
+	
+	clear: both;
+	width: 80%;
+	margin: auto;
+}
+/*img{
+	width: 100px;
+	height: 150px;
+}*/
+.budas{
+	background-image: url("imagenes/budas.jpg");
+	width: 30%;
+	border: solid 10px white;
+	float: left;
+}

@@ -1,0 +1,429 @@
+/*
+--------------------------------------------------------------------------------
+ *************************
+ *****CSS MAIN******
+ *************************
+
+ Content:
+  
+  body:
+    Se define un BG, font y margin.
+  ------
+
+  a:
+    Link sin decoracion y con display block.
+  ------
+  
+  ol,ul{
+	Listas sin estilos.
+  }
+  ------
+  
+  ----------
+  ############
+  ## HEADER ##
+  ############
+  ----------
+
+  .home-header
+
+--------------------------------------------------------------------------------
+*/
+
+/*---------------------------
+	GENERIC ELEMENTS
+---------------------------*/
+
+/*============================
+			RESET
+============================*/
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+body{
+	background-image: url("../images/backgrounds/bg1-one.png");
+	background-repeat: repeat;
+	font-family: 'Yantramanav', helvetica;
+	margin: auto;
+	font-size: 1.15em;
+	color:#333;
+}
+
+a{
+	text-decoration: none;
+	display: block;
+	color:black;
+}
+
+ol,ul{
+	list-style-type: none;
+}
+
+/*===============================
+ HORIZONTAL MENU BAR > nav & log
+=================================*/
+.horizontal-menu{
+	z-index: 99;
+	width: 100%;
+	background-color: rgba(250,250,250,1);
+	position: fixed;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	transition: background-color .5s;
+}
+
+.horizontal-menu a{
+	transition: background-color 0.5s;
+	padding: 25px 10px;
+	text-transform: uppercase;
+}
+
+.horizontal-menu a:hover{
+	background-color: rgba(100,200,228,.8);
+}
+
+.horizontal-menu li{
+	display: inline-block;
+}
+
+.desplegable{
+	position: relative;
+	width: 180px;
+}
+
+.menu-log-user{
+	display: inline-block;
+}
+
+.menu-log-user-image{
+	height: 40px;
+	width: 40px;
+	display: block;
+	border-radius:50px; 
+	color: chocolate;
+}
+
+.menu-log-name{
+	display: block;
+	margin-left: 5px;
+	text-align: left;
+	text-transform: uppercase;
+	width: 100px;
+}
+
+.desplegable-user.desplegable-user{
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 74.8px;
+	width: 100%;
+}
+
+.options{
+	position: absolute;
+    visibility: hidden;
+}
+
+.options li{
+	display:block;
+	margin-left:0;
+	width: 180px;
+	text-align: center;
+	background-color: rgba(100,200,228,.7);
+}
+
+.options li:hover{
+	text-decoration: underline;
+}
+
+.desplegable:hover .options{
+	transition:.5s;
+	visibility: visible;
+}
+
+
+
+/*===============================
+ FOOTER > footer-nav
+=================================*/
+.main-footer-wave{
+	background-image: url("../images/backgrounds/footer-wave-2-3-1.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 250px;
+	width:100%;
+	opacity: .7;
+	position: relative;
+	margin-top: 50px;
+	bottom:0;
+}
+
+.main-footer{
+	/*background-image: url("../images/backgrounds/footer-bg-2.png");*/
+	position: relative;
+	background-color: rgba(52,180,221,.7);
+	background-size: cover;
+	height: 230px;
+	width: 100%;
+
+}
+
+.main-footer-data{
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: absolute;
+	bottom:40%;
+	font-size: 1.2em;
+	color:white;
+}
+
+.main-footer-data-contact{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.main-footer-logo{
+	font-size: 1.4em;
+}
+
+.main-footer-data-social{
+	width: 300px;
+	display: inline-block;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.main-footer-data-direction{
+	margin-top: 20px;
+}
+
+.main-footer-copyright{
+	position: absolute;
+	bottom: 0;
+	right:0;
+	color:grey;
+}
+
+.display-flex{
+	display:flex;
+	justify-content: space-between;
+}
+
+.social-cont{
+	color: white;
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.social{
+	display: block;
+	height: 55px;
+	width: 55px;
+}
+
+.instagram:hover{
+	background-color:#A740A7;
+}
+
+.facebook:hover{
+	background-color: #3C5A99;
+}
+
+.skype:hover{
+	background-color: #00AFF0;
+}
+
+.linkedin:hover{
+	background-color: #006699;
+}
+
+.twitter:hover{
+	background-color: #6FAEDF;
+}
+
+/********************************
+*			General uses    	*
+********************************/
+.lbl-error{
+	width: 70%;
+	color: #ff2e2e;
+	opacity: .7;
+	text-align: left;
+	font-size: 1em;
+}
+
+.lbl-ok{
+	width: 70%;
+	color: green;
+	opacity: .7;
+	text-align: left;
+	font-size: 1.2em;
+}
+
+.lbl-confirm{
+	width: 70%;
+	color: #2da209;
+	opacity: .7;
+	text-align: left;
+	font-size: 1em;
+}
+
+.page-active{background-color: rgba(100,200,228,.8);}
+
+.mail-to{color:grey;}
+
+.page-title{
+	text-transform: uppercase;
+	text-align: center;
+	padding-top: 90px;
+	padding-bottom: 50px;
+	color:#444;
+}
+
+.page-title::after, .page-title::before{
+	display: block;
+	margin: 0 auto;
+	content:"";
+	height: 13px;
+	width: 13px;
+	border: 2px solid grey;
+	transform: rotate(45deg);
+}
+
+.standard-button{
+	border-radius: 30px;
+	padding: 10px 20px;
+	transition:.2s;
+}
+
+.standard-button:hover{
+	background-color: transparent;
+}
+
+.button-green:hover{color:#89DA90;}
+.button-red:hover{color:#FF8B94;}
+.button-cyan:hover{color:rgb(52,221,221);}
+.button-white:hover{color:#fff;}
+
+.button-green{
+	border:2px solid #89DA90;
+	background-color: #89DA90;
+}
+
+.button-red{
+	background-color: #FF8B94;
+	border:2px solid #FF8B94;
+}
+
+.button-cyan{
+	background-color: rgb(52,221,221);
+	border:2px solid rgb(52,221,221);
+}
+
+.button-white{
+	background-color: #fff;
+	border:2px solid #fff;
+}
+
+.bgc-violet{background-color: #CDA7C0;}
+.bgc-blue{background-color: #ABB6D6;}
+.bgc-green{background-color: #B1B666;}
+.bgc-pink{background-color: #E7B2AA;}
+.bgc-lightblue{background-color: #A5C3DD;}
+.bgc-brown{background-color: #E8BA86;}
+
+/*@media(max-width: 480px){
+	body{
+		font-size: .95em;
+	}
+}*/
+
+/*********************MENU************************/
+@media (max-width: 900px){
+	.horizontal-menu{
+		position: static;
+		display: inline-block;
+	}
+
+	.horizontal-menu li{
+		display: inline;
+	}
+
+
+	.horizontal-menu a{
+		transition: background-color 0.5s;
+		padding: 10px 10px;
+		text-transform: uppercase;
+	}
+
+	.desplegable{
+		width: 100%;
+	}
+
+	.options li{
+		background-color: transparent;
+		display: none;
+	}
+
+	.horizontal-menu-log{
+		margin-top: 30px;
+	}
+
+	.desplegable-user.desplegable-user{
+		justify-content: flex-start;
+	}
+
+	.options{
+		visibility: visible;
+		position: static;
+	}
+	.options li {
+		display: inline;
+		text-align: left;
+	}
+}
+/**********************FIN MENU***********************/
+
+@media (max-width: 750px){
+	.page-title::before,.page-title::after{
+		width: 10px;
+		height: 10px;
+	}
+
+	.standard-button{
+		font-size:1em;
+	}
+
+	.main-footer-data{
+		bottom:20%;
+		flex-wrap: wrap;
+		align-content: center;
+		text-align: center;
+	}
+
+	.main-footer-data-contact{
+		display: none;
+		margin-left: 20px;
+	}
+
+	.main-footer-data-social{
+		margin-right: 20px;
+	}
+
+	.main-footer{
+		height: 300px;
+	}
+}
+/***************************************************/

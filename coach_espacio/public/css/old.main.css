@@ -46,7 +46,7 @@
 body{
 	background-image: url("../images/backgrounds/bg1-one.png");
 	background-repeat: repeat;
-	font-family: 'Raleway', helvetica;
+	font-family: 'Yantramanav', helvetica;
 	margin: auto;
 	font-size: 1.15em;
 	color:#333;
@@ -65,101 +65,34 @@ ol,ul{
 /*===============================
  HORIZONTAL MENU BAR > nav & log
 =================================*/
-.main-menu{
-	display: flex; 
-	flex-direction: column; 
-	width:100%;
-	position: fixed;
-	z-index: 100;
-	top: 0;
-}
 .horizontal-menu{
+	z-index: 99;
 	width: 100%;
-	background-color: white;
+	background-color: rgba(250,250,250,1);
+	position: fixed;
+	top: 0;
 	display: flex;
 	justify-content: space-between;
-	/*transition: background-color .5s;*/
+	transition: background-color .5s;
 }
-
-.horizontal-menu ul:after {
-	content: " ";
-	display: block;
-	font-size: 0;
-	height: 0;
-	clear: both;
-	visibility: hidden;
-}
-
 
 .horizontal-menu a{
-	text-decoration: none;
-	display: block;
-	padding: 15px 25px;
-	font-weight: 700;
+	transition: background-color 0.5s;
+	padding: 25px 10px;
 	text-transform: uppercase;
-	font-size: .8em;
-	position: relative;
-	transition: all .25s;
 }
 
-.horizontal-menu a:hover {
-	color: rgba(100,200,228,1);
-}
-
-.horizontal-menu a:hover:before {
-	width: 100%;
-}
-
-
-.horizontal-menu a:before {
-	content: "";
-	display: block;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	height: 3px;
-	width: 0;
-	background-color: rgba(100,200,228,.6);
-	transition: width .25s;
-}
-
-.horizontal-menu-nav a:after {
-	content: "";
-	display: block;
-	position: absolute;
-	right: -3px;
-	top: 19px;
-	height: 6px;
-	width: 6px;
-	background: black;
-	opacity: .5;
-}
-
-
-.page-active a {
-	color: rgba(100,200,228,1);
-}
-
-.page-active a:before {
-	width: 100%;
-}
-
-.horizontal-menu li:last-child > a:after {
-	display: none;
+.horizontal-menu a:hover{
+	background-color: rgba(100,200,228,.8);
 }
 
 .horizontal-menu li{
 	display: inline-block;
 }
 
-.horizontal-menu-log{
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-
 .desplegable{
 	position: relative;
+	width: 180px;
 }
 
 .menu-log-user{
@@ -179,13 +112,16 @@ ol,ul{
 	margin-left: 5px;
 	text-align: left;
 	text-transform: uppercase;
+	width: 100px;
 }
 
-.desplegable-user{
+.desplegable-user.desplegable-user{
 	padding: 0;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	height: 74.8px;
+	width: 100%;
 }
 
 .options{
@@ -198,7 +134,11 @@ ol,ul{
 	margin-left:0;
 	width: 180px;
 	text-align: center;
-	background-color: white;
+	background-color: rgba(100,200,228,.7);
+}
+
+.options li:hover{
+	text-decoration: underline;
 }
 
 .desplegable:hover .options{
@@ -207,64 +147,6 @@ ol,ul{
 }
 
 
-.shop-cart-menu{
-	width: 74.8px;
-	text-align: center;
-}
-
-.shop-cart{
-	color: #444;
-	transition: all .3s;
-}
-
-.shop-cart-menu:hover .shop-cart{
-	color: rgb(100,200,228);
-}
-
-/*******************PRODUCTOS MENU *********************/
-.menu-products{
-	padding-left: 15px;
-	padding-right: 15px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	background-color: lightblue;
-}
-
-.menu-products{
-	padding-left: 15px;
-	padding-right: 15px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	background-color: #444;
-
-}
-
-.menu-section{
-	width: 100%;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-
-}
-
-.menu-section li {
-	transition: all .5s;
-}
-
-
-.product-category{
-	margin:auto;
-	margin-left: 8px;
-	margin-right: 8px;
-	padding-top:15px;
-	padding-bottom:15px;
-	color:white;
-}
-.product-category:hover{
-	color: rgb(100,200,228);
-}
 
 /*===============================
  FOOTER > footer-nav
@@ -398,7 +280,7 @@ ol,ul{
 	font-size: 1em;
 }
 
-.page-active{color: rgba(100,200,228,1);}
+.page-active{background-color: rgba(100,200,228,.8);}
 
 .mail-to{color:grey;}
 
@@ -462,42 +344,28 @@ ol,ul{
 .bgc-lightblue{background-color: #A5C3DD;}
 .bgc-brown{background-color: #E8BA86;}
 
+/*@media(max-width: 480px){
+	body{
+		font-size: .95em;
+	}
+}*/
 
 /*********************MENU************************/
-@media (max-width: 1200px){
-	.main-menu{
+@media (max-width: 900px){
+	.horizontal-menu{
 		position: static;
 		display: inline-block;
 	}
 
-	.horizontal-menu{
-		flex-direction: column;
-	}
-
 	.horizontal-menu li{
-		display: block;
+		display: inline;
 	}
 
 
 	.horizontal-menu a{
 		transition: background-color 0.5s;
-		width: 100%;
-		padding: 10px;
-	}
-
-	.horizontal-menu-nav a{
-		border-bottom: 1px solid rgba(100,200,228,.6);
-	}
-
-	.horizontal-menu li.last > a,
-	.horizontal-menu li:last-child > a {
-		border: 0;
-	}
-	.horizontal-menu a:after {
-		display: none;
-	}
-	.horizontal-menu li a:before {
-		display: none;
+		padding: 10px 10px;
+		text-transform: uppercase;
 	}
 
 	.desplegable{
@@ -511,9 +379,6 @@ ol,ul{
 
 	.horizontal-menu-log{
 		margin-top: 30px;
-		width:100%;
-		align-items: center;
-		justify-content: center;
 	}
 
 	.desplegable-user.desplegable-user{

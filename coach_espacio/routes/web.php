@@ -23,6 +23,14 @@ Route::get('/faq', function () {
     return view('/static/faq');
 });
 
+Route::get('/tienda', function () {
+    return view('/static/tienda');
+});
+
+Route::get('/productos', function(){
+	return view ('productos');
+});
+
 Route::get('/login', function () {
     return view('login');
 });
@@ -34,6 +42,6 @@ Route::get('/register', function () {
 Route::get('/recuperar', function(){
 	return view('/password/user');
 });
-Auth::routes();
 
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

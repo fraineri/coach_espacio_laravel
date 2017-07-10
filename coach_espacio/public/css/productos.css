@@ -1,19 +1,75 @@
-
-
-/*----PRODUCTS----*/
-.containerProductos{
-	
-	clear: both;
-	width: 80%;
-	margin: auto;
+.banner{
+	background-image: url("../images/backgrounds/shopping.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	height: 80vh;
 }
-/*img{
-	width: 100px;
-	height: 150px;
-}*/
-.budas{
-	background-image: url("imagenes/budas.jpg");
-	width: 30%;
-	border: solid 10px white;
-	float: left;
+
+.products-container{
+	width: 80%;
+	margin:auto;
+	margin-top: 30px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	font-size: 1.3em;
+}
+
+.product-item{
+	background-color: #82D2E8;
+	width: 360px;
+	height: 510px;
+	display: inline-block;
+	margin: 8px;
+	color: white;
+	transition:all .4s;
+	font-size: 1em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
+	border: 1px solid #82D2E8;
+}
+
+.info-container{
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.product-price{
+	transition: all .6s;
+}
+
+.product-option{	
+	position: absolute;
+	opacity: 0;
+	top:0;
+	transition: all 0.6s;
+}
+
+.product-item:hover{
+	/*background-color: #E8D982;*/
+	color: #444;
+
+}
+
+.product-image{
+	width: 100%;
+	height: 80%;
+	background-color: #82D2E8;
+	border-bottom: 1px solid #82D2E8;
+}
+
+.product-image-resize{
+	width: 100%;
+	height: 100%;
+}
+
+.product-special{
+	position: absolute;
+	top:10px;
+	left: -8px;
 }

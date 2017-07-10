@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 
 	<link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,7 +28,7 @@
 			<h1 class ="banner-title">Coach de Espacios</h1>
 		</div>
 		<div class="banner-knowus">
-			<a href="#knowus"><i class="banner-arrow fa fa-arrow-down fa-4x" aria-hidden="true"></i></a>
+			
 		</div>
 		<div class ="container-dots">
 			<ul class = "galery-dots"></ul>
@@ -135,6 +136,5 @@
 		</div>			
 	</div>
 <script src="js/slide.js"></script>
-<script src="js/menu-style.js"></script>
 @endsection
 

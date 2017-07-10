@@ -27,10 +27,6 @@ Route::get('/tienda', function () {
     return view('/static/tienda');
 });
 
-Route::get('/productos', function(){
-	return view ('productos');
-});
-
 Route::get('/login', function () {
     return view('login');
 });
@@ -43,5 +39,12 @@ Route::get('/recuperar', function(){
 	return view('/password/user');
 });
 
+
+/*Productos*/
+Route::get('productos/', 'ProductController@index');
+Route::get('productos/{cat}', 'ProductController@category');
+Route::get('producto/{id}', 'ProductController@show');
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+	

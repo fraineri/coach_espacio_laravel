@@ -13,7 +13,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
 
-	<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<title>Coaching | productos</title>
 @endsection
 
@@ -32,9 +32,8 @@
 	</div>
 	<div>
 		<ul class='menu-section'>
-			<li><a class="product-category" href="cursos.php">Ir a ver nuestros cursos {{$id}}</a></li>	
+			<li><a class="product-category" href="cursos.php">Ir a ver nuestros cursos</a></li>	
 		</ul>
-		
 	</div>	
 </div>
 
@@ -48,13 +47,13 @@
 	@foreach($products as $product)
 			<a href="/producto/{{$product->id}}" class = "product-item" onmouseover="changeInfo(this)" onmouseout="overInfo(this)">
 				<div class ="product-image">
-					<img class="product-image-resize" src="images/products/{{$product->picture}}">
+					<img class="product-image-resize" src="/images/products/{{$product->picture}}">
 				</div>
 				
 				<!-- if no stock o descuento -->
 				<div class ="product-special">
 				@if ( $product->stock == 0)
-					<img src="images/products/noStock.png">
+					<img src="/images/products/noStock.png">
 				@endif
 				</div>	
 			

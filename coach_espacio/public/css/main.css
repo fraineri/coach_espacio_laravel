@@ -223,6 +223,10 @@ ol,ul{
 
 /*******************PRODUCTOS MENU *********************/
 .menu-products{
+	position: fixed;
+	width: 100%;
+	top:48.4px;
+	z-index: 100;
 	padding-left: 15px;
 	padding-right: 15px;
 	display: flex;
@@ -262,7 +266,8 @@ ol,ul{
 	padding-bottom:15px;
 	color:white;
 }
-.product-category:hover{
+.product-category:hover,
+.category-selected{
 	color: rgb(100,200,228);
 }
 

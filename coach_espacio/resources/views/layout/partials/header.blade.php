@@ -5,9 +5,9 @@
 				$pagesNav= [
 					'/' => 'Home',
 					'/#knowus' => 'Quiénes somos',
-					'tienda' => 'Comprar',
-					'contact' => 'Contactanos',
-					'faq' => 'FAQ'
+					'/tienda' => 'Comprar',
+					'/contact' => 'Contactanos',
+					'/faq' => 'FAQ'
 				];
 
 				$pagesLog = [
@@ -61,36 +61,6 @@
 					</li>
 			</ul>
 		</div>
-
-		<?php if($activePage == 'productos'): ?>
-			<div class="menu-products">
-				<div>
-					<ul class='menu-section'>
-						<?php $array = [
-							0 => 'Todos',
-							1 => 'Almohadones', 
-							2 => 'Baño',
-							3 => 'Deco',
-							4 => 'Luz',
-							5 => 'Macetas',
-							6 => 'Muebles',
-							7 => 'Percheros',
-							8 => 'Relojes',
-							9 => 'Otros'
-						]?>
-						<?php foreach ($array as $key => $value): ?>
-							<li><a class="product-category" href="/categoria/<?=$key?>"><?=$value?></a></li>
-						<?php endforeach ?>
-					</ul>
-				</div>
-				<div>
-					<ul class='menu-section'>
-						<li><a class="product-category" href="cursos.php">Ir a ver nuestros cursos</a></li>	
-					</ul>
-					
-				</div>	
-			</div>
-		<?php endif; ?>
 	</nav>
 	
 	<script src="js/cambiar_tema.js"></script>

@@ -1,76 +1,61 @@
-@extends('layouts.app')
+@extends('/layout/master')
+@section('head')
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/register.css">
 
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="js/sign-in-up.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Coaching | Iniciá sesión</title>
+@endsection
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+	<?php
+		session_start();
+		$activePage = 'register.php'; 
+		$userLogin = isset($_SESSION['nombre'])?$_SESSION['nombre']:null;
+		if ($userLogin) {
+			header('location: index.php');
+		}
+	?>
+	<div class="form-container">
+		<div class="form-register-container">
+			<div class="form-register-shadow"></div>
+				<div class="form-register-titleCont">
+					<h1 class="form-register-title">REGISTRATE</h1>
+					<div class="form-register-icon" ><i class="fa fa-pencil fa-5x" aria-hidden="true"></i></div>
+				</div>
+				<form class="form-register-inputs" action="php/controllers/register.controller.php" method="post" enctype="multipart/form-data">
+					<input id="txtName" class="form-register-txtNombre" type="text" name="name" placeholder="Nombre"  value="{{ old('name') }}">
+					<span class="lbl-error"></span>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+					<input id="txtSurname" class="form-register-txtApellido" type="text" name="surname" placeholder="Apellido"  value="{{ old('surname') }}">		
+					<span class="lbl-error"></span>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+					<input id="txtEmail" class="form-register-txtEmail" type="text" name="email" placeholder="tu@email"  value="{{ old('email') }}">
+					<span class="lbl-error"></span>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+					<input id="txtUser" class="form-register-txtUsuario" type="text" name="username" placeholder="Usuario"  value="{{ old('username') }}">
+					<span id="user-lbl-error" class="lbl-error"></span>
+					<span id="user-lbl-ok" class="lbl-ok"></span>
+					
+					<input id="txtPass" class="form-register-txtPass" type="password" name="password" placeholder="Contraseña" >
+					<span class="lbl-error"></span>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+					<input id="txtRePass" class="form-register-txtRePass" type="password" name="password_confirmation" placeholder="Repita su contraseña" >
+					<span class="lbl-error"></span>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+					<label for="avatar" class="form-register-label-foto">Foto de perfil</label>
+					<input class="form-register-foto" type="file" name="avatar">
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+					<button class="form-button-register standard-button button-white" type="submit">REGISTRAR</button>
+				</form>
+			</div>
+		</div>
+	</div>
+<script src="js/registerValidation.js"></script>
 @endsection

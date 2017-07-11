@@ -10,10 +10,9 @@ class ProductController extends Controller{
 
     public function index($id=false){
         #$prod = factory(\App\Product::class,15)->create();
-        $products = Product::all();
-        
+        $products = Product::with('category')->get();
         $cat = Category::all();
-        return view ('productos', ['products'=>$products, 'categories'=>$cat, 'id'=> false]);
+        return view ('products.productos', ['products'=>$products, 'categories'=>$cat, 'id'=> false]);
     }
 
     public function category($id){
@@ -24,11 +23,11 @@ class ProductController extends Controller{
         }
 
     	$cat = Category::all();
-    	return view ('productosFilter', ['products'=>$products, 'categories'=>$cat,'id'=>$id]);
+    	return view ('products.productos-category', ['products'=>$products, 'categories'=>$cat,'id'=>$id]);
     }
 
     public function show($id){
         $product = Product::find($id);
-        return view ('producto',compact("product"));
+        return view ('products.producto',compact("product"));
     }
 }

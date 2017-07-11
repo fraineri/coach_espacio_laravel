@@ -42,7 +42,7 @@ Route::get('/recuperar', function(){
 
 /*Productos*/
 Route::get('productos/', 'ProductController@index');
-Route::get('productos/{cat}', 'ProductController@category');
+Route::get('categoria/{cat}', 'ProductController@category');
 Route::get('producto/{id}', 'ProductController@show');
 
 Auth::routes();

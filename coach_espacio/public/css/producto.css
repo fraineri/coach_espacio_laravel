@@ -64,7 +64,19 @@
 	border-radius: 20px;
 }
 
+.stock:hover{
+	cursor:auto;
+}
+
 .product-qty{
 	width: 10%;
 	height: 20px;
+}
+
+.category{
+	font-size: 1.1em;
+	padding-left: 10px;
+	margin-left: 10px;
+	margin-bottom: 15px;
+	text-align: left;
 }

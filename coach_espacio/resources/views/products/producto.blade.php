@@ -26,6 +26,7 @@
 		<div class="product-info">
 			<div class="product-name">
 				<h2 class="product-title">{{$product->name}}</h2>
+				<p class ="category">{{$product->category->name}}</p>
 				<div class="product-price">
 					<p >${{$product->price}}</p>
 				</div>
@@ -34,16 +35,28 @@
 			
 
 			<div class="product-description">
+				<p style="font-weight: bolder;">Descripción</p>
 				<p >{{$product->description}}</p>
 			</div>
 			
 			<form style="text-align: center;">
 				{{csrf_field()}}
 				<div>
-					<label class ="product-price" for="cantidad">Cantidad:</label>
-					<input type="number" name="cantidad" class="product-qty" value="1">
+					@if($product->stock != 0 )
+						<label class ="product-price" for="cantidad">Cantidad:</label>
+						<input type="number" name="cantidad" class="product-qty" value="1">
+					@endif
+
+					
 				</div>
-				<button class="button-cart" type="submit"><i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> </i>  Agregar al carrito</button>
+
+				<div>
+					@if($product->stock == 0 )
+					<div class="button-cart stock">Sin stock</div>
+					@else
+					<button class="button-cart" type="submit"><i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> </i>  Agregar al carrito</button>
+					@endif
+				</div>
 			</form>
 		</div>
 	</div>

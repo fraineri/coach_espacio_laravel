@@ -39,6 +39,14 @@ Route::get('/recuperar', function(){
 	return view('/password/user');
 });
 
+/*Admin*/
+Route::get ('/admin/products', 'Admin\ProductsController@index');
+Route::get('/admin/products/{id}', 'Admin\ProductsController@show');
+Route::get('/admin/products/create','Admin\ProductsController@create');
+Route::post('/admin/products/create','Admin\ProductsController@store');
+Route::get('/admin/products/{id}/update','Admin\ProductsController@edit');
+Route::post('/admin/products/{id}/update','Admin\ProductsController@update');
+/*destroy products ¿lo hacemos con un cambio de estado, creo q con update?*/
 
 /*Productos*/
 Route::get('productos/', 'ProductController@index');

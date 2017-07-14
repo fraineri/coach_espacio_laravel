@@ -19,27 +19,7 @@
 
 
 @section('content')
-	<div class="menu-products">
-		<div>
-			<ul class='menu-section'>
-
-				@foreach($categories as $cat)
-					@if ((!$id AND $cat->id ==1) OR ($id AND $cat->id == $id))
-						<li><a class="product-category category-selected" href="/categoria/{{$cat->id}}">{{$cat->name}}</a></li>
-					@else
-						<li><a class="product-category" href="/categoria/{{$cat->id}}">{{$cat->name}}</a></li>
-					@endif
-				@endforeach
-			</ul>
-		</div>
-		<div>	
-			<ul class='menu-section'>
-				<li><a class="product-category" href="cursos.php">Ir a ver nuestros cursos</a></li>	
-			</ul>
-			
-		</div>	
-	</div>
-
+	
 	<div>
 		<div class = "banner">
 		</div>

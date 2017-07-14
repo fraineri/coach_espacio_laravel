@@ -62,9 +62,27 @@ ol,ul{
 	list-style-type: none;
 }
 
+button{
+	background-color: transparent;
+	border: 0;
+}
+
 /*===============================
  HORIZONTAL MENU BAR > nav & log
 =================================*/
+
+.hamburguer-menu *{
+	display: none;
+}
+
+.ham-resp{
+	display: none;
+	position: fixed;
+	z-index: 800;
+	/*color: #E8B582;*/
+	color: #DD8934;
+}
+
 .main-menu{
 	display: flex; 
 	flex-direction: column; 
@@ -74,11 +92,10 @@ ol,ul{
 	top: 0;
 }
 .horizontal-menu{
-	width: 100%;
 	background-color: white;
 	display: flex;
 	justify-content: space-between;
-	/*transition: background-color .5s;*/
+	width: 100%;
 }
 
 .horizontal-menu ul:after {
@@ -89,7 +106,6 @@ ol,ul{
 	clear: both;
 	visibility: hidden;
 }
-
 
 .horizontal-menu a{
 	text-decoration: none;
@@ -223,19 +239,7 @@ ol,ul{
 
 /*******************PRODUCTOS MENU *********************/
 .menu-products{
-	position: fixed;
-	width: 100%;
-	top:48.4px;
 	z-index: 100;
-	padding-left: 15px;
-	padding-right: 15px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	background-color: lightblue;
-}
-
-.menu-products{
 	padding-left: 15px;
 	padding-right: 15px;
 	display: flex;
@@ -245,7 +249,7 @@ ol,ul{
 
 }
 
-.menu-section{
+.products-section{
 	width: 100%;
 	display: flex;
 	justify-content: flex-start;
@@ -253,7 +257,7 @@ ol,ul{
 
 }
 
-.menu-section li {
+.products-section li {
 	transition: all .5s;
 }
 
@@ -469,69 +473,125 @@ ol,ul{
 
 
 /*********************MENU************************/
-@media (max-width: 1200px){
-	.main-menu{
-		position: static;
-		display: inline-block;
-	}
-
-	.horizontal-menu{
-		flex-direction: column;
-	}
-
-	.horizontal-menu li{
+@media (max-width: 1100px){
+	.ham-resp{
 		display: block;
+		padding: 10px;
+	}
+	.horizontal-menu{
+		display: none;
 	}
 
+	.hamburguer-menu *{
+		display: block;
 
-	.horizontal-menu a{
+	}
+
+	.hamburguer-menu{
+		border-right: 1px solid rgba(100,200,228,.6);
+		flex-direction: column;
+		width: 80vw;
+		height: 100vh;
+		position: absolute;
+		z-index: 200;
+		top: 0;
+		background-color: white;
+		justify-content: space-around;
+	}
+
+	@keyframes fadein {
+		from{width: 0; opacity:0;}
+		to {width: 80vw; opacity: 1}
+	}
+
+	@keyframes fadeout {
+		from{width: 80vw; opacity:1;}
+		to {width: 0; opacity: 0}
+	}
+
+	.hamburguer-menu li{
+		text-align:center;
+	}
+
+	.hamburguer-menu a{
 		transition: background-color 0.5s;
 		width: 100%;
 		padding: 10px;
 	}
 
-	.horizontal-menu-nav a{
+	.ham-horizontal-menu-nav a{
 		border-bottom: 1px solid rgba(100,200,228,.6);
 	}
 
-	.horizontal-menu li.last > a,
-	.horizontal-menu li:last-child > a {
+	.hamburguer-menu li.last > a,
+	.hamburguer-menu li:last-child > a {
 		border: 0;
 	}
-	.horizontal-menu a:after {
+	.hamburguer-menu a:after {
 		display: none;
 	}
 	.horizontal-menu li a:before {
 		display: none;
 	}
 
-	.desplegable{
+	.ham-desplegable{
 		width: 100%;
 	}
 
-	.options li{
+	.ham-options li{
 		background-color: transparent;
 		display: none;
 	}
 
-	.horizontal-menu-log{
+	.ham-horizontal-menu-log{
 		margin-top: 30px;
 		width:100%;
+		display: flex;
+		flex-direction: row;
 		align-items: center;
 		justify-content: center;
 	}
 
-	.desplegable-user.desplegable-user{
+	.ham-desplegable-user.ham-desplegable-user{
 		justify-content: flex-start;
 	}
 
-	.options{
+	.ham-options{
 		visibility: visible;
 		position: static;
 	}
-	.options li {
-		display: inline;
+	.ham-options li {
 		text-align: left;
+	}
+
+	/****************************
+	*		PRODUCTS
+	****************************/
+	.menu-products{
+		padding:0;
+		flex-wrap: wrap;
+		background-color: #444;
+		font-size: .8em;
+		min-height: 60px;
+	}
+
+	.products-section{
+		padding-left: 60px;
+		width: 100%;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex-wrap: wrap;
+		min-height: 60px;
+	}
+
+	.product-category{
+		margin:0;
+		padding:5px 8px;
+	}
+	
+	.course{
+		display: none;
 	}
 }
 /**********************FIN MENU***********************/

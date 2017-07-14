@@ -55,6 +55,6 @@
 	</div>
 	</nav>
 	
-	<script src="js/cambiar_tema.js"></script>
-	<script src="js/menu-responsive.js"></script>
+	<script src="/js/cambiar_tema.js"></script>
+	<script src="/js/menu-responsive.js"></script>
 </header>

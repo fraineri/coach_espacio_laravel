@@ -267,6 +267,10 @@ button:hover{
 	.about-intro-description{
 		margin:7px;
 	}
+
+	.work-step-title{
+		font-size: 1.25em;
+	}
 }
 
 @media (max-width: 750px){

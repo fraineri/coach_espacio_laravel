@@ -1,6 +1,11 @@
 <?php foreach ($pagesNav as $url => $title): ?>
 	<li <?php if($url === $activePage){echo 'class ="page-active"';}?>  >
-		<a class = "selectable" href="<?php echo $url; ?>"><?php echo $title ?></a>
+		
+		<?php if ($url == "/#knowus"): ?>
+			<a class = "selectable" id ="know" href="<?php echo $url; ?>"><?php echo $title ?></a>
+		<?php else: ?>
+			<a class = "selectable" href="<?php echo $url; ?>"><?php echo $title ?></a>
+		<?php endif ?>
 	</li>
 <?php endforeach; ?>
 <?php

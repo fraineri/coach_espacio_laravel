@@ -1,6 +1,6 @@
 @extends('/layout/master')
 <?php
-	$activePage = 'productos'; 
+	$activePage = 'producto'; 
 	$userLogin = null;
 ?>
 @section('head')

@@ -80,7 +80,7 @@ button{
 	position: fixed;
 	z-index: 800;
 	/*color: #E8B582;*/
-	color: #DD8934;
+	color: rgba(221,137,52,.9);
 }
 
 .main-menu{

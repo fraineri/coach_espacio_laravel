@@ -41,3 +41,9 @@
 	font-weight: bold;
 	transition: all .7s;
 }
+
+@media (max-width: 380px){
+	.item-title{
+		font-size: 1.8em;
+	}
+}

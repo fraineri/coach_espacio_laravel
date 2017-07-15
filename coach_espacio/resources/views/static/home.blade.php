@@ -46,7 +46,7 @@
 					</div>
 				</div>
 
-				<div class ="about-intro-description wow fadeInUp" data-wow-delay="1s">
+				<div class ="about-intro-description wow fadeInUp" data-wow-delay="0.5s">
 					<div>
 						<img src="images/icons/reloj(1).png">
 						<h2 class="intro-description-title">¿No tenés tiempo para acomodar la habitación?</h2>
@@ -54,7 +54,7 @@
 					</div>
 				</div>
 
-				<div class ="about-intro-description wow fadeInUp" data-wow-delay="1s">
+				<div class ="about-intro-description wow fadeInUp" data-wow-delay="0.5s">
 					<div>
 						<img src="images/icons/dormir.png">
 						<h2 class="intro-description-title">¿Llegás todos los días a tu casa tarde?</h2>
@@ -62,7 +62,7 @@
 					</div>
 				</div>
 
-				<div class ="about-intro-description wow fadeInUp" data-wow-delay="1s">
+				<div class ="about-intro-description wow fadeInUp" data-wow-delay="0.5s">
 					<div>
 						<img src="images/icons/percha.png">
 						<h2 class ="intro-description-title">¿No sabes por dónde arrancar en tu placard?</h2>
@@ -70,7 +70,7 @@
 					</div>
 				</div>
 
-				<div class ="about-intro-description wow fadeInUp" data-wow-delay="1s">
+				<div class ="about-intro-description wow fadeInUp" data-wow-delay="0.5s">
 					<div>
 						<img src="images/icons/sillon.png">
 						<h2 class ="intro-description-title">¿Tenés una oficina nueva?</h2>
@@ -78,7 +78,7 @@
 					</div>
 				</div>
 
-				<div class ="about-intro-description wow fadeInUp" data-wow-delay="1s">
+				<div class ="about-intro-description wow fadeInUp" data-wow-delay="0.5s">
 					<div>
 						<img src="images/icons/camion-de-reparto.png">
 						<h2 class ="intro-description-title">Donamos lo que no necesitás</h2>
@@ -90,39 +90,39 @@
 		</div>
 		<!-- About Work Steps -->
 		<div class ="about-work">
-			<h1 class="page-title wow fadeInUp" data-wow-delay="0.2s">Cómo trabajamos</h1>
+			<h1 class="page-title wow fadeInUp" data-wow-delay="0.25s">Cómo trabajamos</h1>
 			<div class = "step-numbers">
-				<div class ="step-number-conf title-step-one wow fadeInUp" data-wow-delay="1s">
+				<div class ="step-number-conf title-step-one wow fadeInUp" data-wow-delay="0.6s">
 					<p>1</p>
 				</div>					
-				<div class ="step-number-conf title-step-two wow fadeInUp" data-wow-delay="1s">
+				<div class ="step-number-conf title-step-two wow fadeInUp" data-wow-delay="0.6s">
 					<p>2</p>
 				</div>	
-				<div class ="step-number-conf title-step-three wow fadeInUp" data-wow-delay="1s">
+				<div class ="step-number-conf title-step-three wow fadeInUp" data-wow-delay="0.6s">
 					<p>3</p>
 				</div>	
-				<div class ="step-number-conf title-step-four wow fadeInUp" data-wow-delay="1s">
+				<div class ="step-number-conf title-step-four wow fadeInUp" data-wow-delay="0.6s">
 					<p>4</p>
 				</div>	
 			</div>
 
 			<div class ="work-steps">	
-				<div class ="step circle-one wow fadeInUp" data-wow-delay="1s">
+				<div class ="step circle-one wow fadeInUp" data-wow-delay="0.5s">
 					<h2 class ="circle-one work-step-title  title-step-one">Contactanos</h2>
 					<p class ="work-step-text">Si estas interesado en ayudarte a reacomodar tu habitación podes contactarte con nosotros.</p>
 				</div>
 
-				<div class ="step circle-two wow fadeInUp" data-wow-delay="1s">
+				<div class ="step circle-two wow fadeInUp" data-wow-delay="0.5s">
 					<h2 class ="circle-two work-step-title title-step-two">Entrevista</h2>
 					<p class ="work-step-text">Coordinaremos una entrevista presencial o por skype para conocernos y poder saber en qué te ayudaremos.</p>
 				</div>
 
-				<div class ="step circle-three wow fadeInUp" data-wow-delay="1s">
+				<div class ="step circle-three wow fadeInUp" data-wow-delay="0.5s">
 					<h2 class ="circle-three work-step-title title-step-three">Encuentro</h2>
 					<p class ="work-step-text">Nos encontraremos en el lugar para comenzar a limpiar y deshacerte de lo que ya no necesitás</p>
 				</div>
 
-				<div class ="step circle-four wow fadeInUp" data-wow-delay="1s">
+				<div class ="step circle-four wow fadeInUp" data-wow-delay="0.5s">
 					<h2 class ="circle-four work-step-title title-step-four">Mantenimiento</h2>
 					<p class ="work-step-text">Podrás contactarnos para refrescar técnicas de guardado o estrategias si es que has vuelto a tus viejos hábitos</p>
 				</div>

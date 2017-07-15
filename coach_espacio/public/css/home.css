@@ -71,12 +71,9 @@ button:hover{
 }
 
 .image-dot{
-	
 	color:rgb(52,180,221);
 	font-size: 3em;
 	transition: all 1s ease 0s;
-	width: 25px;
-	height: 25px;
 }
 
 .current{

@@ -52,6 +52,10 @@ Route::post('/admin/products/{id}/update','Admin\ProductsController@update');
 Route::get('productos/', 'ProductController@index');
 Route::get('categoria/{cat}', 'ProductController@category');
 Route::get('producto/{id}', 'ProductController@show');
+Route::post('producto/{id}', 'ProductController@shop');
+
+/*Shop cart*/
+Route::get('shop/', 'ShopController@index');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

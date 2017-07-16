@@ -7,12 +7,14 @@
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	width: 100%;
 }
 
 .item{
 	margin-top: 20px;
 	position: relative;
 	transition: all .5s;
+	max-width: 40%;
 }
 
 .item:hover .item-image{
@@ -40,6 +42,14 @@
 	width: 80%;
 	font-weight: bold;
 	transition: all .7s;
+}
+@media (max-width: 1000px){
+	.item{
+		max-width: none;
+	}
+	.items-container{
+		justify-content: center;
+	}
 }
 
 @media (max-width: 380px){

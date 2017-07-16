@@ -21,9 +21,9 @@
 	</li>
 <?php } ?>
 	<li class ="ham-shop-cart-menu">
-		<a href="#">
+		<a href="/shop/">
 			<div>
-				<i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> </i>
+				<i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> <?php echo count(session('carrito')) ?></i>
 			</div>
 		</a>
 	</li>

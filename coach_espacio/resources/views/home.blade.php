@@ -14,4 +14,7 @@
         </div>
     </div>
 </div>
+
+<?php session()->flush();
+ ?>
 @endsection

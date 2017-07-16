@@ -1,0 +1,181 @@
+.container{
+	width: 90%;
+	margin: auto;
+	padding-top: 100px;
+	display: flex; 
+	justify-content: space-between;
+}
+
+.shop-cart{
+	width: 55%;
+}
+
+.item-summary{
+	border: 2px solid #B1E2EF;
+	border-radius: 30px;
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	background-color: white;
+}
+.item-picture{
+	margin-left: 40px;
+	width: 200px;
+	height: 200px;
+}
+
+.item-info{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-left: 35px;
+	justify-content: space-around;
+	width: 40%;
+	height: 200px;
+
+}
+
+.item-description{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding-top:5px;
+	border-top: 1px solid #777
+}
+
+.item-name{
+	font-size: 1.8em;
+	font-weight: bold;
+
+}
+
+.item-title{
+	
+	font-size: 1.2em;
+}
+
+.item-value{
+	font-weight: bold;
+}
+
+.buton{
+	
+	position: absolute;
+	top: 15px;
+	right: 25px;
+}
+
+.item-delete{
+	font-size: 1.5em;
+	transition: all .2s;
+}
+
+.item-delete:hover{
+	cursor: pointer;
+	color: #5DC2E3;
+}
+
+.shop{
+	width: 467px;
+	background-color: #F9F9F9;
+	color: #444;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-top: 50px;
+}
+
+.shop-title{
+	padding: 10px 0;
+	font-size: 1.4em;
+	color:#5DC2E3;
+	font-weight: bold;
+	text-align: center;
+}
+
+.shop-price{
+	font-size: 1.7em;
+	padding: 20px 0;
+	display: flex; 
+	flex-direction: row; 
+	justify-content: space-around;
+	font-weight: bold;
+	width: 100%;
+}
+.button-buy{
+	text-align: center;
+	font-size: 1.5em;
+	margin: 20px 0;
+	padding: 25px 30px;
+	background-color: rgba(93,194,227,.6);
+	color: white;
+	border: 2px solid rgba(93,194,227,.6);
+	transition: all .3s;
+}
+
+.button-buy:hover{
+	cursor: pointer;
+	background-color: #ffffff;
+	color: rgba(93,194,227,1);
+}
+
+.test{
+	position: fixed;
+	z-index: 300;
+	right: 100px;
+}
+
+.steps{
+	background-color: #F2F3F2;
+	height: 200px;
+	display: flex;
+	align-items: flex-end;
+	padding: 0 130px;
+	padding-bottom:30px;
+	justify-content: space-around;
+	position: relative;
+}
+
+.helper{
+	display: flex; 
+	flex-direction: column;
+	align-items: center;
+	opacity: .6
+}
+.step{
+	width: 60px;
+	height: 60px;
+	background-color: #BBBBBB;
+	color: #EEEEEE;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.active .step{
+	background-color: #5DC2E3;
+	color:white;
+}
+
+.active .step-name{
+	color: #5DC2E3;
+}
+
+.step-name{
+	font-weight: bold;
+	color:  #BBBBBB;
+}
+
+.msg-error{
+	margin: auto;
+	padding: 130px 0;
+}
+
+.msg-error a{
+	color: #5DC2E3;
+}

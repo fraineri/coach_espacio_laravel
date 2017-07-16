@@ -1,29 +1,41 @@
-<?php if($userLogin == null){ ?>
-	<?php foreach ($pagesLog as $url => $title): ?>
+@if(!\Auth::check())
+	@foreach($pagesLog as $url => $title)
 		<li>
-			<a <?php if($url === $activePage){echo 'class ="page-active"';}?> class = "selectable" href="<?php echo $url; ?>"><?php echo $title ?></a>
+			<a <?php if($url === $activePage){echo 'class ="page-active"';}?> class = "selectable" href="<?php echo $url; ?>">
+				{{ $title }}
+			</a>
 		</li>
-	<?php endforeach; ?>
-<?php } else { ?>
+	@endforeach
+@else
 	<li class = "ham-desplegable">
 		<div class ="ham-desplegable-user" >
 			<div class ="ham-menu-log-user">
-				<img class = 'ham-menu-log-user-image' src="php/users/pictures/<?php echo$_SESSION['picture'] ?>">
+				<img class = 'ham-menu-log-user-image' src="{{ \Auth::user()->avatar }}">
 			</div>
 			<div class = 'ham-menu-log-name'>
-				<p><?php echo $userLogin; ?></p>
+				<p>{{\Auth::user()->username}}</p>
 			</div>
 		</div>
 		<ul class="ham-options">
 			<li><a href="ham-user-profile.php">Editar perfil</a></li>
-			<li><a href="ham-php/logOut.php">Cerrar sesión</a></li>
+			<li>
+                <a href="{{ route('logout') }}"
+					onclick="event.preventDefault();
+					document.getElementById('logout-form').submit();">
+                    	Cerrar sesión
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+			</li>
 		</ul>
 	</li>
-<?php } ?>
-	<li class ="ham-shop-cart-menu">
-		<a href="/shop/">
-			<div>
-				<i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> <?php echo count(session('carrito')) ?></i>
-			</div>
-		</a>
-	</li>
+@endif
+<li class ="ham-shop-cart-menu">
+	<a href="/shop/">
+		<div>
+			<i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> <?php echo count(session('carrito')) ?></i>
+		</div>
+	</a>
+</li>

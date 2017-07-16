@@ -27,7 +27,10 @@
                 	<strong>{{ $errors->first('email') }}</strong>
                 </span>
                 @endif
-				<span class="lbl-confirm"></span>
+
+                @if(session()->has('correct'))
+					<span class="lbl-confirm">Mail envidado</span>	
+                @endif
 				<button class="form-button-recuperar standard-button button-cyan" type="submit">Enviar Mail</button>
 			</form>
 			</div>

@@ -13,8 +13,6 @@
 	<title>Coaching | Recuperar</title>
 @endsection
 @section('content')
-	<?php
-	?>
 	<div class="form-container">
 		<div class="form-recuperar-container">
 			<div class="form-recuperar-shadow"></div>
@@ -22,11 +20,29 @@
 				<h1 class="form-recuperar-title">Restablecer Contraseña</h1>
 				<a class="form-recuperar-icon"><i class="fa fa-question fa-5x" aria-hidden="true"></i></a>
 			</div>
-			<form action="php/controllers/restablecer.controller.php" method="post" class="form-recuperar-inputs">
+			<form action="{{ route('password.request') }}" method="post" class="form-recuperar-inputs">
+				{{ csrf_field() }}
+
+				<input class="form-recuperar-txtUsuario" type="text" id="email" name="email"  placeholder="Email" value="{{ old('email') }}" required>
+				@if ($errors->has('email'))
+	                <span class="lbl-error">
+	                    <strong>{{ $errors->first('email') }}</strong>
+	                </span>
+	            @endif
+
 				<input class="form-recuperar-txtUsuario" type="password" id="password" name="password"  placeholder="Contraseña"	value="" required>
-				<span class="lbl-error"> </span>
-				<input class="form-recuperar-txtUsuario" type="password" id="password2" name="password2"  placeholder="Repita Contraseña"	value="" required>
-				<span class="lbl-error"> </span>
+				@if ($errors->has('password'))
+	                <span class="lbl-error">
+	                    <strong>{{ $errors->first('password') }}</strong>
+	                </span>
+	            @endif
+
+				<input class="form-recuperar-txtUsuario" type="password" id="password_confirmation" name="password_confirmation"  placeholder="Repita Contraseña" value="" required>
+                @if ($errors->has('password_confirmation'))
+                    <span class="lbl-error">
+                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                    </span>
+                @endif
 
 				<button class="form-button-recuperar standard-button button-cyan" type="submit">Enviar Mail</button>
 			</form>

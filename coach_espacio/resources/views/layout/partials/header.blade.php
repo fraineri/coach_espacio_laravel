@@ -8,8 +8,8 @@
 	];
 
 	$pagesLog = [
-		'login' => 'Iniciar sesión',
-		'register' => 'Registrarse',
+		'/login' => 'Iniciar sesión',
+		'/register' => 'Registrarse',
 	];
 ?>
 <header class ="home-header">

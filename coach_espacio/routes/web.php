@@ -39,6 +39,11 @@ Route::get('/recuperar', function(){
 	return view('/password/user');
 });
 
+Route::get('/user-profile', function (){
+	return view('user-profile');
+})->middleware('auth');
+Route::post('/user-profile','UserController@update');
+
 /*Admin*/
 Route::get ('/admin/products', 'Admin\ProductsController@index');
 Route::get('/admin/products/{id}', 'Admin\ProductsController@show');

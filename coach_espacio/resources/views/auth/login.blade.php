@@ -14,14 +14,6 @@
 	<title>Coaching | Iniciá sesión</title>
 @endsection
 @section('content')
-	<?php
-		$activePage = 'login.php'; 
-		$userLogin = isset($_SESSION['nombre'])?$_SESSION['nombre']:null;
-		if ($userLogin) {
-			header('location: index');
-		}
-	?>
-
 	<div class="form-container">
 		<div class="form-login-container">
 			<div class="form-login-shadow"></div>
@@ -29,10 +21,14 @@
 				<h1 class="form-login-title">INGRESAR</h1>
 				<a class="form-login-icon" href="register.php"><i class="fa fa-user-o fa-5x" aria-hidden="true"></i></a>
 			</div>
-			<form action="php/controllers/login.controller.php" method="post" class="form-login-inputs">
+			<form action="{{ route('login') }}" method="post" class="form-login-inputs">
+				{{ csrf_field() }}
 				<input required class="form-login-txtUsuario" type="text" id="ingreso" name="username"  placeholder="Usuario" value="{{ old('username')}}">
-				<span class="lbl-error">
-				</span>
+				@if ($errors->has('username'))
+					<span class="lbl-error">
+						<strong>{{ $errors->first('username') }}</strong>
+					</span>
+				@endif
 		
 				<input required class="form-login-txtPass" type="password" id="contraseña" name="password" placeholder="Contraseña">
 				<span class="lbl-error">
@@ -45,7 +41,7 @@
 
 				<button class="form-button-login standard-button button-cyan" type="submit">ENTRAR</button>
 			</form>
-			<a class="form-login-forgot" href="/recuperar">Olvidaste tu contraseña?</a>
+			<a class="form-login-forgot" href="{{ route('password.request') }}">Olvidaste tu contraseña?</a>
 						
 			</div>
 		</div>

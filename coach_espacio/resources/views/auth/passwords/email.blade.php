@@ -1,46 +1,36 @@
-@extends('layouts.app')
+@extends('layout/master')
+@section('head')
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/recuperar.css">
 
+	<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet"> 
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Coaching | Recuperar</title>
+@endsection
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="form-container">
+		<div class="form-recuperar-container">
+			<div class="form-recuperar-shadow"></div>
+			<div class="form-recuperar-titleCont">
+				<h1 class="form-recuperar-title">Recuperar Contraseña</h1>
+				<a class="form-recuperar-icon"><i class="fa fa-question fa-5x" aria-hidden="true"></i></a>
+			</div>
+			<form action="{{ route('password.email') }}" method="post" class="form-recuperar-inputs">
+				{{ csrf_field() }}
+				<input class="form-recuperar-txtUsuario" type="text" id="email" name="email"  placeholder="Ingrese su email"	value="" required>
+				@if ($errors->has('email'))
+				<span class="lbl-error">
+                	<strong>{{ $errors->first('email') }}</strong>
+                </span>
+                @endif
+				<span class="lbl-confirm"></span>
+				<button class="form-button-recuperar standard-button button-cyan" type="submit">Enviar Mail</button>
+			</form>
+			</div>
+		</div>
+	</div>
 @endsection

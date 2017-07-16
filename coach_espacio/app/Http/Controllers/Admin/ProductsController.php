@@ -17,56 +17,42 @@ class ProductsController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.products.create');
     }
 
     public function store(Request $request)
     {
-        //
+        //crear el nuevo producto
+
+        //guardar la foto
+
+        //save el producto con referencia a su imagen
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    
+   /* public function show($id)
     {
-        //
-    }
+        $prod = Product::find($id);
+        return view('admin.products.show', compact('prod'));
+    }*/
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /*Show the form for editing the specified resource.*/
     public function edit($id)
     {
-        //
+         $prod = Product::find($id);
+
+        return view('admin.products.edit', compact('prod'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /*Update the specified resource in storage.*/
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Remove the specified resource from storage.
     public function destroy($id)
     {
         //
-    }
+    }*/
 }

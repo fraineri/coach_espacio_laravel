@@ -14,14 +14,6 @@
 	<title>Coaching | Iniciá sesión</title>
 @endsection
 @section('content')
-	<?php
-		session_start();
-		$activePage = 'register.php'; 
-		$userLogin = isset($_SESSION['nombre'])?$_SESSION['nombre']:null;
-		if ($userLogin) {
-			header('location: index.php');
-		}
-	?>
 	<div class="form-container">
 		<div class="form-register-container">
 			<div class="form-register-shadow"></div>
@@ -29,7 +21,8 @@
 					<h1 class="form-register-title">REGISTRATE</h1>
 					<div class="form-register-icon" ><i class="fa fa-pencil fa-5x" aria-hidden="true"></i></div>
 				</div>
-				<form class="form-register-inputs" action="php/controllers/register.controller.php" method="post" enctype="multipart/form-data">
+				<form class="form-register-inputs" action="{{ route('register') }}" method="post" enctype="multipart/form-data">
+					{{csrf_field()}}
 					<input id="txtName" class="form-register-txtNombre" type="text" name="name" placeholder="Nombre"  value="{{ old('name') }}">
 					<span class="lbl-error"></span>
 
@@ -57,5 +50,5 @@
 			</div>
 		</div>
 	</div>
-<script src="js/registerValidation.js"></script>
+<!--<script src="js/registerValidation.js"></script> -->
 @endsection

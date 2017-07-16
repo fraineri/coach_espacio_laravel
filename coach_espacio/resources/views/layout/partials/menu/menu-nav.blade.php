@@ -8,6 +8,7 @@
 		@endif
 	</li>
 @endforeach
+
 @if($activePage === "/")
- 	echo "<li onclick='cambioTema()' ><a class='selectable' href='#'>Cambiar tema</a></li>";
+ 	<li onclick='cambioTema()' ><a class='selectable' href='#'>Cambiar tema</a></li>
 @endif 

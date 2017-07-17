@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use App\Shopcart;
+use App\Item;
 
 class ProductController extends Controller{
     private $carrito;
@@ -38,7 +40,8 @@ class ProductController extends Controller{
 
     public function shop($id){
         $product = Product::find($id);
-        $qty =  (int)request()->productqty;
+        $qty = (int)request()->productqty;
+
         $success = true;
         if ($product->stock < $qty) {
             $success  = false;
@@ -55,24 +58,32 @@ class ProductController extends Controller{
         return $this->index($value);
     }
 
-    private function addToCart($id,$qty){
-        $carrito = session('carrito');
-            
+    private function addToCart($id, $qty){
+        #Auth
+        $cart_id = 1;
+
+        $carrito = Shopcart::find($cart_id);
+        
         $found = false;
-        $i = 0; 
-        while ($i < count($carrito) && !$found) {
-            $curr=$carrito[$i];
-            if ($curr['id'] == $id) {
-                $found = true;
-            }else{
-                $i++;                
+        foreach ($carrito->items as $curr) {
+            if($curr->product_id == $id){
+                $found=true;
+                $curr->qty += $qty;
+                $curr->save();
+                break;
             }
         }
-        if($found){
-            $carrito[$i]['qty'] += $qty;
-        }else{
-            $carrito[] = ['id' => $id, 'qty' => $qty];
+        if (!$found) {
+            $item = new Item();
+            $item->product_id = $id;
+            $item->qty = $qty;
+            $item->shopcart_id = $cart_id;
+            $item->save();
         }
-        session(["carrito" => $carrito]);
+    }
+
+    public function rows(){
+        $cart_id = 1;
+        return $carrito = Shopcart::find($cart_id)->items->count();
     }
 }

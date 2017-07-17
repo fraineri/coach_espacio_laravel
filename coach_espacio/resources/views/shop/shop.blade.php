@@ -70,7 +70,7 @@
 							</div>
 						</div>
 						<div class="buton">
-							<button class ="item-delete">x</button>
+							<a href ="/shop/delete/{{$item->id}}" class ="item-delete">x</a>
 						</div>
 					</div>
 					<?php $total += $item->qty*$item->product->price?>

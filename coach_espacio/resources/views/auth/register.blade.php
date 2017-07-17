@@ -24,20 +24,40 @@
 				<form class="form-register-inputs" action="{{ route('register') }}" method="post" enctype="multipart/form-data">
 					{{csrf_field()}}
 					<input id="txtName" class="form-register-txtNombre" type="text" name="name" placeholder="Nombre"  value="{{ old('name') }}">
-					<span class="lbl-error"></span>
+                    @if ($errors->has('name'))
+                        <span class="lbl-error">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
 
 					<input id="txtSurname" class="form-register-txtApellido" type="text" name="surname" placeholder="Apellido"  value="{{ old('surname') }}">		
-					<span class="lbl-error"></span>
+					@if ($errors->has('surname'))
+                        <span class="lbl-error">
+                            <strong>{{ $errors->first('surname') }}</strong>
+                        </span>
+                    @endif
 
 					<input id="txtEmail" class="form-register-txtEmail" type="text" name="email" placeholder="tu@email"  value="{{ old('email') }}">
-					<span class="lbl-error"></span>
+					@if ($errors->has('email'))
+                        <span class="lbl-error">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
 
 					<input id="txtUser" class="form-register-txtUsuario" type="text" name="username" placeholder="Usuario"  value="{{ old('username') }}">
-					<span id="user-lbl-error" class="lbl-error"></span>
 					<span id="user-lbl-ok" class="lbl-ok"></span>
-					
+					@if ($errors->has('username'))
+                        <span id="user-lbl-error" class="lbl-error">
+                            <strong>{{ $errors->first('username') }}</strong>
+                        </span>
+                    @endif					
+
 					<input id="txtPass" class="form-register-txtPass" type="password" name="password" placeholder="Contraseña" >
-					<span class="lbl-error"></span>
+					@if ($errors->has('password'))
+                        <span class="lbl-error">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
 
 					<input id="txtRePass" class="form-register-txtRePass" type="password" name="password_confirmation" placeholder="Repita su contraseña" >
 					<span class="lbl-error"></span>

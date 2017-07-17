@@ -44,14 +44,19 @@ Route::get('/user-profile', function (){
 })->middleware('auth');
 Route::post('/user-profile','UserController@update');
 
-/*Admin*/
+/*Admin products & categories*/
 Route::get ('/admin/products', 'Admin\ProductsController@index');
 Route::get('/admin/products/{id}', 'Admin\ProductsController@show');
 Route::get('/admin/products/create','Admin\ProductsController@create');
 Route::post('/admin/products/create','Admin\ProductsController@store');
 Route::get('/admin/products/{id}/update','Admin\ProductsController@edit');
 Route::post('/admin/products/{id}/update','Admin\ProductsController@update');
-/*destroy products ¿lo hacemos con un cambio de estado, creo q con update?*/
+Route::post('/admin/products/destroy', 'Admin\ProductsController@destroy');
+Route::get('/admin/categories/create','Admin\CategoriesController@create');
+Route::post('/admin/categories/create','Admin\CategoriesController@store');
+Route::get('/admin/categories/{id}/update','Admin\CategoriesController@edit');
+Route::post('/admin/categories/{id}/update','Admin\CategoriesController@update');
+Route::post('/admin/categories/destroy', 'Admin\CategoriesController@destroy');
 
 /*Productos*/
 Route::get('productos/', 'ProductController@index');

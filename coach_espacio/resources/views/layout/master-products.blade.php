@@ -55,6 +55,10 @@
 		@endforeach
 	@endif
 	</div>
+	<div>
+		{{ $products->links() }}
+	</div>
+
 	<script>
 		function changeInfo($t){
 			$t.querySelector(".product-price").style.opacity="0";

@@ -156,4 +156,24 @@
 		margin:0;
 		justify-content: space-between;
 	}
+	.button-cart{
+		font-size: .9em;
+	}
+	.product-select{
+		font-size: .9em;
+	}
+
+	.product-name{
+		padding: 0;
+	}
+
+	.product-description{
+		padding: 0;
+	}
+}
+
+@media(max-width: 420px){
+	.container{
+		width: 98%;
+	}
 }

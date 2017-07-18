@@ -11,11 +11,7 @@ class ShopController extends Controller{
     public function index(){
     	$cart_id = 1;
     	$carrito = Shopcart::find($cart_id);
-    	$items = null;
-    	if($carrito){
-	    	$items = $carrito->items;
-	    }
-	    return view('shop.shop', ['items'=>$items]);
+	    return view('shop.shop', ['carrito'=>$carrito]);
     }
 
     public function deleteItem($id){
@@ -28,5 +24,11 @@ class ShopController extends Controller{
     	$producto = Product::find($item->product_id);
     	$item->delete();
     	return $this->index();
+    }
+
+    public function shipping(){
+        $cart_id = 1;
+        $carrito = Shopcart::find($cart_id);
+        return view ('shop.shipping', compact("carrito"));
     }
 }

@@ -59,7 +59,9 @@ Route::post('/admin/categories/{id}/update','Admin\CategoriesController@update')
 Route::post('/admin/categories/destroy', 'Admin\CategoriesController@destroy');
 
 /*Productos*/
-Route::get('productos/', 'ProductController@index');
+Route::get('productos/', 'ProductController@products');
+Route::get('cursos/', 'ProductController@courses');
+
 Route::get('categoria/{cat}', 'ProductController@category');
 Route::get('producto/{id}', 'ProductController@show');
 Route::post('producto/{id}', 'ProductController@shop');
@@ -70,4 +72,3 @@ Route::get('shop/delete/{id}', 'ShopController@deleteItem');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-	

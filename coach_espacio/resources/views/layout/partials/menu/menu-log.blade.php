@@ -34,7 +34,7 @@
 @endif
 <li class ="ham-shop-cart-menu">
 	<a href="/shop/">
-		<div>
+		<div style="width: 55px">
 			<i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> <?php echo count(session('carrito')) ?></i>
 		</div>
 	</a>

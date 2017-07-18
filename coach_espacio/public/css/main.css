@@ -472,6 +472,115 @@ button{
 .bgc-brown{background-color: #E8BA86;}
 
 
+/****************************************************************************************
+*										PRODUCT STEPS
+****************************************************************************************/
+
+.shop-steps{
+	background-color: #F2F3F2;
+	height: 200px;
+	display: flex;
+	align-items: flex-end;
+	padding: 0 130px;
+	padding-bottom:30px;
+	justify-content: space-around;
+	position: relative;
+}
+
+.helper{
+	display: flex; 
+	flex-direction: column;
+	align-items: center;
+	opacity: .6
+}
+.shop-step{
+	width: 60px;
+	height: 60px;
+	background-color: #BBBBBB;
+	color: #EEEEEE;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.shop-active .shop-step{
+	background-color: #5DC2E3;
+	color:white;
+}
+
+.shop-active .shop-step-name{
+	color: #5DC2E3;
+}
+
+.shop-step-name{
+	font-weight: bold;
+	color:  #BBBBBB;
+}
+
+@media (max-width: 1170px){
+	.shop-steps{
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+/*De acuerdo a la hamburguesa*/
+@media(max-width: 1100px){
+	.shop-steps{
+		padding: 0;
+		align-items: center;
+	}
+}
+
+@media(max-width: 990px){
+	.shop-steps{
+		font-size: .8em;
+	}
+}
+
+@media(max-width: 536px){
+	.shop-steps{
+		height: auto;
+		padding-left: 30px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.shop-step-name{
+		text-align: center;
+	}
+	.shop-step{
+		height: 40px;
+		width: 40px;
+	}
+
+	.helper{
+		margin-bottom: 5px;
+		margin-left: 5px;
+		margin-right: 5px;
+		justify-content: center;
+	}
+}
+
+@media (max-width: 420px){
+	.helper{
+		display: none;
+	}
+	.shop-steps{
+		font-size: 1.1em;
+		padding-left: 0;
+	}
+	.shop-step{
+		height: 60px;
+		width: 60px;
+	}
+	.shop-active{
+		display: flex;
+	}
+}
+/************************************END PRODUCT STEPS**********************************/
+
+
 /*********************MENU************************/
 @media (max-width: 1100px){
 	.ham-resp{

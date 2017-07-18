@@ -19,13 +19,13 @@
 		<h1>Bienvenido a la tienda!</h1>
 		<div class ="items-container">
 			<div class ="item">
-				<a  href="productos">
+				<a href="productos">
 					<img class ="item-image" src="images/others/relojes.jpg">
 					<p class ="item-title">Artículos</p>	
 				</a>
 			</div>
 			<div class ="item">
-				<a  href="">
+				<a  href="cursos">
 					<img class ="item-image" src="images/others/Curso.jpg">
 					<p class ="item-title">Cursos</p>
 				</a>

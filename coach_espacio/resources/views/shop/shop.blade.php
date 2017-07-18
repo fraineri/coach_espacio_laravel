@@ -17,32 +17,10 @@
 @endsection
 
 @section('content')
-	<div class="steps">
-		<div class = "helper active">
-			<div class="step">
-				<i class="fa fa-shopping-cart fa-lg step-icon" aria-hidden="true"></i>
-			</div>
-			<p class ="step-name">Carrito de compras</p>
-		</div>
-		<div class = "helper">
-			<div class="step">
-				<i class="fa fa-paper-plane-o fa-lg step-icon" aria-hidden="true"></i>
-			</div>
-			<p class ="step-name">Datos del envío</p>
-		</div>
-		<div class = "helper">
-			<div class="step">
-				<i class="fa fa-credit-card fa-lg step-icon" aria-hidden="true"></i>
-			</div>
-			<p class ="step-name">Forma de pago</p>
-		</div>
-		<div class = "helper">
-			<div class="step">
-				<i class="fa fa-check fa-lg step-icon" aria-hidden="true"></i>
-			</div>
-			<p class ="step-name">Finalizar compra</p>
-		</div>
-	</div>
+	
+	<?php $currStep = "shop" ?>
+	@include('/layout/partials/shop/steps')
+
 	<div class="container">
 		<div class="shop-cart">
 			<?php $total = 0 ?>
@@ -58,10 +36,12 @@
 						<div class="item-info">
 							<p class="item-name">{{$item->product->name}}</p>
 							<div class="item-description">
-								<div>
-									<p class="item-title">Cantidad</p>
-									<p class="item-value">{{$item->qty}}</p>
-								</div>
+								@if($item->product->type =="products")
+									<div>
+										<p class="item-title">Cantidad</p>
+										<p class="item-value">{{$item->qty}}</p>
+									</div>
+								@endif
 
 								<div>
 									<p class="item-title">Precio unitario</p>
@@ -79,10 +59,10 @@
 		</div>
 		<?php if (count($items) !=0): ?>
 		<div class ="test">
-			<img src="/images/products/shop.png">
+			<img style="width: 100%" src="/images/products/shop.png">
 
 			<div class ="shop">
-				<div>
+				<div class = "shop-helper">
 					<p class="shop-title">Tu compra <i class="fa fa-shopping-cart" aria-hidden="true"></i></p>
 				</div>
 				<div class="shop-price">
@@ -96,6 +76,6 @@
 				</div>
 			</div>
 		</div>
-	<?php endif ?>
+		<?php endif ?>
 	</div>
 @endsection

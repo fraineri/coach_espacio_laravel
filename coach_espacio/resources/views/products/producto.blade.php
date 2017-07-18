@@ -22,7 +22,7 @@
 @section('content')
 	<div style="padding-top: 60px;">
 		<?php if (isset($success)): ?>
-			<?php if ($success): ?>
+			<?php if ($success == "si"): ?>
 				<h3 class="success">Producto agregado correctamente</h3>
 			<?php else: ?>
 				<h3 class="error">No se pudo agregar el producto. No tenemos la cantidad de stock ingresada.</h3>
@@ -53,27 +53,26 @@
 				<!--<input type="hidden" name="_method" value="PUT">
     			<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
 				<div class = "product-select">
-    				
-					@if($product->stock != 0 )
-						<div style="display: flex; align-items: center;">
-							<p class ="product-price" for="cantidad">Cantidad:</p>
-							<input type = "text" readonly id="cantidad" name = "productqty" class="product-qty" value="1"></p>
-						</div>
-						<button type="button" id = "mas" class="qty-button">+</button>
-						<button type="button" id = "menos" class="qty-button">-</button>
+    				@if($product->type == "products")
+						@if($product->stock != 0 )
+							<div style="display: flex; align-items: center;">
+								<p class ="product-price" for="cantidad">Cantidad:</p>
+								<button type="button" id = "menos" class="qty-button">-</button>
+								<input type = "text" readonly id="cantidad" name = "productqty" class="product-qty" value="1"></p>
+							</div>
+							<button type="button" id = "mas" class="qty-button">+</button>
+						@endif
 					@endif
-				
 				</div>
 				<div>
-					@if($product->stock == 0 )
+					@if($product->type=="products" AND $product->stock == 0)
 						<div class="button-cart stock">Sin stock</div>
 					@else
-						<button type="submit" name="buttoncart" class="button-cart" ><i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> </i>  Agregar al carrito</button>
+				
+					<button type="submit" name="buttoncart" class="button-cart" ><i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> </i>  Agregar al carrito</button>
 					@endif
 				</div>
 			</form>
-
-
 		</div>
 	</div>
 

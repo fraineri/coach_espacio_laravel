@@ -35,24 +35,32 @@
 		<!--Categoria de productos-->
 		<?php if ($activePage === "productos"): ?>
 			<div class="menu-products">
-			<div>
-				<ul class='products-section'>
-					@foreach($categories as $cat)
-						@if ((!$id AND $cat->id ==1) OR ($id AND $cat->id == $id))
-							<li><a class="product-category category-selected" href="/categoria/{{$cat->id}}">{{$cat->name}}</a></li>
-						@else
-							<li><a class="product-category" href="/categoria/{{$cat->id}}">{{$cat->name}}</a></li>
+				<div>
+					<ul class='products-section'>
+						@if($products[0]->type =="products")
+							@foreach($categories as $cat)
+								@if ((!$id AND $cat->id ==1) OR ($id AND $cat->id == $id))
+									<li><a class="product-category category-selected" href="/categoria/{{$cat->id}}">{{$cat->name}}</a></li>
+								@else
+									<li><a class="product-category" href="/categoria/{{$cat->id}}">{{$cat->name}}</a></li>
+								@endif
+							@endforeach
 						@endif
-					@endforeach
-				</ul>
+					</ul>
+				</div>
+				<div>	
+					@if($products[0]->type =="products")
+						<ul class='products-section course'>
+							<li><a class="product-category" href="/cursos">Ir a ver nuestros cursos</a></li>	
+						</ul>
+					@else
+						<ul class='products-section course'>
+							<li><a class="product-category" href="/productos">Ir a ver nuestros Productos</a></li>	
+						</ul>
+					@endif
+				</div>	
 			</div>
-			<div>	
-				<ul class='products-section course'>
-					<li><a class="product-category" href="cursos.php">Ir a ver nuestros cursos</a></li>	
-				</ul>
-			</div>	
 		<?php endif ?>
-	</div>
 	</nav>
 	
 	<script src="/js/cambiar_tema.js"></script>

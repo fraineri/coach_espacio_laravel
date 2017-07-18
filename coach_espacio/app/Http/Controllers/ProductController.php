@@ -9,12 +9,18 @@ use App\Shopcart;
 use App\Item;
 
 class ProductController extends Controller{
-    private $carrito;
-    public function index(){
+    public function index($find){
         #$prod = factory(\App\Product::class,15)->create();
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->where('type',$find)->where('purchable',1)->where('purchable',1)->get();
         $cat = Category::all();
         return view ('products.productos', ['products'=>$products, 'categories'=>$cat, 'id'=> false]);
+    }
+
+    public function products(){
+        return $this->index("products");
+    }
+    public function courses(){
+        return $this->index("course");
     }
 
     public function category($id){
@@ -42,15 +48,14 @@ class ProductController extends Controller{
         $product = Product::find($id);
         $qty = (int)request()->productqty;
 
-        $success = true;
+        $success = "si";
         if ($product->stock < $qty) {
-            $success  = false;
+            $success  = "no";
         } else{
             $product->stock -= $qty;
             $product->save();
             $this->addToCart($id,$qty);
         }
-        
         return $this->show($id,$success);
     }
 

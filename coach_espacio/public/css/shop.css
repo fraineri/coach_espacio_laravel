@@ -6,8 +6,12 @@
 	justify-content: space-between;
 }
 
+.test{
+	width: 30%;
+}
+
 .shop-cart{
-	width: 55%;
+	width: 60%;
 }
 
 .item-summary{
@@ -62,7 +66,6 @@
 }
 
 .buton{
-	
 	position: absolute;
 	top: 15px;
 	right: 25px;
@@ -79,7 +82,7 @@
 }
 
 .shop{
-	width: 467px;
+	width: 100%;
 	background-color: #F9F9F9;
 	color: #444;
 	display: flex;
@@ -108,7 +111,7 @@
 }
 .button-buy{
 	text-align: center;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	margin: 20px 0;
 	padding: 25px 30px;
 	background-color: rgba(93,194,227,.6);
@@ -123,59 +126,115 @@
 	color: rgba(93,194,227,1);
 }
 
-.test{
-	position: fixed;
-	z-index: 300;
-	right: 100px;
-}
-
-.steps{
-	background-color: #F2F3F2;
-	height: 200px;
-	display: flex;
-	align-items: flex-end;
-	padding: 0 130px;
-	padding-bottom:30px;
-	justify-content: space-around;
-	position: relative;
-}
-
-.helper{
-	display: flex; 
-	flex-direction: column;
-	align-items: center;
-	opacity: .6
-}
-.step{
-	width: 60px;
-	height: 60px;
-	background-color: #BBBBBB;
-	color: #EEEEEE;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.active .step{
-	background-color: #5DC2E3;
-	color:white;
-}
-
-.active .step-name{
-	color: #5DC2E3;
-}
-
-.step-name{
-	font-weight: bold;
-	color:  #BBBBBB;
-}
-
 .msg-error{
 	margin: auto;
-	padding: 130px 0;
+	padding: 0;
 }
 
 .msg-error a{
 	color: #5DC2E3;
+}
+
+@media (max-width: 1170px){
+	.item-picture{
+		height: 150px;
+		width: 150px;
+	}
+	.item-info{
+		height: 150px;
+	}
+
+	.item-name{
+		font-size: 1.6em;
+	}
+
+	.item-info{
+		width: 50%;
+	}
+	.button-buy{
+		padding: 15px 20px;
+	}
+}
+
+
+
+@media(max-width: 990px){
+	.container{
+		display: block;
+		margin: auto;
+	}
+	.shop-cart{
+		width: 100%;
+	}
+
+	.item-picture{
+		height: 200px;
+		width: 200px;
+	}
+	.item-info{
+		height: 200px;
+	}
+
+	.test{
+		width: 100%;
+	}
+
+	.shop-helper{
+		width: 30%;
+	}
+
+	.shop{
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 0;
+	}
+	.shop-price{
+		flex-direction: column;
+		text-align: center;
+		width: auto;
+	}
+
+	
+}
+
+@media(max-width: 650px){
+	.item-picture{
+		height: 120px;
+		width: 120px;
+	}
+	.item-info{
+		height: 120px;
+	}
+
+	.shop-price{
+		flex-direction: row;
+		width: 100%;
+		justify-content: space-around;
+	}
+	.shop{
+		flex-direction: column;
+	}
+	.shop-helper{
+		width: 100%;
+	}
+}
+
+@media(max-width: 536px){
+	.item-picture{
+		margin: 0;
+	}
+	.item-summary{
+		flex-direction: column;
+	}
+	.item-info{
+		height: auto;
+		width: 80%;
+		margin: 0;
+		margin-bottom: 5px;
+	}
+	.item-description{
+		flex-direction: column;
+		margin: 0;
+	}	
 }

@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<ul class="ham-options">
-			<li><a href="ham-user-profile.php">Editar perfil</a></li>
+			<li><a href="user-profile">Editar perfil</a></li>
 			<li>
                 <a href="{{ route('logout') }}"
 					onclick="event.preventDefault();

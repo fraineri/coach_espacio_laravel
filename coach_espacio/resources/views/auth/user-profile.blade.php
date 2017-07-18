@@ -18,14 +18,14 @@
 		<h2 class ="page-title">Información de perfil</h2>
 
 		<div class = "form-profile-container">
-			<h1 class="form-profile-title"> {{$user->name.$user->surname}} </h1>
-			<form class="form-profile-inputs" method="POST" action=" {{ route('user-profile')}} " enctype="multipart/form-data">
+			<h1 class="form-profile-title"> {{ Auth::user()->name }} </h1>
+			<form class="form-profile-inputs" method="POST" action="  " enctype="multipart/form-data">
 				{{csrf_field()}}
 				<label class="form-profile-label">Usuario</label>
-				<p class="form-profile-txtUsuario"> {{$user->username}} </p>
+				<p class="form-profile-txtUsuario"> {{ Auth::user()->surname }} </p>
 
 				<label class="form-profile-label" for ="email">Mail</label>
-				<input class="form-profile-txtEmail" type="email" name="email" value ="{{$user->email}}">
+				<input class="form-profile-txtEmail" type="email" name="email" value ="{{Auth::user()->email}}">
 				@if ($errors->has('email'))
 					<span class="lbl-error">
 						<strong> {{ $errors->first('email') }} </strong>
@@ -33,7 +33,7 @@
 				@endif
 
 				<label class="form-profile-label" for ="nombre">Nombre</label>
-				<input class="form-profile-txtNombre" type="text" name="nombre" value =" {{$user->username}} ">
+				<input class="form-profile-txtNombre" type="text" name="nombre" value =" {{Auth::user()->username}} ">
 				@if ($errors->has('username'))
 					<span class="lbl-error">
 						<strong> {{ $errors->first('username') }} </strong>
@@ -41,7 +41,7 @@
 				@endif
 			
 				<label class="form-profile-label" for ="apellido">Apellido</label>
-				<input class="form-profile-txtApellido" type="text" name="apellido" value=" {{$user->surname}} ">		
+				<input class="form-profile-txtApellido" type="text" name="apellido" value=" {{Auth::user()->surname}} ">		
 				@if ($errors->has('surname'))
 					<span class="lbl-error">
 						<strong> {{ $errors->first('surname') }} </strong>
@@ -49,12 +49,7 @@
 				@endif
 
 				<label class="form-profile-label" for ="profile-picture">Foto de perfil</label>
-				<?php 
-					if ($_SESSION['picture'] != 'default.png') {
-						$name = $_SESSION['picture'];
-						echo "<img class = 'form-profile-picture' src='php/users/pictures/$name'>";
-					}
-				?>
+				
 				<input type="file" name="avatar">
 
 				<div class ="button-change-psw">
@@ -65,14 +60,17 @@
 				<div class ="div-change-psw">
 					<label for ="actPsw">Ingrese su contraseña actual</label>
 					<input class="form-profile-txtPass" type="password" name="actPsw">
-					<span class="lbl-error" id ="actPsw"><?php echo $errores['actPsw'];?></span>
-
+					@if ($errors->has('actPsw'))
+                        <span class="lbl-error">
+                            <strong>{{ $errors->first('actPsw') }}</strong>
+                        </span>
+                    @endif
 					<label for ="actPsw">Ingrese su nueva contraseña</label>
 					<input class="form-profile-txtPass" type="password" name="newPsw">
 
 					<label for ="actPsw">Reingrese la contraseña nueva</label>
 					<input class="form-profile-txtPass" type="password" name="reNewPsw">
-					<span class="lbl-error" id="reNewPsw"><?php echo $errores['newPsw'];?></span>	
+					
 				</div>
 
 				<button class="form-profile-send standard-button button-cyan" type="submit">ACTUALIZAR DATOS</button>

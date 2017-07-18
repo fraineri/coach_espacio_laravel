@@ -23,6 +23,8 @@
 			<form action="{{ route('password.request') }}" method="post" class="form-recuperar-inputs">
 				{{ csrf_field() }}
 
+                <input type="hidden" name="token" value="{{ $token }}">
+
 				<input class="form-recuperar-txtUsuario" type="text" id="email" name="email"  placeholder="Email" value="{{ old('email') }}" required>
 				@if ($errors->has('email'))
 	                <span class="lbl-error">

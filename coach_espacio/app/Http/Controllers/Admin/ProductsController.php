@@ -10,8 +10,8 @@ use App\Category;
 class ProductsController extends Controller
 {
     public function index()
-    {   //$products=Product::all();
-        $products=Product::paginate(10);
+    {   $products=Product::all();
+        //$products=Product::paginate(10);
         return view('admin.products.index', compact('products'));
     }
 
@@ -48,27 +48,30 @@ class ProductsController extends Controller
     public function show($id)
     {
         $prod = Product::find($id);
-        return view('admin.products.show', compact('prod'));
+        return view('admin.products.edit', compact('prod'));
     }
 
     /*Show the form for editing the specified resource.*/
     public function edit($id)
     {
         $prod = Product::find($id);
-        return view('admin.products.edit', compact('prod'));
+        $prodCat= $prod->category_id;
+        $cat= Category::find($prodCat);
+        $nomCat= $cat->name;
+        $categories= Category::all();
+        return view('admin.products.edit', compact('prod', 'nomCat','categories'));
     }
 
     /*Update the specified resource in storage.*/
     public function update(Request $request, $id)
-    {
-        //validate
+    {  //dd($request);
+       //validate
         $this->validate($request,[
             'name'=>'required|unique:products|max:191',
             'description'=>'required|max:500',
             'price'=>'required|numeric',
             'category_id'=>'required|integer',
             'stock'=>'required|integer',
-            'picture'=>'required|max:191',
             'purchable'=>'required|boolean'
         ]);
         //recuperar el producto de la DB
@@ -79,16 +82,16 @@ class ProductsController extends Controller
         $prod->price = $request->price;
         $prod->category_id = $request->category_id;
         $prod->stock = $request->stock;
-        $prod->purchable = $request->purchable;
+        //$prod->purchable = $request->purchable;
          //guardar la imagen
-        $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
-        request()->picture->storeAs('products', $nombre);
+        //$nombre= str_slug($prod->name) . '.' .request()->picture->extension();
+        //request()->picture->storeAs('products', $nombre);
         //asociar la imagen con el prod
-        $prod->picture = $nombre;         
+        //$prod->picture = $nombre;         
         $prod->save();
 
         //redirect
-        return redirect('admin.products.index');
+        return view('admin.products.index');
     }
 
     /* Remove the specified resource from storage.*/

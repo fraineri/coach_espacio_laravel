@@ -10,6 +10,7 @@
                 <div class="panel-body">
                     You are logged in!
                 </div>
+                <img src="{{ asset('storage') }}/avatars/{{ \Auth::user()->avatar }}">
             </div>
         </div>
     </div>

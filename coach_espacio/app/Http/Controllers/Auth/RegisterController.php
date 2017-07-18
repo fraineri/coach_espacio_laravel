@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
+
     }
 
     /**
@@ -64,12 +65,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'email' => $data['email'],
             'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
+        app('App\Http\Controllers\UserController')->create_avatar($user,$data['avatar']);
+        return $user;
     }
 }

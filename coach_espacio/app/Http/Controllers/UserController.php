@@ -8,7 +8,7 @@ class UserController extends Controller
 {
 	public function create_avatar($user, $avatar){
     		$filename = time().'.'.$avatar->getClientOriginalExtension();
-    		$avatar->storeAs('avatars', $filename);
+    		$avatar->storeAs('public/avatars', $filename);
     		$user->avatar = $filename;
     		$user->save();
     }
@@ -31,7 +31,7 @@ class UserController extends Controller
         $user->surname = $request->surname;
         $user->email = $request->email;
         $user->username = $request->username;
-        if ($request->has('password')) $user->password = bcrypt($request->'password');
+        if ($request->has('password')) $user->password = bcrypt($request->password);
         
         $user->save();
     }

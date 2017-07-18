@@ -29,14 +29,13 @@ class ProductsController extends Controller
             'price'=>'required|numeric',
             'category_id'=>'required|integer',
             'stock'=>'required|integer',
-            'picture'=>'required|max:191',
             'purchable'=>'required|boolean'
         ]);
         //store
-        $prod=Product::create(request(['name','description','price', 'category_id','stock','picture','purchable']));
+        $prod=Product::create(request(['name','description','price', 'category_id','stock','purchable']));
         //guardar la imagen
         $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
-        request()->picture->storeAs('products', $nombre);
+        request()->picture->storeAs('public/products', $nombre);
         //asociar la imagen con el prod
         $prod->picture = $nombre;         
         $prod->save();

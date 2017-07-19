@@ -59,28 +59,28 @@ class ProductsController extends Controller
         $cat= Category::find($prodCat);
         $nomCat= $cat->name;
         $categories= Category::all();
-        return view('admin.products.edit', compact('prod', 'nomCat','categories'));
+        return view('admin.products.edit2', compact('prod', 'nomCat','categories'));
     }
 
     /*Update the specified resource in storage.*/
     public function update(Request $request, $id)
-    {  //dd($request);
+    {  //dd($id);
        //validate
-        $this->validate($request,[
+       /*$this->validate($request,[
             'name'=>'required|unique:products|max:191',
             'description'=>'required|max:500',
             'price'=>'required|numeric',
-            'category_id'=>'required|integer',
-            'stock'=>'required|integer',
-            'purchable'=>'required|boolean'
-        ]);
+            //'category_id'=>'required|integer',
+            'stock'=>'required|integer'
+            //'purchable'=>'required|boolean'
+        ]);*/
         //recuperar el producto de la DB
         $prod= Product::find($id);
         //save
         $prod->name = $request->name;
         $prod->description = $request->description;
         $prod->price = $request->price;
-        $prod->category_id = $request->category_id;
+        //$prod->category_id = $request->category_id;
         $prod->stock = $request->stock;
         //$prod->purchable = $request->purchable;
          //guardar la imagen
@@ -91,7 +91,7 @@ class ProductsController extends Controller
         $prod->save();
 
         //redirect
-        return view('admin.products.index');
+        return redirect('/admin/products/');
     }
 
     /* Remove the specified resource from storage.*/

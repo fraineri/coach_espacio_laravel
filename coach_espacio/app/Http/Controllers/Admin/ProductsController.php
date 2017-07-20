@@ -11,6 +11,7 @@ class ProductsController extends Controller
 {
     public function index()
     {   $products=Product::all();
+        //devolver solo los que sean purchable
         //$products=Product::paginate(10);
         return view('admin.products.index', compact('products'));
     }
@@ -24,7 +25,7 @@ class ProductsController extends Controller
     {
         //validate
         $this->validate($request,[
-            'name'=>'required|unique:products|max:191',
+            'name'=>'required|unique:products|max:30',
             'description'=>'required|max:500',
             'price'=>'required|numeric',
             'category_id'=>'required|integer',
@@ -34,21 +35,21 @@ class ProductsController extends Controller
         //store
         $prod=Product::create(request(['name','description','price', 'category_id','stock','purchable']));
         //guardar la imagen
-        $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
-        request()->picture->storeAs('public/products', $nombre);
+        //$nombre= str_slug($prod->name) . '.' .request()->picture->extension();
+        //request()->picture->storeAs('public/products', $nombre);
         //asociar la imagen con el prod
-        $prod->picture = $nombre;         
-        $prod->save();
+        //$prod->picture = $nombre;         
+        //$prod->save();
 
         //redirect
-        return redirect('admin.products.index');   //view (‘/admin/products’)
+        return redirect('/admin/products/');   //view (‘/admin/products’)
     }
 
     /*creo q no la voy a usar*/
     public function show($id)
     {
         $prod = Product::find($id);
-        return view('admin.products.edit', compact('prod'));
+        return view('admin.products.edit2', compact('prod'));
     }
 
     /*Show the form for editing the specified resource.*/
@@ -66,14 +67,15 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {  //dd($id);
        //validate
-       /*$this->validate($request,[
-            'name'=>'required|unique:products|max:191',
+       $this->validate($request,[
+            'name'=>'required|max:30',
+            //unique:products no me deja regrabar
             'description'=>'required|max:500',
             'price'=>'required|numeric',
             //'category_id'=>'required|integer',
             'stock'=>'required|integer'
             //'purchable'=>'required|boolean'
-        ]);*/
+        ]);
         //recuperar el producto de la DB
         $prod= Product::find($id);
         //save
@@ -85,7 +87,7 @@ class ProductsController extends Controller
         //$prod->purchable = $request->purchable;
          //guardar la imagen
         //$nombre= str_slug($prod->name) . '.' .request()->picture->extension();
-        //request()->picture->storeAs('products', $nombre);
+        //request()->picture->storeAs('public/products', $nombre);
         //asociar la imagen con el prod
         //$prod->picture = $nombre;         
         $prod->save();
@@ -103,6 +105,6 @@ class ProductsController extends Controller
         //save
         $prod->save();
         //redirect
-        return redirect('admin.products.index');
+        return redirect('/admin/products/');
     }
 }

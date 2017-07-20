@@ -9,13 +9,33 @@
 	<h1>Editar {{$prod->name}}</h1>
 		<form class="form-horizontal" method="POST" action="/admin/products/{{$prod->id}}/update">
 				{{csrf_field()}}
-				<input type="text" name="name" class="form-control" value="{{$prod->name}}">
+				<input type="text" name="name" class="form-control" value="{{$prod->name}}" required>
+				@if ($errors->has('name'))
+					<span class="lbl-error">
+						<strong> {{ $errors->first('name') }} </strong>
+					</span>
+				@endif
 				<br>
-				<input type="text" name="description" class="form-control" value="{{$prod->description}}">
+				<input type="text" name="description" class="form-control" value="{{$prod->description}}" required>
+				@if ($errors->has('description'))
+					<span class="lbl-error">
+						<strong> {{ $errors->first('description') }} </strong>
+					</span>
+				@endif
 				<br>
-				<input type="text" name="price" class="form-control" value="{{$prod->price}}">
+				<input type="text" name="price" class="form-control" value="{{$prod->price}}" required>
+				@if ($errors->has('price'))
+					<span class="lbl-error">
+						<strong> {{ $errors->first('price') }} </strong>
+					</span>
+				@endif
 				<br>
-				<input type="text" name="stock" class="form-control" value="{{$prod->stock}}">
+				<input type="text" name="stock" class="form-control" value="{{$prod->stock}}" required>
+				@if ($errors->has('stock'))
+					<span class="lbl-error">
+						<strong> {{ $errors->first('stock') }} </strong>
+					</span>
+				@endif
 				<br>
 				<!--checkbutton de purchable // o botón NO Vendible-->
 				<h3>{{$nomCat}}</h3>

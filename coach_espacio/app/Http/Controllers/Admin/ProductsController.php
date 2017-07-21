@@ -10,9 +10,9 @@ use App\Category;
 class ProductsController extends Controller
 {
     public function index()
-    {   $products=Product::all();
+    {
         //devolver solo los que sean purchable
-        //$products=Product::paginate(10);
+        $products=Product::where('purchable', true)->orderBy('name', 'asc')->paginate(10);
         return view('admin.products.index', compact('products'));
     }
 

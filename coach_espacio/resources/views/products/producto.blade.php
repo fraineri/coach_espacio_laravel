@@ -20,15 +20,6 @@
 @endsection
 
 @section('content')
-	<div style="padding-top: 60px;">
-		<?php if (isset($success)): ?>
-			<?php if ($success == "si"): ?>
-				<h3 class="success">Producto agregado correctamente</h3>
-			<?php else: ?>
-				<h3 class="error">No se pudo agregar el producto. No tenemos la cantidad de stock ingresada.</h3>
-			<?php endif ?>
-		<?php endif ?>
-	</div>
 	<div class="container">
 		<div class="image-cont">
 			<img class="product-image" src="/images/products/{{$product->picture}}">
@@ -52,6 +43,7 @@
 				{{csrf_field()}}
 				<!--<input type="hidden" name="_method" value="PUT">
     			<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
+    			<input type="number" name="id" hidden value = "{{$product->id}}">
 				<div class = "product-select">
     				@if($product->type == "products")
 						@if($product->stock != 0 )
@@ -59,8 +51,9 @@
 								<p class ="product-price" for="cantidad">Cantidad:</p>
 								<button type="button" id = "menos" class="qty-button">-</button>
 								<input type = "text" readonly id="cantidad" name = "productqty" class="product-qty" value="1"></p>
+								<button type="button" id = "mas" class="qty-button">+</button>
 							</div>
-							<button type="button" id = "mas" class="qty-button">+</button>
+							
 						@endif
 					@endif
 				</div>
@@ -73,6 +66,10 @@
 					@endif
 				</div>
 			</form>
+		</div>
+		<div style="padding-top: 10px;position: relative;margin: auto;width: 100%; display: flex; justify-content: center;">
+			<h3 class="success">Producto agregado correctamente</h3>
+			<h3 class="error">No se pudo agregar el producto. No tenemos la cantidad de stock ingresada.</h3>
 		</div>
 	</div>
 
@@ -92,21 +89,38 @@
 			}
 		})
 
-		/*document.forms[0].addEventListener("submit",function(e){
+		document.forms[0].addEventListener("submit",function(e){
 			e.preventDefault();
-
+			document.querySelector(".success").style.display="none";
+			document.querySelector(".error").style.display="none";
 			var req = new XMLHttpRequest();
         	req.onreadystatechange = function () {
         		if (this.readyState === 4) {
             		if (this.status === 200) {
-            			console.log(this.responseText);
+            			success = JSON.parse(this.responseText);
+            			success= success['success'];
+            			if(success){
+            				document.querySelector(".success").style.display="block";
+            				document.querySelector(".success").style.opacity = "1"; 
+							setTimeout(function() { 
+							    document.querySelector(".success").style.opacity = "0"; 
+							}, 
+							2000);
+							
+            			}else{
+            				document.querySelector(".error").style.display="block";
+            				document.querySelector(".error").style.opacity = "1"; 
+            				setTimeout(function() { 
+							    document.querySelector(".error").style.opacity = "0"; 
+							}, 
+							2000);
+            			}
             		}
             	}
             }
             req.open('POST', '/producto/{id}');
             var data = new FormData(document.forms[0]);
-            data.append('id', 1);
         	req.send(data);
-		});*/
+		});
 	</script>
 @endsection

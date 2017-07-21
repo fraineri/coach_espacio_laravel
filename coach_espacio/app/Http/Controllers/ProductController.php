@@ -44,19 +44,20 @@ class ProductController extends Controller{
         }        
     }
 
-    public function shop($id){
-        $product = Product::find($id);
+    public function shop(){
+        $id = request()->id;
         $qty = (int)request()->productqty;
-
-        $success = "si";
+        $product = Product::find($id);
+       
+        $success = ["success"=>true];
         if ($product->stock < $qty) {
-            $success  = "no";
+            $success  = ["success"=>false];
         } else{
             $product->stock -= $qty;
             $product->save();
             $this->addToCart($id,$qty);
         }
-        return $this->show($id,$success);
+        return json_encode($success);
     }
 
     private function sendIndex($value){

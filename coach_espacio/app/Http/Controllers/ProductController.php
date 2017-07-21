@@ -11,7 +11,7 @@ use App\Item;
 class ProductController extends Controller{
     public function index($find){
         #$prod = factory(\App\Product::class,15)->create();
-        $products = Product::with('category')->where('type',$find)->where('purchable',1)->where('purchable',1)->paginate(5);
+        $products = Product::with('category')->where('type',$find)->where('purchable',1)->paginate(5);
         $cat = Category::all();
         return view ('products.productos', ['products'=>$products, 'categories'=>$cat, 'id'=> false]);
     }
@@ -34,48 +34,45 @@ class ProductController extends Controller{
     	return view ('products.productos-category', ['products'=>$products, 'categories'=>$cat,'id'=>$id]);
     }
 
-    public function show($id, $preset = false){
-        if ($preset) {
-            $product = Product::find($id);
-            return view ('products.producto',['product'=>$product, 'success' => $preset]);
-        }else{
-            $product = Product::find($id);    
-            return view ('products.producto',['product'=>$product]);
-        }        
+    public function show($id){
+        $product = Product::find($id);    
+        return view ('products.producto',['product'=>$product]);
     }
 
     public function shop(){
         $id = request()->id;
         $qty = (int)request()->productqty;
         $product = Product::find($id);
-       
+    
         $success = ["success"=>true];
-        if ($product->stock < $qty) {
-            $success  = ["success"=>false];
-        } else{
-            $product->stock -= $qty;
-            $product->save();
+        if ($product->type == "course") {
+            $qty = 1;
             $this->addToCart($id,$qty);
-        }
+        }else{
+            if ($product->stock < $qty) {
+                $success  = ["success"=>false];
+            } else{
+                $product->stock -= $qty;
+                $product->save();
+                $this->addToCart($id,$qty);
+            }
+        }      
         return json_encode($success);
-    }
-
-    private function sendIndex($value){
-        return $this->index($value);
     }
 
     private function addToCart($id, $qty){
         #Auth
         $cart_id = 1;
-
         $carrito = Shopcart::find($cart_id);
         
         $found = false;
         foreach ($carrito->items as $curr) {
             if($curr->product_id == $id){
                 $found=true;
-                $curr->qty += $qty;
-                $curr->save();
+                if ($curr->product->type != "course") {
+                    $curr->qty += $qty;
+                    $curr->save();
+                }
                 break;
             }
         }
@@ -91,5 +88,9 @@ class ProductController extends Controller{
     public function rows(){
         $cart_id = 1;
         return $carrito = Shopcart::find($cart_id)->items->count();
+    }
+
+    private function sendIndex($value){
+        return $this->index($value);
     }
 }

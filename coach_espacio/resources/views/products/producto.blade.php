@@ -98,6 +98,7 @@
         		if (this.readyState === 4) {
             		if (this.status === 200) {
             			success = JSON.parse(this.responseText);
+            			console.log(this.responseText);
             			success= success['success'];
             			if(success){
             				document.querySelector(".success").style.display="block";

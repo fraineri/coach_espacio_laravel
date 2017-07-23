@@ -22,7 +22,7 @@ class ProductsController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   //dd($request);
         //validate
         $this->validate($request,[
             'name'=>'required|unique:products|max:30',
@@ -35,14 +35,14 @@ class ProductsController extends Controller
         //store
         $prod=Product::create(request(['name','description','price', 'category_id','stock','purchable']));
         //guardar la imagen
-        //$nombre= str_slug($prod->name) . '.' .request()->picture->extension();
-        //request()->picture->storeAs('public/products', $nombre);
+        $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
+        request()->picture->storeAs('/public/images/products/', $nombre);
         //asociar la imagen con el prod
-        //$prod->picture = $nombre;         
-        //$prod->save();
+        $prod->picture = $nombre;         
+        $prod->save();
 
         //redirect
-        return redirect('/admin/products/');   //view (‘/admin/products’)
+        return redirect('/admin/products/');   
     }
 
     /*creo q no la voy a usar*/
@@ -65,16 +65,16 @@ class ProductsController extends Controller
 
     /*Update the specified resource in storage.*/
     public function update(Request $request, $id)
-    {  //dd($id);
+    {  dd($request);
        //validate
-       $this->validate($request,[
+      /*$this->validate($request,[
             'name'=>'required|max:30',
             //unique:products no me deja regrabar
             'description'=>'required|max:500',
             'price'=>'required|numeric',
-            //'category_id'=>'required|integer',
-            'stock'=>'required|integer'
-            //'purchable'=>'required|boolean'
+            'category_id'=>'required|integer',
+            'stock'=>'required|integer',
+            'purchable'=>'required|boolean'
         ]);
         //recuperar el producto de la DB
         $prod= Product::find($id);
@@ -82,18 +82,19 @@ class ProductsController extends Controller
         $prod->name = $request->name;
         $prod->description = $request->description;
         $prod->price = $request->price;
-        //$prod->category_id = $request->category_id;
+        $prod->category_id = $request->category_id;
         $prod->stock = $request->stock;
-        //$prod->purchable = $request->purchable;
-         //guardar la imagen
-        //$nombre= str_slug($prod->name) . '.' .request()->picture->extension();
-        //request()->picture->storeAs('public/products', $nombre);
+        $prod->purchable = $request->purchable;
+        
+        //guardar la imagen
+        $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
+        request()->picture->storeAs('/images/products/', $nombre);
         //asociar la imagen con el prod
-        //$prod->picture = $nombre;         
+        $prod->picture = $nombre;         
         $prod->save();
 
         //redirect
-        return redirect('/admin/products/');
+        return redirect('/admin/products/');*/
     }
 
     /* Remove the specified resource from storage.*/

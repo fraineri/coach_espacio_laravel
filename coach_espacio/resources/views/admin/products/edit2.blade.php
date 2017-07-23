@@ -3,11 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/producto.css">
+	<link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
 	<title>Editar 2</title>
 </head>
 <body>
 	<h1>Editar {{$prod->name}}</h1>
-		<form class="form-horizontal" method="POST" action="/admin/products/{{$prod->id}}/update">
+		<form class="form-horizontal" method="POST" action="/admin/products/{{$prod->id}}/update" enctype="multipart/form-data">
 				{{csrf_field()}}
 				<label>Nombre:</label>
 				<input type="text" name="name" class="form-control" value="{{$prod->name}}" required>
@@ -16,7 +24,8 @@
 						<strong> {{ $errors->first('name') }} </strong>
 					</span>
 				@endif
-				<hr>
+				<br>
+				<br>
 				<label>Descripción:</label>
 				<input type="text" name="description" class="form-control" value="{{$prod->description}}" required>
 				@if ($errors->has('description'))
@@ -24,7 +33,8 @@
 						<strong> {{ $errors->first('description') }} </strong>
 					</span>
 				@endif
-				<hr>
+				<br>
+				<br>
 				<label>Precio:</label>
 				<input type="text" name="price" class="form-control" value="{{$prod->price}}" required>
 				@if ($errors->has('price'))
@@ -32,7 +42,8 @@
 						<strong> {{ $errors->first('price') }} </strong>
 					</span>
 				@endif
-				<hr>
+				<br>
+				<br>
 				<label>Stock:</label>
 				<input type="text" name="stock" class="form-control" value="{{$prod->stock}}" required>
 				@if ($errors->has('stock'))
@@ -40,21 +51,34 @@
 						<strong> {{ $errors->first('stock') }} </strong>
 					</span>
 				@endif
-				<hr>
+				<br>
+				<br>
 				<!--true o false para purchable-->
 				<label>Producto listo para vender?</label>
 				<select name="purchable">
 					<option value=1>Si, Vender</option>
 					<option value=0>NO vender</option>
 				</select>
-				<hr>
+				<br>
+				<br>
 				<!--categorias de la tabla categories-->
-				<label>Categoria del producto: {{$nomCat}}</label>
+				<label>Categoria del producto: <strong>{{$nomCat}}  </strong></label>
 				<select name="category_id">
 					@foreach($categories as $cat)
-						<option>{{$cat->name}}</option>
+						<option value="{{$cat->id}}">{{$cat->name}}</option>
 					@endforeach
 				</select>
+				<br>
+				<br>
+				<!--imagen-->
+				<label class="admin-product-image">Foto de Producto</label>
+				<input name="picture" class="form-control" type="file" value="{{$prod->picture}}">
+				<div class="image-cont">
+					<img class="product-image" src="/images/products/{{$prod->picture}}">
+				</div>
+				
+				<br>
+				<br>
 				<hr>
 				<!--boton para salir sin editar el producto-->
 				<div class="form-group">

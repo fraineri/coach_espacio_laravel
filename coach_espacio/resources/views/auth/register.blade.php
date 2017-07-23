@@ -21,9 +21,10 @@
 					<h1 class="form-register-title">REGISTRATE</h1>
 					<div class="form-register-icon" ><i class="fa fa-pencil fa-5x" aria-hidden="true"></i></div>
 				</div>
-				<form class="form-register-inputs" action="{{ route('register') }}" method="post" enctype="multipart/form-data">
+				<form id="form-register" class="form-register-inputs" action="{{ route('register') }}" method="post" enctype="multipart/form-data">
 					{{csrf_field()}}
 					<input id="txtName" class="form-register-txtNombre" type="text" name="name" placeholder="Nombre"  value="{{ old('name') }}">
+					<span class="lbl-error"></span>
                     @if ($errors->has('name'))
                         <span class="lbl-error">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -31,6 +32,7 @@
                     @endif
 
 					<input id="txtSurname" class="form-register-txtApellido" type="text" name="surname" placeholder="Apellido"  value="{{ old('surname') }}">		
+					<span class="lbl-error"></span>
 					@if ($errors->has('surname'))
                         <span class="lbl-error">
                             <strong>{{ $errors->first('surname') }}</strong>
@@ -38,6 +40,7 @@
                     @endif
 
 					<input id="txtEmail" class="form-register-txtEmail" type="text" name="email" placeholder="tu@email"  value="{{ old('email') }}">
+					<span class="lbl-error"></span>
 					@if ($errors->has('email'))
                         <span class="lbl-error">
                             <strong>{{ $errors->first('email') }}</strong>
@@ -45,6 +48,7 @@
                     @endif
 
 					<input id="txtUser" class="form-register-txtUsuario" type="text" name="username" placeholder="Usuario"  value="{{ old('username') }}">
+					<span class="lbl-error"></span>
 					<span id="user-lbl-ok" class="lbl-ok"></span>
 					@if ($errors->has('username'))
                         <span id="user-lbl-error" class="lbl-error">
@@ -53,6 +57,7 @@
                     @endif					
 
 					<input id="txtPass" class="form-register-txtPass" type="password" name="password" placeholder="Contraseña" >
+					<span class="lbl-error"></span>
 					@if ($errors->has('password'))
                         <span class="lbl-error">
                             <strong>{{ $errors->first('password') }}</strong>
@@ -65,10 +70,10 @@
 					<label for="avatar" class="form-register-label-foto">Foto de perfil</label>
 					<input class="form-register-foto" type="file" name="avatar">
 
-					<button class="form-button-register standard-button button-white" type="submit">REGISTRAR</button>
+					<button id="btnRegister" class="form-button-register standard-button button-white" type="submit" name="submit">REGISTRAR</button>
 				</form>
 			</div>
 		</div>
 	</div>
-<!--<script src="js/registerValidation.js"></script> -->
+<script src="js/registerValidation.js"></script>
 @endsection

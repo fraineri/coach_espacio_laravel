@@ -22,7 +22,7 @@
 @section('content')
 	<div class="container">
 		<div class="image-cont">
-			<img class="product-image" src="/images/products/{{$product->picture}}">
+			<img class="product-image" src="{{ asset('storage') }}/products/{{$product->picture}}">
 		</div>
 		<div class="product-info">
 			<div class="product-name">

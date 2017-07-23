@@ -11,24 +11,22 @@
 	<link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
 
-	<title>C.E. | Administrador</title>
+	<title>C.E. | Categorias</title>
 </head>
 <body>
-	<h1>Productos y Videos</h1>
+<h1>Categorías:</h1>
 	<div class="form-group">
-		<button type="button" class="btn btn-primary"><a href="/admin/products/create">Nuevo Producto</a></button>	
+		<button type="button" class="btn btn-primary"><a href="/admin/categories/create">Nueva Categoría</a></button>	
 	</div>
 	<div class="">
 	<ul>
-		@foreach($products as $prod)
+		@foreach($categories as $cat)
 		<li>
-		<a href="/admin/products/{{$prod->id}}/update">{{$prod->name}}</a>
+		<a href="/admin/categories/{{$cat->id}}/update">{{$cat->name}}</a>
 		</li>
 		@endforeach
 	</ul>
 	</div>
-	{{$products->links()}}
-
+	{{$categories->links()}}
 </body>
 </html>
-

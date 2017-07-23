@@ -47,12 +47,14 @@ Route::get('user-profile', function (){
 
 /*Admin products & categories*/
 Route::get ('/admin/products', 'Admin\ProductsController@index');
-Route::get('/admin/products/{id}', 'Admin\ProductsController@show');
+//Route::get('/admin/products/{id}', 'Admin\ProductsController@show');
 Route::get('/admin/products/create','Admin\ProductsController@create');
 Route::post('/admin/products/create','Admin\ProductsController@store');
 Route::get('/admin/products/{id}/update','Admin\ProductsController@edit');
 Route::post('/admin/products/{id}/update','Admin\ProductsController@update');
-Route::post('/admin/products/destroy', 'Admin\ProductsController@destroy');
+//Route::post('/admin/products/destroy', 'Admin\ProductsController@destroy');
+
+Route::get ('/admin/categories', 'Admin\CategoriesController@index');
 Route::get('/admin/categories/create','Admin\CategoriesController@create');
 Route::post('/admin/categories/create','Admin\CategoriesController@store');
 Route::get('/admin/categories/{id}/update','Admin\CategoriesController@edit');

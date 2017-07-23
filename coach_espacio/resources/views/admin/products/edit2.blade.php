@@ -11,7 +11,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
 
-	<title>Editar 2</title>
+	<title>C.E. | Editar</title>
 </head>
 <body>
 	<h1>Editar {{$prod->name}}</h1>
@@ -54,7 +54,7 @@
 				<br>
 				<br>
 				<!--true o false para purchable-->
-				<label>Producto listo para vender?</label>
+				<label>Producto listo para vender? <strong>{{$prod->purchable}}  </strong></label>
 				<select name="purchable">
 					<option value=1>Si, Vender</option>
 					<option value=0>NO vender</option>
@@ -70,11 +70,20 @@
 				</select>
 				<br>
 				<br>
+				<!--articulo o video curso?-->
+				<label>Tipo de producto:  <strong>{{$prod->type}}  </strong></label>
+				<select name="type">
+					<option value="products">Articulo</option>
+					<option value="course">Video Curso</option>
+				</select>
+				<br>
+				<br>
 				<!--imagen-->
 				<label class="admin-product-image">Foto de Producto</label>
-				<input name="picture" class="form-control" type="file" value="{{$prod->picture}}">
+				<input type="file" name="picture" class="form-control" value="{{$prod->picture}}">
 				<div class="image-cont">
 					<img class="product-image" src="/images/products/{{$prod->picture}}">
+					<!--revisar el path de la img-->
 				</div>
 				
 				<br>
@@ -93,3 +102,4 @@
 		</form>
 </body>
 </html>
+

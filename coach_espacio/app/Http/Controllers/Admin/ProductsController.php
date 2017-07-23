@@ -18,14 +18,15 @@ class ProductsController extends Controller
 
     public function create()
     {
-        return view('admin.products.create');
+        $categories= Category::all();
+        return view('admin.products.create', compact('categories'));
     }
 
     public function store(Request $request)
     {   //dd($request);
         //validate
         $this->validate($request,[
-            'name'=>'required|unique:products|max:30',
+            'name'=>'required|unique:products|max:100',
             'description'=>'required|max:500',
             'price'=>'required|numeric',
             'category_id'=>'required|integer',
@@ -68,7 +69,7 @@ class ProductsController extends Controller
     {  dd($request);
        //validate
       /*$this->validate($request,[
-            'name'=>'required|max:30',
+            'name'=>'required|max:100',
             //unique:products no me deja regrabar
             'description'=>'required|max:500',
             'price'=>'required|numeric',
@@ -89,6 +90,7 @@ class ProductsController extends Controller
         //guardar la imagen
         $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
         request()->picture->storeAs('/images/products/', $nombre);
+        //revisar el path de la img!!!!!
         //asociar la imagen con el prod
         $prod->picture = $nombre;         
         $prod->save();
@@ -109,3 +111,4 @@ class ProductsController extends Controller
         return redirect('/admin/products/');
     }
 }
+

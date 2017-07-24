@@ -39,7 +39,9 @@
 				<label class="admin-category-image">Foto de la Categoría</label>
 				<input type="file" name="picture" class="form-control">
 				<div class="image-cont">
-					<img class="category-image" src="{{asset('public/categories/$cat->picture')}}">
+				<!--puse una imagen estática y funcíona, pero con una de la carpeta storage, no logro mostrarla
+					<img class="category-image" src="{{asset('/images/others/home.jpg')}}" height="100px" width="100px">-->
+					<img class="category-image" src="{{asset('storage/app/public/categories/$cat->picture')}}">
 					<!--revisar el path de la img-->
 				</div>
 				

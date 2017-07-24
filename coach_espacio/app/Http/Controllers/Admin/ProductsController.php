@@ -37,7 +37,7 @@ class ProductsController extends Controller
         $prod=Product::create(request(['name','description','price', 'category_id','stock','purchable']));
         //guardar la imagen
         $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
-        request()->picture->storeAs('/public/images/products/', $nombre);
+        request()->picture->storeAs('/products/', $nombre);
         //asociar la imagen con el prod
         $prod->picture = $nombre;         
         $prod->save();
@@ -66,9 +66,9 @@ class ProductsController extends Controller
 
     /*Update the specified resource in storage.*/
     public function update(Request $request, $id)
-    {  dd($request);
+    {  //dd($request);
        //validate
-      /*$this->validate($request,[
+      $this->validate($request,[
             'name'=>'required|max:100',
             //unique:products no me deja regrabar
             'description'=>'required|max:500',
@@ -89,14 +89,14 @@ class ProductsController extends Controller
         
         //guardar la imagen
         $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
-        request()->picture->storeAs('/images/products/', $nombre);
+        request()->picture->storeAs('/products/', $nombre);
         //revisar el path de la img!!!!!
         //asociar la imagen con el prod
         $prod->picture = $nombre;         
         $prod->save();
 
         //redirect
-        return redirect('/admin/products/');*/
+        return redirect('/admin/products/');
     }
 
     /* Remove the specified resource from storage.*/

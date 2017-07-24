@@ -41,7 +41,7 @@ class CategoriesController extends Controller
         
         //guardar la imagen
         $nombre= str_slug($cat->name) . '.' .request()->file('picture')->extension();
-        $file->storeAs('/images/others/', $nombre);
+        $file->storeAs('/public/categories/', $nombre);
         //asociar la imagen con la categoria
         $cat->picture = $nombre;         
         $cat->save();
@@ -74,7 +74,7 @@ class CategoriesController extends Controller
         $cat->description = $request->description;
         //guardar la imagen
         $nombre= str_slug($cat->name) . '.' .request()->picture->extension();
-        request()->picture->storeAs('/images/others/', $nombre);
+        request()->picture->storeAs('/public/categories/', $nombre);
         //revisar el path de la img!!!!!
         //asociar la imagen con la categoria
         $cat->picture = $nombre;         

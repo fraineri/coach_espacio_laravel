@@ -54,7 +54,7 @@
 				<br>
 				<br>
 				<!--true o false para purchable-->
-				<label>Producto listo para vender? <strong>{{$prod->purchable}}  </strong></label>
+				<label>Producto listo para vender? </label>
 				<select name="purchable">
 					<option value=1>Si, Vender</option>
 					<option value=0>NO vender</option>
@@ -82,7 +82,7 @@
 				<label class="admin-product-image">Foto de Producto</label>
 				<input type="file" name="picture" class="form-control" value="{{$prod->picture}}">
 				<div class="image-cont">
-					<img class="product-image" src="/images/products/{{$prod->picture}}">
+					<img class="product-image" src="/storage/app/public/images/products/{{$prod->picture}}">
 					<!--revisar el path de la img-->
 				</div>
 				

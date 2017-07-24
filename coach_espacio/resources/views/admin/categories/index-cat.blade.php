@@ -15,9 +15,12 @@
 </head>
 <body>
 <h1>Categorías:</h1>
+	<br>
 	<div class="form-group">
 		<button type="button" class="btn btn-primary"><a href="/admin/categories/create">Nueva Categoría</a></button>	
 	</div>
+	<br>
+	<br>
 	<div class="">
 	<ul>
 		@foreach($categories as $cat)

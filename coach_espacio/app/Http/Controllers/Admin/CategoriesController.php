@@ -19,30 +19,36 @@ class CategoriesController extends Controller
     /*Show the form for creating a new resource.*/
     public function create()
     {
-         return view('admin.categories.create');
+         return view('admin.categories.create-cat');
     }
 
     /*Store a newly created resource in storage.*/
     public function store(Request $request)
-    {
+    {   $file=Request()->file('picture');
+        //dd($file);
+        //dd($request);
         //validate
+        
         $this->validate($request,[
             'name'=>'required|unique:products|max:100',
-            'description'=>'required|max:500',
-            'picture'=>'required|max:191',
+            'description'=>'required|max:500'
+            //'picture'=>'required|max:191'
         ]);
         //store
+        
+
         $cat=Category::create(request(['name','description','picture']));
-        //hay q hacer $cat->slug=str_slug($cat->name);????
+        
         //guardar la imagen
-        $nombre= str_slug($cat->name) . '.' .request()->picture->extension();
-        request()->picture->storeAs('/images/others/', $nombre);
+        $nombre= str_slug($cat->name) . '.' .request()->file('picture')->extension();
+        $file->storeAs('/images/others/', $nombre);
         //asociar la imagen con la categoria
         $cat->picture = $nombre;         
         $cat->save();
-
+        
         //redirect
-        return redirect('admin.categories.index-cat');   
+        return redirect('admin/categories/');   
+        
     }
 
     /*Show the form for editing the specified resource.*/
@@ -59,7 +65,7 @@ class CategoriesController extends Controller
         $this->validate($request,[
             'name'=>'required|unique:products|max:100',
             'description'=>'required|max:500',
-            'picture'=>'required|max:191'
+            //'picture'=>'required|max:191'
         ]);
         //recuperar la category de la DB
         $cat= Category::find($id);
@@ -75,7 +81,7 @@ class CategoriesController extends Controller
         $cat->save();
 
          //redirect
-        return redirect('admin.categories.index-cat');   
+        return redirect('admin/categories/');   
     }
 
     /*Remove the specified resource from storage.*/

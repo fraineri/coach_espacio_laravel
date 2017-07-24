@@ -39,7 +39,7 @@
 				<label class="admin-category-image">Foto de la Categoría</label>
 				<input type="file" name="picture" class="form-control" value="{{$cat->picture}}">
 				<div class="image-cont">
-					<img class="category-image" src="/images/others/{{$cat->picture}}">
+					<img class="category-image" src="\storage\app\images\others\{{$cat->picture}}">
 					<!--revisar el path de la img-->
 				</div>
 				

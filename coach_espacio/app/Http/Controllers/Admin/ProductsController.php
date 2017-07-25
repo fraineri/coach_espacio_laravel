@@ -23,7 +23,7 @@ class ProductsController extends Controller
     }
 
     public function store(Request $request)
-    {   //dd($request);
+    {
         //validate
         $this->validate($request,[
             'name'=>'required|unique:products|max:100',
@@ -31,15 +31,16 @@ class ProductsController extends Controller
             'price'=>'required|numeric',
             'category_id'=>'required|integer',
             'stock'=>'required|integer',
-            'purchable'=>'required|boolean'
+            'purchable'=>'required|boolean',
+            'picture'=>'required'
         ]);
         //store
-        $prod=Product::create(request(['name','description','price', 'category_id','stock','purchable']));
+        $prod=Product::create(request(['name','description','price', 'category_id','stock','purchable','type']));
         //guardar la imagen
-        $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
-        request()->picture->storeAs('/products/', $nombre);
-        //asociar la imagen con el prod
-        $prod->picture = $nombre;         
+            $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
+            request()->picture->storeAs('/public/products/', $nombre);
+            //asociar la imagen con el prod
+            $prod->picture = $nombre;           
         $prod->save();
 
         //redirect
@@ -66,7 +67,7 @@ class ProductsController extends Controller
 
     /*Update the specified resource in storage.*/
     public function update(Request $request, $id)
-    {  //dd($request);
+    {  $file=Request()->file('picture');
        //validate
       $this->validate($request,[
             'name'=>'required|max:100',
@@ -88,13 +89,13 @@ class ProductsController extends Controller
         $prod->purchable = $request->purchable;
         
         //guardar la imagen
-        $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
-        request()->picture->storeAs('/products/', $nombre);
-        //revisar el path de la img!!!!!
-        //asociar la imagen con el prod
-        $prod->picture = $nombre;         
+        if($request->hasFile('picture')){
+            $nombre= str_slug($prod->name) . '.' .request()->file('picture')->extension();
+            $file->storeAs('/public/products/', $nombre);
+            //asociar la imagen con el prod
+            $prod->picture = $nombre; 
+            }        
         $prod->save();
-
         //redirect
         return redirect('/admin/products/');
     }

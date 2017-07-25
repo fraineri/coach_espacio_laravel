@@ -82,7 +82,7 @@
 				<label class="admin-product-image">Foto de Producto</label>
 				<input type="file" name="picture" class="form-control" value="{{$prod->picture}}">
 				<div class="image-cont">
-					<img class="product-image" src="/storage/app/public/images/products/{{$prod->picture}}">
+					<img class="product-image" src="{{asset('/storage/products/'.$prod->picture)}}" width="100px" height="100px">
 					<!--revisar el path de la img-->
 				</div>
 				

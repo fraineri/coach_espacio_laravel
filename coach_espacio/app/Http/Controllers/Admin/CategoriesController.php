@@ -25,30 +25,22 @@ class CategoriesController extends Controller
     /*Store a newly created resource in storage.*/
     public function store(Request $request)
     {   $file=Request()->file('picture');
-        //dd($file);
-        //dd($request);
         //validate
-        
         $this->validate($request,[
             'name'=>'required|unique:products|max:100',
             'description'=>'required|max:500'
             //'picture'=>'required|max:191'
         ]);
         //store
-        
-
         $cat=Category::create(request(['name','description','picture']));
-        
         //guardar la imagen
         $nombre= str_slug($cat->name) . '.' .request()->file('picture')->extension();
         $file->storeAs('/public/categories/', $nombre);
         //asociar la imagen con la categoria
         $cat->picture = $nombre;         
         $cat->save();
-        
         //redirect
         return redirect('admin/categories/');   
-        
     }
 
     /*Show the form for editing the specified resource.*/
@@ -60,7 +52,8 @@ class CategoriesController extends Controller
 
     /* Update the specified resource in storage. */
     public function update(Request $request, $id)
-    {
+    {    $file=Request()->file('picture');
+       // dd($request,$file);
          //validate
         $this->validate($request,[
             'name'=>'required|unique:products|max:100',
@@ -73,15 +66,15 @@ class CategoriesController extends Controller
         $cat->name = $request->name;
         $cat->description = $request->description;
         //guardar la imagen
-        $nombre= str_slug($cat->name) . '.' .request()->picture->extension();
-        request()->picture->storeAs('/public/categories/', $nombre);
-        //revisar el path de la img!!!!!
-        //asociar la imagen con la categoria
-        $cat->picture = $nombre;         
+       if($request->hasFile('picture')){
+            $nombre= str_slug($cat->name) . '.' .request()->file('picture')->extension();
+            $file->storeAs('/public/categories/', $nombre);
+            //asociar la imagen con la categoria
+            $cat->picture = $nombre; 
+            }        
         $cat->save();
-
          //redirect
-        return redirect('admin/categories/');   
+        return redirect('admin/categories/');    
     }
 
     /*Remove the specified resource from storage.*/

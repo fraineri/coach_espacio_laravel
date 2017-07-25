@@ -38,6 +38,7 @@
 				<!--imagen-->
 				<label class="admin-category-image">Foto de la Categoría</label>
 				<input type="file" name="picture" class="form-control">
+				
 				<br>
 				<br>
 				<hr>

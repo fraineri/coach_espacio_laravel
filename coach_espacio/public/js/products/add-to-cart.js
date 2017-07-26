@@ -1,5 +1,4 @@
-document.forms[0].addEventListener("submit",function(e){
-	e.preventDefault();
+document.querySelector("[name=buttoncart]").addEventListener("click",function(){
 	document.querySelector(".success").style.display="none";
 	document.querySelector(".error").style.display="none";
 	var req = new XMLHttpRequest();
@@ -28,6 +27,10 @@ document.forms[0].addEventListener("submit",function(e){
     	}
     }
     req.open('POST', '/producto/{id}');
-    var data = new FormData(document.forms[0]);
+    var data = new FormData();
+    token = document.querySelector("[name = _token]").value;
+    data.append("qty",document.querySelector("[name=productqty]").value);
+    data.append("id",document.querySelector("[name=id]").value);
+    data.append("_token", token);
 	req.send(data);
 });

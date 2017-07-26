@@ -1,4 +1,4 @@
-<?php if (count($carrito->items) !=0): ?>
+<?php if (count($carrito) && count($carrito->items) !=0): ?>
 	<div class ="bill">
 		<img style="width: 100%" src="/images/products/shop.png">
 

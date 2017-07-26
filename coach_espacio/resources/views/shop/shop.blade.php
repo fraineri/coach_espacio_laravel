@@ -25,7 +25,7 @@
 
 	<div class="container">
 		<div class="shop-cart" id ="items-cont">
-			<?php if (count($carrito->items) == 0): ?>
+			<?php if (count($carrito) == 0 || count($carrito->items) == 0): ?>
 				<h1 class ="msg-error">Aún no tenes productos en el carrito de compras. <a href="/tienda">¡A comprar!</a></h1>
 			<?php else: ?>
 				<?php foreach ($carrito->items as $item): ?>

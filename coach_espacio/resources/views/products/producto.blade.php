@@ -45,6 +45,7 @@
 				{{csrf_field()}}
 				<!--<input type="hidden" name="_method" value="PUT">
     			<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
+    			<input type="hidden" name="_token" value="{{ csrf_token() }}" />
     			<input type="number" name="id" hidden value = "{{$product->id}}">
 				<div class = "product-select">
     				@if($product->type == "products")
@@ -64,7 +65,7 @@
 						<div class="button-cart stock">Sin stock</div>
 					@else
 				
-					<button type="submit" name="buttoncart" class="button-cart" ><i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> </i>  Agregar al carrito</button>
+					<button type="button" name="buttoncart" class="button-cart" ><i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> </i>  Agregar al carrito</button>
 					@endif
 				</div>
 			</form>
@@ -74,7 +75,8 @@
 			<h3 class="error">No se pudo agregar el producto. No tenemos la cantidad de stock ingresada.</h3>
 		</div>
 	</div>
-
-	<script src ="/js/products/qty-update.js"></script>
+	
 	<script src ="/js/products/add-to-cart.js"></script>
+	<script src ="/js/products/qty-update.js"></script>
+	
 @endsection

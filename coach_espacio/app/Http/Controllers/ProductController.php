@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
@@ -44,7 +45,7 @@ class ProductController extends Controller{
 
     public function shop(){
         $id = request()->id;
-        $qty = (int)request()->productqty;
+        $qty = request()->qty;
         $product = Product::find($id);
     
         $success = ["success"=>true];
@@ -64,10 +65,14 @@ class ProductController extends Controller{
     }
 
     private function addToCart($id, $qty){
-        #Auth
-        $cart_id = 1;
-        $carrito = Shopcart::find($cart_id);
-        
+        $carrito = Shopcart::where('user_id',Auth::User()->id)->first();
+        if (!count($carrito)) {
+            $carrito = new shopCart();
+            $carrito->user_id = Auth::User()->id;
+            $carrito->save();
+            $carrito = Shopcart::where('user_id',Auth::User()->id)->first();
+        }
+
         $found = false;
         foreach ($carrito->items as $curr) {
             if($curr->product_id == $id){
@@ -79,18 +84,18 @@ class ProductController extends Controller{
                 break;
             }
         }
+
         if (!$found) {
             $item = new Item();
             $item->product_id = $id;
             $item->qty = $qty;
-            $item->shopcart_id = $cart_id;
+            $item->shopcart_id = $carrito->id;
             $item->save();
         }
     }
 
     public function rows(){
-        $cart_id = 1;
-        return $carrito = Shopcart::find($cart_id)->items->count();
+        return $carrito = Shopcart::where('user_id',Auth::User()->id)->items->count();
     }
 
     private function sendIndex($value){

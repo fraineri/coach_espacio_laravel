@@ -10,7 +10,8 @@
 	<li class = "ham-desplegable">
 		<div class ="ham-desplegable-user" >
 			<div class ="ham-menu-log-user">
-				<img class = 'ham-menu-log-user-image' style="width: 50px; height: 50px;" src="{{ asset('storage') }}/avatars/{{ \Auth::user()->avatar }}">
+			
+				<img class = 'ham-menu-log-user-image' style="width: 50px; height: 50px;" src="{{asset('/storage/avatars/'.Auth::user()->avatar)}}"
 			</div>
 			<div class = 'ham-menu-log-name'>
 				<p>{{\Auth::user()->username}}</p>

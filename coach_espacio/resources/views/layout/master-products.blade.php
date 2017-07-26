@@ -40,7 +40,6 @@
 		@foreach($products as $product)
 			<a href="/producto/{{$product->id}}" class = "product-item" onmouseover="changeInfo(this)" onmouseout="overInfo(this)">
 				<div class ="product-image">
-
 					<img class="product-image-resize" src="{{asset('/storage/products/'.$product->picture)}}">
 				</div>
 				
@@ -52,8 +51,12 @@
 				@endif
 				</div>	
 			
-
-				<div class ="product-title"><p>{{$product->name}} | {{$product->category->name}}</p></div>
+				@if ($product->type == "course")
+					<div class ="product-title"><p>{{$product->name}}</p></div>
+				@else
+					<div class ="product-title"><p>{{$product->name}} | {{$product->category->name}}</p></div>
+				@endif
+				
 				<div class ="info-container" >
 					<div class ="product-price"><p>${{$product->price}}</p></div>
 					<div class ="product-option">+ VER MÁS</div>

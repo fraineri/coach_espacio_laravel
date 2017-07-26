@@ -9,7 +9,7 @@ use App\Shopcart;
 use App\Item;
 
 class ProductController extends Controller{
-    private $pagination = 12;
+    private $pagination = 8;
     public function index($find){
         #$prod = factory(\App\Product::class,15)->create();
         $products = Product::with('category')->where('type',$find)->where('purchable',1)->paginate($this->pagination);

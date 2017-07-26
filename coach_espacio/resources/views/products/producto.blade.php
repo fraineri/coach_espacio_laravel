@@ -27,7 +27,9 @@
 		<div class="product-info">
 			<div class="product-name">
 				<h2 class="product-title">{{$product->name}}</h2>
-				<p class ="category">{{$product->category->name}}</p>
+				@if ($product->type == "products")
+					<p class ="category">{{$product->category->name}}</p>
+				@endif
 				<div class="product-price">
 					<p >${{$product->price}}</p>
 				</div>
@@ -73,55 +75,6 @@
 		</div>
 	</div>
 
-	<script>
-		var cantP = document.querySelector("#cantidad");
-		var cant = cantP.value;
-
-		var	mas = document.querySelector("#mas");
-		mas.addEventListener('click',function(){
-			cantP.value = ++cant;
-		})
-
-		var	menos = document.querySelector("#menos");
-		menos.addEventListener('click',function(){
-			if (cant != 1) {
-				cantP.value = --cant;		
-			}
-		})
-
-		document.forms[0].addEventListener("submit",function(e){
-			e.preventDefault();
-			document.querySelector(".success").style.display="none";
-			document.querySelector(".error").style.display="none";
-			var req = new XMLHttpRequest();
-        	req.onreadystatechange = function () {
-        		if (this.readyState === 4) {
-            		if (this.status === 200) {
-            			success = JSON.parse(this.responseText);
-            			console.log(this.responseText);
-            			success= success['success'];
-            			if(success){
-            				document.querySelector(".success").style.display="block";
-            				document.querySelector(".success").style.opacity = "1"; 
-							setTimeout(function() { 
-							    document.querySelector(".success").style.opacity = "0"; 
-							}, 
-							2000);
-							
-            			}else{
-            				document.querySelector(".error").style.display="block";
-            				document.querySelector(".error").style.opacity = "1"; 
-            				setTimeout(function() { 
-							    document.querySelector(".error").style.opacity = "0"; 
-							}, 
-							2000);
-            			}
-            		}
-            	}
-            }
-            req.open('POST', '/producto/{id}');
-            var data = new FormData(document.forms[0]);
-        	req.send(data);
-		});
-	</script>
+	<script src ="/js/products/qty-update.js"></script>
+	<script src ="/js/products/add-to-cart.js"></script>
 @endsection

@@ -53,12 +53,15 @@
 }
 
 .item-title{
-	
 	font-size: 1.2em;
 }
 
 .item-value{
 	font-weight: bold;
+}
+
+.item-modify{
+	color: #5DC2E3;
 }
 
 .buton{

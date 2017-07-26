@@ -71,7 +71,8 @@ Route::post('producto/{id}', 'ProductController@shop');
 
 /*Shop cart*/
 Route::get('shop/', 'ShopController@index');
-Route::get('shop/delete/{id}', 'ShopController@deleteItem');
+//Route::get('shop/delete/{id}', 'ShopController@deleteItem');
+Route::post('shop/delete', 'ShopController@deleteItem');
 Route::get('shop/shipping','ShopController@shipping');
 
 Auth::routes();

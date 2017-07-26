@@ -126,12 +126,7 @@
 					<h2 class ="circle-four work-step-title title-step-four">Mantenimiento</h2>
 					<p class ="work-step-text">Podrás contactarnos para refrescar técnicas de guardado o estrategias si es que has vuelto a tus viejos hábitos</p>
 				</div>
-			</div>
-		</div>
-			<div class ="about-buttonCont">
-				<a class ="standard-button button-red" href="contact.php">Contacto</a>
-			</div>
-		</div>			
+			</div>		
 	</div>
 <script src="js/slide.js"></script>
 

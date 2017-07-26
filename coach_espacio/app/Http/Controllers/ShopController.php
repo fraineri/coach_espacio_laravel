@@ -14,8 +14,9 @@ class ShopController extends Controller{
 	    return view('shop.shop', ['carrito'=>$carrito]);
     }
 
-    public function deleteItem($id){
-    	$cart_id = 1;
+    public function deleteItem(){ 
+    	$id = request()->id;
+        $cart_id = 1;
     	$carrito = Shopcart::find($cart_id);
     	$item = Item::find($id);
     	$producto = Product::find($item->product_id);
@@ -23,7 +24,7 @@ class ShopController extends Controller{
     	$producto->save();
     	$producto = Product::find($item->product_id);
     	$item->delete();
-    	return $this->index();
+    	return "ok";
     }
 
     public function shipping(){

@@ -15,7 +15,7 @@
 		 <fieldset class="container">	
 		 	<legend style="padding: 2%; text-align: center; background-color: lightblue;">Agregar Nuevo Producto o Video</legend>
 				<div class="form-group row">
-  					<label for="name-text-input" class="col-2 col-form-label">Nombre</label>
+  					<label for="name-text-input" class="col-2 col-form-label">Nombre:</label>
   					<div class="col-10">
 						<input type="text" name="name" class="form-control" placeholder="Nombre del producto o video" id="name-text-input" required>
 						@if ($errors->has('name'))
@@ -27,7 +27,7 @@
   				</div>
 
 				<div class="form-group row">
-  					<label for="description-text-input" class="col-2 col-form-label">Descripción</label>
+  					<label for="description-text-input" class="col-2 col-form-label">Descripción:</label>
   					<div class="col-10">
 						<input type="text" name="description" class="form-control" placeholder="Descripción" id="description-text-input" required>
 						@if ($errors->has('description'))
@@ -39,7 +39,7 @@
   				</div>
 
 				<div class="form-group row">
-  					<label for="price-text-input" class="col-2 col-form-label">Precio</label>
+  					<label for="price-text-input" class="col-2 col-form-label">Precio:</label>
   					<div class="col-10">
 						<input type="text" name="price" class="form-control" placeholder="Precio del producto o video" id="price-text-input" required>
 						@if ($errors->has('price'))
@@ -51,7 +51,7 @@
   				</div>
 				
 				<div class="form-group row">
-  					<label for="stock-number-input" class="col-2 col-form-label">Stock</label>
+  					<label for="stock-number-input" class="col-2 col-form-label">Stock:</label>
   					<div class="col-10">
 						<input type="number" name="stock" class="form-control" placeholder="cantidad en stock" id="stock-number-input" required>
 						@if ($errors->has('stock'))

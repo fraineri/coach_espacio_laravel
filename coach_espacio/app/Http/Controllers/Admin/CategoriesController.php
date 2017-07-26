@@ -83,7 +83,7 @@ class CategoriesController extends Controller
         $cat = Category::find($id);
         $cat->delete();             
         //redirect
-        return redirect('admin.categories.index-cat');  
+        return redirect('admin/categories/');  
     }
 }
 

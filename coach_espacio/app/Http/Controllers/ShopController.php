@@ -32,4 +32,16 @@ class ShopController extends Controller{
         $carrito = Shopcart::find($cart_id);
         return view ('shop.shipping', compact("carrito"));
     }
+
+    public function payment(){
+        $cart_id = 1;
+        $carrito = Shopcart::find($cart_id);
+        return view ('shop.payment', compact("carrito"));
+    }
+
+     public function buy(){
+        $cart_id = 1;
+        $carrito = Shopcart::find($cart_id);
+        return view ('shop.buy', compact("carrito"));
+    }
 }

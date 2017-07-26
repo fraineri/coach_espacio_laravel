@@ -62,19 +62,19 @@ Route::post('/admin/categories/{id}/update','Admin\CategoriesController@update')
 Route::post('/admin/categories/destroy', 'Admin\CategoriesController@destroy');
 
 /*Productos*/
-Route::get('productos/', 'ProductController@products');
-Route::get('cursos/', 'ProductController@courses');
+Route::get('productos/', 'ProductController@products')->middleware('auth');
+Route::get('cursos/', 'ProductController@courses')->middleware('auth');
 
-Route::get('categoria/{cat}', 'ProductController@category');
-Route::get('producto/{id}', 'ProductController@show');
+Route::get('categoria/{cat}', 'ProductController@category')->middleware('auth');
+Route::get('producto/{id}', 'ProductController@show')->middleware('auth');
 Route::post('producto/{id}', 'ProductController@shop');
 
 /*Shop cart*/
-Route::get('shop/', 'ShopController@index');
-Route::post('shop/delete', 'ShopController@deleteItem');
-Route::get('shop/shipping','ShopController@shipping');
-Route::get('shop/payment','ShopController@payment');
-Route::get('shop/buy','ShopController@buy');
+Route::get('shop/', 'ShopController@index')->middleware('auth');
+Route::post('shop/delete', 'ShopController@deleteItem')->middleware('auth');
+Route::get('shop/shipping','ShopController@shipping')->middleware('auth');
+Route::get('shop/payment','ShopController@payment')->middleware('auth');
+Route::get('shop/buy','ShopController@buy')->middleware('auth');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

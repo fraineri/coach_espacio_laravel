@@ -72,7 +72,9 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
-        app('App\Http\Controllers\UserController')->create_avatar($user,$data['avatar']);
+        if(isset($data['avatar']))
+            app('App\Http\Controllers\UserController')->create_avatar($user,$data['avatar']);
+        
         return $user;
     }
 }

@@ -30,7 +30,7 @@
 				<?php foreach ($carrito->items as $item): ?>
 					<div class="item-summary">
 						<div >
-							<img class="item-picture" src="/images/products/{{$item->product->picture}}">
+							<img class="item-picture" src="{{asset('/storage/products/'.$item->product->picture)}}">
 						</div>
 						<div class="item-info">
 							<p class="item-name">{{$item->product->name}}</p>

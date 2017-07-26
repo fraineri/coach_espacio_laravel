@@ -21,11 +21,17 @@
 @section('content')
 	
 	<div>
-		<div class = "banner">
-		</div>
+		@if (!$currCat OR !$currCat->picture)
+			<div class = "banner" style="background-image: url('/images/products/shopping.jpg');">
+			</div>
+		@else
+			<div class = "banner" style="background-image: url('{{asset('/storage/categories/'.$currCat->picture)}}');">
+			</div>
+		@endif
 	</div>
 	
 	<div class ="products-container">
+	
 	@if (!count($products))
 		<div>
 			<h2>Actualmente no contamos con productos de esta categoría :(</h2>
@@ -34,7 +40,8 @@
 		@foreach($products as $product)
 			<a href="/producto/{{$product->id}}" class = "product-item" onmouseover="changeInfo(this)" onmouseout="overInfo(this)">
 				<div class ="product-image">
-					<img class="product-image-resize" src="/images/products/{{$product->picture}}">
+
+					<img class="product-image-resize" src="{{asset('/storage/products/'.$product->picture)}}">
 				</div>
 				
 

@@ -9,11 +9,12 @@ use App\Shopcart;
 use App\Item;
 
 class ProductController extends Controller{
+    private $pagination = 12;
     public function index($find){
         #$prod = factory(\App\Product::class,15)->create();
-        $products = Product::with('category')->where('type',$find)->where('purchable',1)->paginate(5);
+        $products = Product::with('category')->where('type',$find)->where('purchable',1)->paginate($this->pagination);
         $cat = Category::all();
-        return view ('products.productos', ['products'=>$products, 'categories'=>$cat, 'id'=> false]);
+        return view ('products.productos', ['products'=>$products, 'categories'=>$cat, 'currCat'=> false]);
     }
 
     public function products(){
@@ -24,14 +25,16 @@ class ProductController extends Controller{
     }
 
     public function category($id){
-    	if ($id == 1) {
-        	$products = Product::all();
-        } else{ 
-			$products = Category::find($id)->products;
+        $currCat = Category::find($id);
+
+    	if ($currCat->name == "Todos") {
+        	$products = Product::paginate($this->pagination);
+        } else{
+			$products = Product::where('category_id',$id)->paginate($this->pagination);
         }
 
     	$cat = Category::all();
-    	return view ('products.productos-category', ['products'=>$products, 'categories'=>$cat,'id'=>$id]);
+    	return view ('products.productos-category', ['products'=>$products, 'categories'=>$cat,'currCat'=>$currCat]);
     }
 
     public function show($id){

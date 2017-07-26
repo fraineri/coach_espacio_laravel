@@ -16,7 +16,7 @@
 
 @section('content')
 	<div class ="container">
-		<h1>Bienvenido a la tienda!</h1>
+		<h1 class="page-title">Bienvenido a la tienda!</h1>
 		<div class ="items-container">
 			<div class ="item">
 				<a href="productos">

@@ -36,7 +36,7 @@
 	
 			<div class="product-description">
 				<p style="font-weight: bolder;">Descripción</p>
-				<p >{{$product->description}}</p>
+				<p>{{$product->description}}</p>
 			</div>
 			
 			<form method="post" style="text-align: center;">

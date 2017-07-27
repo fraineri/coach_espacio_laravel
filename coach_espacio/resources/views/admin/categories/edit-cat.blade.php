@@ -53,7 +53,7 @@
 				<!--boton para grabar cambios-->
 					<button type="submit" class="btn btn-success">Grabar cambios</button>	
 				<!--boton para eliminar la categoria-->
-					<button type="submit" class="btn btn-danger"><a href="/admin/categories/destroy">ELIMINAR CATEGORIA</a></button>
+					<a class="btn btn-danger" href="/admin/categories/{{$cat->id}}/destroy" role="button">ELIMINAR CATEGORIA</a>
 				</div>
 		
 				<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

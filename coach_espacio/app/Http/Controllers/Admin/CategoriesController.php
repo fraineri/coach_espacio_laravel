@@ -77,9 +77,13 @@ class CategoriesController extends Controller
         return redirect('admin/categories/');    
     }
 
+    public function show($id){
+        $cat=Category::find($id);
+        return view('admin/categories/destroy-cat', compact('cat'));
+    }
     /*Remove the specified resource from storage.*/
-    public function destroy($id)
-    {
+    public function destroy(Request $request, $id)
+    {   //dd($id);
         $cat = Category::find($id);
         $cat->delete();             
         //redirect

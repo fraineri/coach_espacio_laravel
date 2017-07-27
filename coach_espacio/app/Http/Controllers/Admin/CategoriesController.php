@@ -12,7 +12,7 @@ class CategoriesController extends Controller
     /*Display a listing of the resource.*/
     public function index()
     {
-        $categories = Category::paginate(5);
+        $categories = Category::where('active', true)->orderBy('name', 'asc')->paginate(5);
         return view('admin/categories/index-cat', compact('categories'));
     }
 
@@ -32,7 +32,7 @@ class CategoriesController extends Controller
             //'picture'=>'required|max:191'
         ]);
         //store
-        $cat=Category::create(request(['name','description','picture']));
+        $cat=Category::create(request(['name','description', 'active','picture']));
         //guardar la imagen
         $nombre= str_slug($cat->name) . '.' .request()->file('picture')->extension();
         $file->storeAs('/public/categories/', $nombre);
@@ -65,6 +65,7 @@ class CategoriesController extends Controller
         //save
         $cat->name = $request->name;
         $cat->description = $request->description;
+        $cat->active = $request->active;
         //guardar la imagen
        if($request->hasFile('picture')){
             $nombre= str_slug($cat->name) . '.' .request()->file('picture')->extension();
@@ -77,17 +78,17 @@ class CategoriesController extends Controller
         return redirect('admin/categories/');    
     }
 
-    public function show($id){
+    /*public function show($id){
         $cat=Category::find($id);
         return view('admin/categories/destroy-cat', compact('cat'));
-    }
+    }/*
     /*Remove the specified resource from storage.*/
-    public function destroy(Request $request, $id)
+    /*public function destroy(Request $request, $id)
     {   //dd($id);
         $cat = Category::find($id);
         $cat->delete();             
         //redirect
         return redirect('admin/categories/');  
-    }
+    }*/
 }
 

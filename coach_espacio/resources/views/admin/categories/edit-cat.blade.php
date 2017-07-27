@@ -40,6 +40,15 @@
 						<br>
 					</div>
   				</div>
+  				<!--true o false para purchable-->
+				<label>Categoría activa?  </label>
+				<select class="custom-select" name="active" required>
+					<option selected>Seleccionar</option>
+					<option value=1>Activa</option>
+					<option value=0>Desactivada</option>
+				</select>
+				<br>
+				<br>
 				<!--imagen-->
 				<label class="admin-category-image">Foto de la Categoría</label>
 				<input type="file" name="picture" class="form-control"  value="{{$cat->picture}}">
@@ -52,8 +61,6 @@
 					<a class="btn btn-primary" href="/admin/categories/" role="button">Volver a Categorías</a>	
 				<!--boton para grabar cambios-->
 					<button type="submit" class="btn btn-success">Grabar cambios</button>	
-				<!--boton para eliminar la categoria-->
-					<a class="btn btn-danger" href="/admin/categories/{{$cat->id}}/destroy" role="button">ELIMINAR CATEGORIA</a>
 				</div>
 		
 				<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

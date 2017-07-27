@@ -46,6 +46,11 @@
 								@endif
 							@endforeach
 						@endif
+						<div>
+							<form>
+								<input id="txtSearch" type="text" onkeyup="search()" name="" placeholder="Search">
+							</form>
+						</div>
 					</ul>
 				</div>
 				<div>	
@@ -58,11 +63,12 @@
 							<li><a class="product-category" href="/productos">Ir a ver nuestros Productos</a></li>	
 						</ul>
 					@endif
-				</div>	
+				</div>
 			</div>
 		<?php endif ?>
 	</nav>
 	
 	<script src="/js/cambiar_tema.js"></script>
 	<script src="/js/menu-responsive.js"></script>
+	<script src="/js/products/search-product.js"></script>
 </header>

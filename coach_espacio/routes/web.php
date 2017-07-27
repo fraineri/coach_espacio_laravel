@@ -46,6 +46,10 @@ Route::get('user-profile', function (){
 //Route::post('/user-profile','UserController@update');
 
 /*Admin products & categories*/
+Route::get('/camisetaverde', function(){
+	return view('/admin/categories/admin');
+});
+Route::post('/admin/login', 'Admin\AdminController@login');
 Route::get ('/admin/products', 'Admin\ProductsController@index');
 Route::get('/admin/products/create','Admin\ProductsController@create');
 Route::post('/admin/products/create','Admin\ProductsController@store');

@@ -14,8 +14,9 @@
 	<div class="container" style="background-color: white; padding: 2%; ">
 
   		<nav class="navbar navbar-light navbar-toggleable-sm" style="background-color: #e3f2fd;">
-    		<a class="navbar-brand" href="/admin/products/">Productos</a>
+  			<a class="navbar-brand" href="/admin/products/">Productos</a>
     		<a class="navbar-brand" href="/admin/categories/">Categorias</a>
+  			<a class="navbar-brand" href="/">Salir</a>
   		</nav>
 	</div>
 	<br>

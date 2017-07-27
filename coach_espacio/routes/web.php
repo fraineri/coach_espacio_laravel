@@ -57,8 +57,7 @@ Route::get('/admin/categories/create','Admin\CategoriesController@create');
 Route::post('/admin/categories/create','Admin\CategoriesController@store');
 Route::get('/admin/categories/{id}/update','Admin\CategoriesController@edit');
 Route::post('/admin/categories/{id}/update','Admin\CategoriesController@update');
-Route::get('/admin/categories/{id}/destroy', 'Admin\CategoriesController@show');
-Route::post('/admin/categories/{id}/destroy', 'Admin\CategoriesController@destroy');
+
 
 /*Productos*/
 Route::get('productos/', 'ProductController@products')->middleware('auth');

@@ -48,7 +48,8 @@ Route::get('user-profile', function (){
 */
 //Route::post('/user-profile','UserController@update');
 
-Route::get('/user/profile', 'UserController@edit');
+Route::get('/user/edit', 'UserController@edit');
+Route::post('/user/update', 'UserController@update');
 
 
 /*Admin products & categories*/

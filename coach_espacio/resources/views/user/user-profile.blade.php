@@ -21,8 +21,8 @@
 		<h2 class ="page-title">Información de perfil</h2>
 
 		<div class = "form-profile-container">
-			<h1 class="form-profile-title"> {{ Auth::user()->name }} </h1>
-			<form class="form-profile-inputs" method="POST" action="{{ redirect('user.update') }}" enctype="multipart/form-data">
+			<h1 class="form-profile-title"> {{ Auth::user()->username }} </h1>
+			<form class="form-profile-inputs" method="POST" action="/user/update" enctype="multipart/form-data">
 				{{csrf_field()}}
 				
 				<div class="input-cont">
@@ -42,8 +42,8 @@
 
 				<div class="input-cont">
 					<label class="form-profile-label" for ="nombre">Nombre</label>
-					<input class="form-profile-txtNombre" type="text" name="nombre" value =" {{ucfirst(Auth::user()->name)}} ">
-					@if ($errors->has('username'))
+					<input class="form-profile-txtNombre" type="text" name="name" value ="{{ucfirst(Auth::user()->name)}}">
+					@if ($errors->has('name'))
 						<span class="lbl-error">
 							<strong> {{ $errors->first('name') }} </strong>
 						</span>
@@ -52,7 +52,7 @@
 
 				<div class="input-cont">
 					<label class="form-profile-label" for ="apellido">Apellido</label>
-					<input class="form-profile-txtApellido" type="text" name="apellido" value=" {{ucfirst(Auth::user()->surname)}} ">		
+					<input class="form-profile-txtApellido" type="text" name="surname" value="{{ucfirst(Auth::user()->surname)}}">		
 					@if ($errors->has('surname'))
 						<span class="lbl-error">
 							<strong> {{ $errors->first('surname') }} </strong>
@@ -72,17 +72,17 @@
 
 				<div class ="div-change-psw">
 					<label for ="actPsw">Ingrese su contraseña actual</label>
-					<input class="form-profile-txtPass" type="password" name="actPsw">
+					<input class="form-profile-txtPass" type="password" name="password">
 					@if ($errors->has('actPsw'))
                         <span class="lbl-error">
                             <strong>{{ $errors->first('actPsw') }}</strong>
                         </span>
                     @endif
 					<label for ="actPsw">Ingrese su nueva contraseña</label>
-					<input class="form-profile-txtPass" type="password" name="newPsw">
+					<input class="form-profile-txtPass" type="password" name="new-password">
 
 					<label for ="actPsw">Reingrese la contraseña nueva</label>
-					<input class="form-profile-txtPass" type="password" name="reNewPsw">
+					<input class="form-profile-txtPass" type="password" name="new-password-confirm">
 					
 				</div>
 
@@ -91,6 +91,6 @@
 			</form>
 		</div>
 
-		<script src="js/profile-changepsw.js"></script>
+		<script src="/js/profile-changepsw.js"></script>
 @section('content')
 	

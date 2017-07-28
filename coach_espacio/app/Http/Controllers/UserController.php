@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -29,14 +30,19 @@ class UserController extends Controller
     }
 
     public function update(Request $request) {
+        $this->validate($request,[
+            'name' => 'required|string|alpha|max:255',
+            'surname' => 'required|string|alpha|max:255',
+            'email' => 'required|string|email|max:255',
+        ]);
         $user = \Auth::user();
-
         $user->name = $request->name;
         $user->surname = $request->surname;
         $user->email = $request->email;
-        $user->username = $request->username;
         if ($request->has('password')) $user->password = bcrypt($request->password);
         
         $user->save();
+
+        return redirect('/user/edit');
     }
 }

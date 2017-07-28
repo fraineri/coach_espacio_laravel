@@ -12,7 +12,7 @@ class ProductsController extends Controller
     public function index()
     {
         //devolver solo los que sean purchable
-        $products=Product::where('purchable', true)->orderBy('name', 'asc')->paginate(10);
+        $products=Product::where('purchable', true)->orderBy('name', 'asc')->paginate(2);
         return view('admin.products.index', compact('products'));
     }
 
@@ -39,7 +39,7 @@ class ProductsController extends Controller
         //guardar la imagen
             $nombre= str_slug($prod->name) . '.' .request()->picture->extension();
             request()->picture->storeAs('/public/products/', $nombre);
-            //asociar la imagen con el prod
+        //asociar la imagen con el prod
             $prod->picture = $nombre;           
         $prod->save();
 
@@ -79,7 +79,7 @@ class ProductsController extends Controller
             'purchable'=>'required|boolean'
         ]);
         //recuperar el producto de la DB
-        $prod= Product::find($id);
+        $prod= Product::find($id); 
         //save
         $prod->name = $request->name;
         $prod->description = $request->description;
@@ -87,7 +87,6 @@ class ProductsController extends Controller
         $prod->category_id = $request->category_id;
         $prod->stock = $request->stock;
         $prod->purchable = $request->purchable;
-        
         //guardar la imagen
         if($request->hasFile('picture')){
             $nombre= str_slug($prod->name) . '.' .request()->file('picture')->extension();
@@ -110,6 +109,14 @@ class ProductsController extends Controller
         $prod->save();
         //redirect
         return redirect('/admin/products/');
+    }
+
+    /*Return deleted items*/
+    public function zombies()
+    {
+        //devolver solo los que hayan sido borrados
+        $products=Product::where('purchable', false)->orderBy('name', 'asc')->paginate(10);
+        return view('admin.products.zombie-prod', compact('products'));
     }
 }
 

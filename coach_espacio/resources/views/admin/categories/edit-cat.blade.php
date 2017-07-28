@@ -43,7 +43,6 @@
   				<!--true o false para purchable-->
 				<label>Categoría activa?  </label>
 				<select class="custom-select" name="active" required>
-					<option selected>Seleccionar</option>
 					<option value=1>Activa</option>
 					<option value=0>Desactivada</option>
 				</select>

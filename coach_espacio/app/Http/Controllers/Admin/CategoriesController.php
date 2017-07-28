@@ -78,6 +78,12 @@ class CategoriesController extends Controller
         return redirect('admin/categories/');    
     }
 
+    /*Return deleted items*/
+    public function zombies()
+    {
+        $categories = Category::where('active', false)->orderBy('name', 'asc')->paginate(5);
+        return view('admin/categories/zombie-cat', compact('categories'));
+    }
 
 }
 

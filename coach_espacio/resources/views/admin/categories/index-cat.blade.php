@@ -29,8 +29,9 @@
 				</ul>
 			</div>
 			<br>
-		<div class="form-group">
-			<a class="btn btn-primary" href="/admin/categories/create">Nueva categoría</a>		
+		<div class="form-inline">
+			<a class="btn btn-primary" href="/admin/categories/create">Nueva categoría</a>
+			<a class="btn btn-secondary" href="/admin/categories/zombies">Recuperar Borrados</a>		
 		</div>
 
 		{{$categories->links()}}

@@ -10,7 +10,7 @@
 </head>
 <body style="background-image: url(/images/backgrounds/contact-banner-4.jpg);">
 	<div class="container" style="background-color: white; padding: 2%; ">
-	<form class="form-horizontal" method="POST" action="/admin/products/create" enctype="multipart/form-data">
+	<form class="form-horizontal" method="POST" action="/admin/products/{{$prod->id}}/update" enctype="multipart/form-data">
 				{{csrf_field()}}
 		 <fieldset class="container">	
 		 	<legend style="padding: 2%; text-align: center; background-color: lightblue;">Editar {{$prod->name}}</legend>
@@ -64,8 +64,7 @@
 	
 				<!--true o false para purchable-->
 				<label>Producto listo para vender?  </label>
-				<select class="custom-select" name="purchable" required>
-					<option selected>Seleccionar</option>
+				<select class="custom-select" name="purchable" >
 					<option value=1>Si, Vender</option>
 					<option value=0>NO vender</option>
 				</select>
@@ -73,17 +72,16 @@
 				<br>
 				<!--categorias de la tabla categories-->
 				<label>Categoria del producto: </label>
-				<select class="custom-select" name="category_id" required>
-					<option selected>Seleccionar</option>
+				<select class="custom-select" name="category_id" >
 					@foreach($categories as $cat)
 						<option value="{{$cat->id}}">{{$cat->name}}</option>
 					@endforeach
 				</select>
 				<br>
 				<br>
+				<!--tipo de producto: articulo o curso-->
 				<label>Tipo de producto:  </label>
-				<select class="custom-select" name="type" required>
-					<option selected>Seleccionar</option>
+				<select class="custom-select" name="type">
 					<option value="products">Articulo</option>
 					<option value="course">Video Curso</option>
 				</select>

@@ -11,7 +11,7 @@ use App\Item;
 
 class ShopController extends Controller{
     public function index(){
-        DB::select('CALL clearShopcart');
+        //DB::select('CALL clearShopcart');
     	$carrito = Shopcart::where('user_id',Auth::User()->id)->first();
 	    return view('shop.shop', ['carrito'=>$carrito]);
     }

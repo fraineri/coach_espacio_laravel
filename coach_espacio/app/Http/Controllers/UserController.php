@@ -40,8 +40,14 @@ class UserController extends Controller
         $user->surname = $request->surname;
         $user->email = $request->email;
         if ($request->has('password')) $user->password = bcrypt($request->password);
-        
+         
         $user->save();
+
+        if(isset($request->avatar)){
+            $this->create_avatar($user,$request->avatar);
+        }
+
+
 
         return redirect('/user/edit');
     }

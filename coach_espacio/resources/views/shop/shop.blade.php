@@ -24,10 +24,19 @@
 	@include('/layout/partials/shop/steps')
 
 	<div class="container">
-		<div class="shop-cart" id ="items-cont">
+		
+		<div class="shop-cart" >
 			<?php if (count($carrito) == 0 || count($carrito->items) == 0): ?>
 				<h1 class ="msg-error">Aún no tenes productos en el carrito de compras. <a href="/tienda">¡A comprar!</a></h1>
 			<?php else: ?>
+				<?php 
+					$total = 7200 - (time() - $carrito->updated_at->timestamp);
+					$hours = floor($total / 3600);
+					$minutes = (($total / 60) % 60);
+				?>
+				
+				<p style="display: inline" class="shop-title">Tiempo restante de reserva: <i class="fa fa-clock-o fa-lg shop-title" aria-hidden="true"></i> <?= $hours.":".$minutes ?></p>
+				<div id ="items-cont">
 				<?php foreach ($carrito->items as $item): ?>
 					<form method="post" class="item-summary">
 						{{csrf_field()}}
@@ -58,6 +67,7 @@
 						</div>
 					</form>
 				<?php endforeach ?>
+				</div>
 			<?php endif ?>
 		</div>
 

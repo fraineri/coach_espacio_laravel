@@ -174,12 +174,13 @@ button{
 	align-items: center;
 }
 
-.desplegable{
+.ham-desplegable{
 	position: relative;
 }
 
-.menu-log-user{
-	display: inline-block;
+.ham-menu-log-user{
+	display: flex;
+	align-items: center;
 }
 
 .menu-log-user-image{
@@ -197,19 +198,21 @@ button{
 	text-transform: uppercase;
 }
 
-.desplegable-user{
+.ham-desplegable-user{
 	padding: 0;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 }
 
-.options{
+.ham-options{
 	position: absolute;
     visibility: hidden;
+    top:50px;
+    z-index: 500;
 }
 
-.options li{
+.ham-options li{
 	display:block;
 	margin-left:0;
 	width: 180px;
@@ -217,7 +220,7 @@ button{
 	background-color: white;
 }
 
-.desplegable:hover .options{
+.ham-desplegable:hover .ham-options{
 	transition:.5s;
 	visibility: visible;
 }
@@ -649,7 +652,6 @@ button{
 
 	.ham-options li{
 		background-color: transparent;
-		display: none;
 	}
 
 	.ham-horizontal-menu-log{
@@ -659,6 +661,10 @@ button{
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.ham-menu-log-user{
+		display: flex;
 	}
 
 	.ham-desplegable-user.ham-desplegable-user{

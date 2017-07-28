@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Item;
 
 class Shopcart extends Model{
-    protected $fillable = ['user_id'];
+    protected $fillable = ['user_id', 'updated_at'];
 	
 	protected $hidden = [
         'created_at', 'updated_at',

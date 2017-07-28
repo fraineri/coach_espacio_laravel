@@ -108,6 +108,7 @@ button{
 }
 
 .horizontal-menu a{
+	height: 100%;
 	text-decoration: none;
 	display: block;
 	padding: 15px 25px;
@@ -165,6 +166,7 @@ button{
 }
 
 .horizontal-menu li{
+	height: 100%;
 	display: inline-block;
 }
 

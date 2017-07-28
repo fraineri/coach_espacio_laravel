@@ -29,7 +29,14 @@ document.querySelector("[name=buttoncart]").addEventListener("click",function(){
     req.open('POST', '/producto/{id}');
     var data = new FormData();
     token = document.querySelector("[name = _token]").value;
-    data.append("qty",document.querySelector("[name=productqty]").value);
+    qty = document.querySelector("[name=productqty]");
+    if(!qty){
+        qty = 1;
+    }else{
+        qty = qty.value;
+    }
+    console.log(qty);
+    data.append("qty",qty);
     data.append("id",document.querySelector("[name=id]").value);
     data.append("_token", token);
 	req.send(data);

@@ -31,8 +31,15 @@
 								</li>
 							@endforeach
 						</ul>
-						{{$products->links()}}
 					</div>
+					<nav >
+						<!--<ul class="pagination">
+						@foreach(($products->links()) as $page)
+							<li class="page-item"><a class="page-link" href="{{$page}}"></a>	</li>
+						@endforeach
+						</ul>-->
+						{{$products->links()}}
+					</nav>
 					<br>
 			<div class="form-inline">
 				<a class="btn btn-primary" href="/admin/products/create">Nuevo Producto</a>	

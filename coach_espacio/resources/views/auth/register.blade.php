@@ -1,4 +1,7 @@
 @extends('/layout/master')
+<?php
+	$activePage = 'register'; 
+?>
 @section('head')
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/register.css">

@@ -1,4 +1,7 @@
 @extends('/layout/master')
+<?php
+	$activePage = 'login'; 
+?>
 @section('head')
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/sign-in-up.css">

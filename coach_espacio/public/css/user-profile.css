@@ -19,6 +19,16 @@
 	margin-top: 30px;
 }
 
+.input-cont{
+	width: 60%;
+	margin-bottom: 50px;
+}
+
+.form-profile-label{
+	display: block;
+	padding-bottom: -10px;
+}
+
 .form-profile-txtNombre,
 .form-profile-txtApellido,
 .form-profile-txtEmail,
@@ -29,11 +39,12 @@
 	color: #333;
 	border: none;
 	border-bottom: 1px solid #888;
-	width: 60%;
+	width: 100%;
 	font-size: 1.2em;
 	font-weight: normal;
 	padding: 5px;
 }
+
 
 .form-profile-txtUsuario{
 	margin-bottom: 50px;

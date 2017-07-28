@@ -39,11 +39,17 @@ Route::get('/recuperar', function(){
 	return view('/password/user');
 });
 
+
+/*
 Route::get('user-profile', function (){
 	$activePage = 'user-profile';
 	return view('auth/user-profile', compact('activePage'));
 })->middleware('auth');
+*/
 //Route::post('/user-profile','UserController@update');
+
+Route::get('/user/profile', 'UserController@edit');
+
 
 /*Admin products & categories*/
 Route::get('/camisetaverde', function(){

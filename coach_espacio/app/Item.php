@@ -10,6 +10,6 @@ class Item extends Model{
 	public $timestamps = false;
 
 	public function product(){
-		return $this->belongsTo('App\product');
+		return $this->belongsTo('App\Product');
 	}
 }

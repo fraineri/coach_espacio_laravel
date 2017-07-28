@@ -30,7 +30,7 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
 	    'price' => $faker->randomFloat($nbMaxDecimals=2, $min=0, $max = 1000),
 	    'category_id' => $faker->numberBetween(1,9),
 	    'stock' => $faker->numberBetween(1,250),
-        'picture' => $faker->text(),
+        'picture' => $faker->word(),
         'purchable' => 1,
         'type' => 'products',
 	];

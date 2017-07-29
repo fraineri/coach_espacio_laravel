@@ -20,33 +20,40 @@
 	
 	<?php $currStep = "pago"?>
 	@include('/layout/partials/shop/steps')
-
-	<div class="container">
+	<?php 
+		$total = 7200 - (time() - $carrito->updated_at->timestamp);
+		$hours = floor($total / 3600);
+		$minutes = (($total / 60) % 60);
+	?>
+	<?php if ($hours > 0): ?>
+		<p style="display: inline" class="shop-title">Tiempo restante de reserva: <i class="fa fa-clock-o fa-lg shop-title" aria-hidden="true"></i> <?= $hours.":".$minutes ?></p>
+	<?php endif ?>
+	<form  method="post" class="container">
+	{{csrf_field()}}
 		<div class="shipping">
-			<form class ="form-input" method="post">
-				{{csrf_field()}}
+			<div class ="form-input">
 				<p class="form-title">TARJETA DE CREDITO</p>
 				<div class="info-container">
 					<div class="input-box">
 						<label class="label" for>Titular de la tarjeta</label>
-						<input class ="input" type="text" name="creditName">
+						<input required class ="input" type="text" name="card_name">
 					</div>
 					<div class="input-box">
 						<label class="label" for>Numero de tarjeta (solo números)</label>
-						<input class ="input" type="text" name="creditNumber" maxlength="16">
+						<input required class ="input" type="text" name="card_number" maxlength="16">
 					</div>
 					<div class="input-box">
 						<label class="label" for>Código de seguridad</label>
-						<input class ="input" type="text" name="creditCode" maxlength="4">
+						<input required class ="input" type="text" name="card_code" maxlength="4">
 					</div>
 					<div class="input-box">
 						<label class="label" for>Fecha de vencimiento</label>
-						<select class ="input" name ="month">
+						<select class ="input" name ="card_month">
 							<?php for ($i=1; $i <=12 ; $i++) { 
 								echo "<option value = '$i'>$i</option>";
 							} ?>
 						</select>
-						<select class ="input" name="year">
+						<select class ="input" name="card_year">
 							<?php for ($i=2017; $i <= 2050 ; $i++) { 
 								echo "<option value = '$i'>$i</option>";
 							}?>
@@ -54,11 +61,11 @@
 					</div>
 					
 				</div>
-			</form>
+			</div>
 		</div>
 
 		<?php $tagText = "FINALIZAR COMPRA";
 			  $href = "/shop/buy";?>
 		@include('layout/partials/shop/bill')
-	</div>
+	</form>
 @endsection

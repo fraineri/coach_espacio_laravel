@@ -23,8 +23,7 @@
 	<?php $currStep = "shop" ?>
 	@include('/layout/partials/shop/steps')
 
-	<div class="container">
-		
+	<form class="container" method ="post">
 		<div class="shop-cart" >
 			<?php if (count($carrito) == 0 || count($carrito->items) == 0): ?>
 				<h1 class ="msg-error">Aún no tenes productos en el carrito de compras. <a href="/tienda">¡A comprar!</a></h1>
@@ -34,11 +33,13 @@
 					$hours = floor($total / 3600);
 					$minutes = (($total / 60) % 60);
 				?>
-				
-				<p style="display: inline" class="shop-title">Tiempo restante de reserva: <i class="fa fa-clock-o fa-lg shop-title" aria-hidden="true"></i> <?= $hours.":".$minutes ?></p>
+				<?php if ($hours > 0): ?>
+					<p style="display: inline" class="shop-title">Tiempo restante de reserva: <i class="fa fa-clock-o fa-lg shop-title" aria-hidden="true"></i> <?= $hours.":".$minutes ?></p>
+				<?php endif ?>
+
 				<div id ="items-cont">
 				<?php foreach ($carrito->items as $item): ?>
-					<form method="post" class="item-summary">
+					<div class="item-summary">
 						{{csrf_field()}}
 						<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 						<input hidden type="number" name="id" value = "{{$item->id}}">
@@ -65,18 +66,16 @@
 						<div class="buton">
 							<button class ="item-delete" type="button">x</button>
 						</div>
-					</form>
+					</div>
 				<?php endforeach ?>
 				</div>
 			<?php endif ?>
 		</div>
 
-		<?php $tagText = "COMENZAR COMPRA";
-			  $href = "/shop/shipping";
-		?>
+		<?php $tagText = "COMENZAR COMPRA";?>
 		@include('layout/partials/shop/bill')
 
-	</div>
+	</form>
 
 	<script src = "/js/products/delete-from-cart.js"></script>
 @endsection

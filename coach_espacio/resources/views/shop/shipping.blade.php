@@ -21,46 +21,54 @@
 	<?php $currStep = "datos"?>
 	@include('/layout/partials/shop/steps')
 
-	<div class="container">
+	<?php 
+		$total = 7200 - (time() - $carrito->updated_at->timestamp);
+		$hours = floor($total / 3600);
+		$minutes = (($total / 60) % 60);
+	?>
+	<?php if ($hours > 0): ?>
+		<p style="display: inline" class="shop-title">Tiempo restante de reserva: <i class="fa fa-clock-o fa-lg shop-title" aria-hidden="true"></i> <?= $hours.":".$minutes ?></p>
+	<?php endif ?>
+	<form class="container" method="post">
+		{{csrf_field()}}
+
 		<div class="shipping">
-			<form class ="form-input" method="post">
-				{{csrf_field()}}
-				<p class="form-title">Datos personales</p>
+			<div class ="form-input" >
+				<p class="form-title">Información de envío</p>
 				<div class="info-container">
 					<div class="input-box">
 						<label class="label" for>Nombre</label>
-						<input class ="input" type="text" name="">
+						<input required class ="input" type="text" name="name" value ="{{Auth::user()->name}}">
 					</div>
 					<div class="input-box">
 						<label class="label" for>Apellido</label>
-						<input class ="input" type="text" name="">
+						<input required class ="input" type="text" name="surname" value ="{{Auth::user()->surname}}">
 					</div>
 					<div class="input-box">
 						<label class="label" for>Direccion</label>
-						<input class ="input" type="text" name="">
+						<input required class ="input" type="text" name="address">
 					</div>
 					<div class="input-box">
 						<label class="label" for>Ciudad</label>
-						<input class ="input" type="text" name="">
+						<input required class ="input" type="text" name="city">
 					</div>
 					<div class="input-box">
 						<label class="label" for>Provincia</label>
-						<input class ="input" type="text" name="">
+						<input required class ="input" type="text" name="province">
 					</div>
 					<div class="input-box">
 						<label class="label" for>Código postal</label>
-						<input class ="input" type="text" name="">
+						<input required class ="input" type="text" name="cp">
 					</div>
 					<div class="input-box">
 						<label class="label" for>Teléfono</label>
-						<input class ="input" type="text" name="">
+						<input required class ="input" type="text" name="phone">
 					</div>
 				</div>
-			</form>
+			</div>
 		</div>
-
-		<?php $tagText = "CONTINUAR";
-			  $href = "/shop/payment";?>
+		
+		<?php $tagText = "COMENZAR COMPRA";?>
 		@include('layout/partials/shop/bill')
-	</div>
+	</form>
 @endsection

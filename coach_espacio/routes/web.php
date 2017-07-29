@@ -81,10 +81,20 @@ Route::post('producto/{id}', 'ProductController@shop');
 
 /*Shop cart*/
 Route::get('shop/', 'ShopController@index')->middleware('auth');
+Route::post('shop/', 'ShopController@sendShip');
 Route::post('shop/delete', 'ShopController@deleteItem')->middleware('auth');
+
 Route::get('shop/shipping','ShopController@shipping')->middleware('auth');
+Route::post('shop/shipping', 'ShopController@saveShip');
+
 Route::get('shop/payment','ShopController@payment')->middleware('auth');
+Route::post('shop/payment', 'ShopController@savePay');
+
 Route::get('shop/buy','ShopController@buy')->middleware('auth');
+Route::post('shop/buy','ShopController@finish');
+
+Route::get('shop/compra-finalizada', 'ShopController@success');
+Route::get('shop/historic','ShopController@historic')->middleware('auth');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -11,9 +11,9 @@
 				<p>$<?php echo $carrito->getTotal()?></p>
 			</div>
 			<div>
-				<a href="<?php echo $href ?>" class="button-buy">
+				<button type="submit" class="button-buy">
 					<?php echo $tagText ?>
-				</a>
+				</button>
 			</div>
 		</div>
 	</div>

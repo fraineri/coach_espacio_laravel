@@ -19,6 +19,7 @@
 		</div>
 		<ul class="ham-options">
 			<li><a href="/user/edit">Editar perfil</a></li>
+			<li><a href="/shop/historic">Historial de compras</a></li>
 			<li>
                 <a href="{{ route('logout') }}"
 					onclick="event.preventDefault();

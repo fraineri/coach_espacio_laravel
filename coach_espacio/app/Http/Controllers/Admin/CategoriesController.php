@@ -9,6 +9,11 @@ use App\Product;
 
 class CategoriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('lulu');
+    }
+    
     /*Display a listing of the resource.*/
     public function index()
     {

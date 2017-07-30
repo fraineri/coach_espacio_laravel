@@ -38,16 +38,26 @@ class UserController extends Controller
         $user = \Auth::user();
         $user->name = $request->name;
         $user->surname = $request->surname;
-        $user->email = $request->email;
-        if ($request->has('password')) $user->password = bcrypt($request->password);
-         
-        $user->save();
+        $user->email = $request->email;         
 
         if(isset($request->avatar)){
             $this->create_avatar($user,$request->avatar);
         }
 
+        if ($request->has('password')){
+            $usrPass = \Auth::user()->password;
+            $equal = \Hash::check($request->password,$usrPass);
+            if($equal){
+                $this->validate($request,[
+                    'new_password' => 'required|string|min:6|confirmed',
+                ]);
+                $user->password = \Hash::make($request->new_password);
+            }else{
+                session()->flash('password','Contraseña incorrecta.');
+            }
+        }
 
+        $user->save();
 
         return redirect('/user/edit');
     }

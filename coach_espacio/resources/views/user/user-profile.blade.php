@@ -73,17 +73,22 @@
 				<div class ="div-change-psw">
 					<label for ="actPsw">Ingrese su contraseña actual</label>
 					<input class="form-profile-txtPass" type="password" name="password">
-					@if ($errors->has('actPsw'))
-                        <span class="lbl-error">
-                            <strong>{{ $errors->first('actPsw') }}</strong>
+					@if (session('password') !== null)
+                        <span id="error-Password" class="lbl-error">
+                            <strong>{{ session('password') }}</strong>
                         </span>
                     @endif
 					<label for ="actPsw">Ingrese su nueva contraseña</label>
-					<input class="form-profile-txtPass" type="password" name="new-password">
+					<input class="form-profile-txtPass" type="password" name="new_password">
 
 					<label for ="actPsw">Reingrese la contraseña nueva</label>
-					<input class="form-profile-txtPass" type="password" name="new-password-confirm">
-					
+					<input class="form-profile-txtPass" type="password" name="new_password_confirmation">
+					@if ($errors->has('new_password'))
+                        <span id="error-NewPassword" class="lbl-error">
+                            <strong>{{ $errors->first('new_password') }}</strong>
+                        </span>
+                    @endif
+
 				</div>
 
 				<button class="form-profile-send standard-button button-cyan" type="submit">ACTUALIZAR DATOS</button>

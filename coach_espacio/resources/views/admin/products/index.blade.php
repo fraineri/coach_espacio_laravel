@@ -33,7 +33,7 @@
 							@endforeach
 						</ul>
 					</div>
-					<div>	
+					<div >	
 						{{$products->links()}}
 					</div>
 					<br>

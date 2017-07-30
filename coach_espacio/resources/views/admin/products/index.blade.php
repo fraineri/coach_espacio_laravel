@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<link rel="stylesheet" type="text/css" href="/css/admin.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
 
@@ -32,14 +33,9 @@
 							@endforeach
 						</ul>
 					</div>
-					<nav >
-						<!--<ul class="pagination">
-						@foreach(($products->links()) as $page)
-							<li class="page-item"><a class="page-link" href="{{$page}}"></a>	</li>
-						@endforeach
-						</ul>-->
+					<div>	
 						{{$products->links()}}
-					</nav>
+					</div>
 					<br>
 			<div class="form-inline">
 				<a class="btn btn-primary" href="/admin/products/create">Nuevo Producto</a>	

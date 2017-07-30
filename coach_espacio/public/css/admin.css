@@ -1,0 +1,43 @@
+.pagination{
+	padding: 20px;
+	display: flex;
+	width: 15%;
+	margin:auto;
+	font-size: 1.3em;
+	justify-content: space-around;
+	font-weight: bold;
+	color: #444;
+}
+
+.pagination .active{
+	color: rgb(49,179,217);
+}
+
+@media(max-width: 935px){
+	
+	.pagination{
+		width: 20%;
+	}
+}
+
+@media(max-width: 785px){
+	
+	.pagination{
+		width: 30%;
+	}
+}
+
+@media(max-width: 615px){
+	
+
+	.pagination{
+		width: 45%;
+	}
+}
+
+@media(max-width: 436px){
+	
+	.pagination{
+		width: 50%;
+	}
+}

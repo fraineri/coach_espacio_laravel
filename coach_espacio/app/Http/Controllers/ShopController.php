@@ -10,6 +10,7 @@ use App\Shopcart;
 use App\Item;
 use App\Sale;
 use App\Saledetail;
+use App\Mail\OrderShipped;
 
 class ShopController extends Controller{
     public function index(){
@@ -38,7 +39,17 @@ class ShopController extends Controller{
         return view ('shop.shipping', compact("carrito"));
     }
 
-    public function saveShip(){
+    public function saveShip(Request $request){
+        $this->validate($request,[
+            'name'      => 'required|string|max:255',
+            'surname'   => 'required|string|max:255',
+            'address'   => 'required|string|max:255',
+            'city'      => 'required|string|max:255',
+            'province'  => 'required|string|max:255',
+            'cp'        => 'required|numeric',
+            'phone'     => 'required|min:8|max:15|regex:/[0-9]/',
+        ]);
+
         $sale = Sale::where('user_id', Auth::user()->id)->orderBy('id','desc')->first();
         if(!$sale || $sale->status != 'pending'){
             $sale = new Sale();
@@ -61,7 +72,12 @@ class ShopController extends Controller{
         return view ('shop.payment', compact("carrito"));
     }
 
-    public function savePay(){
+    public function savePay(Request $request){
+        $this->validate($request,[
+            'card_name'     => 'required|string|max:255',
+            'card_number'   => 'required|size:16|regex:/[0-9]/',
+            'card_code'     => 'required|min:4|max:6|regex:/[0-9]/',
+        ]);
         $expire = (request()->card_month);
         if (strlen ($expire) == 1) {
             $expire = '0'.$expire;
@@ -86,6 +102,8 @@ class ShopController extends Controller{
         $order = Sale::where('user_id', Auth::user()->id)->orderBy('id','desc')->first();
         $carrito = Shopcart::where('user_id',Auth::User()->id)->first();
 
+        $carritoEmail = $carrito;
+
         $order->total = $carrito->getTotal();
         foreach ($carrito->items as $item) {
             $prod = new Saledetail();
@@ -96,9 +114,16 @@ class ShopController extends Controller{
             $prod->save();
             $item->delete();
         }
+
+        \Mail::to(\Auth::user()->email)->send(new OrderShipped($carritoEmail));
+
+        $carritoEmail->delete();
         $carrito->delete();
         $order->status = 'finished';
         $order->save();
+
+
+
         return redirect()->action('ShopController@success');
     }
 

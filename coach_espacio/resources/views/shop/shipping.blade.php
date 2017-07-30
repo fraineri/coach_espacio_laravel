@@ -39,30 +39,65 @@
 					<div class="input-box">
 						<label class="label" for>Nombre</label>
 						<input required class ="input" type="text" name="name" value ="{{Auth::user()->name}}">
+						@if ($errors->has('name'))
+	                        <span class="lbl-error">
+	                            <strong>{{ $errors->first('name') }}</strong>
+	                        </span>
+                    	@endif
 					</div>
 					<div class="input-box">
 						<label class="label" for>Apellido</label>
 						<input required class ="input" type="text" name="surname" value ="{{Auth::user()->surname}}">
+						@if ($errors->has('surname'))
+	                        <span class="lbl-error">
+	                            <strong>{{ $errors->first('surname') }}</strong>
+	                        </span>
+                    	@endif
 					</div>
 					<div class="input-box">
 						<label class="label" for>Direccion</label>
-						<input required class ="input" type="text" name="address">
+						<input required class ="input" type="text" name="address" value="{{ old('address') }}">
+						@if ($errors->has('address'))
+	                        <span class="lbl-error">
+	                            <strong>{{ $errors->first('address') }}</strong>
+	                        </span>
+                    	@endif
 					</div>
 					<div class="input-box">
 						<label class="label" for>Ciudad</label>
-						<input required class ="input" type="text" name="city">
+						<input required class ="input" type="text" name="city" value="{{ old('city') }}">
+						@if ($errors->has('city'))
+	                        <span class="lbl-error">
+	                            <strong>{{ $errors->first('city') }}</strong>
+	                        </span>
+                    	@endif
 					</div>
 					<div class="input-box">
 						<label class="label" for>Provincia</label>
-						<input required class ="input" type="text" name="province">
+						<input required class ="input" type="text" name="province" value="{{ old('province') }}">
+						@if ($errors->has('province'))
+	                        <span class="lbl-error">
+	                            <strong>{{ $errors->first('province') }}</strong>
+	                        </span>
+                    	@endif
 					</div>
 					<div class="input-box">
 						<label class="label" for>Código postal</label>
-						<input required class ="input" type="text" name="cp">
+						<input required class ="input" type="text" name="cp" value="{{ old('cp') }}">
+						@if ($errors->has('cp'))
+	                        <span class="lbl-error">
+	                            <strong>{{ $errors->first('cp') }}</strong>
+	                        </span>
+                    	@endif
 					</div>
 					<div class="input-box">
 						<label class="label" for>Teléfono</label>
-						<input required class ="input" type="text" name="phone">
+						<input required class ="input" type="text" name="phone" value="{{ old('phone') }}">
+						@if ($errors->has('phone'))
+	                        <span class="lbl-error">
+	                            <strong>{{ $errors->first('phone') }}</strong>
+	                        </span>
+                    	@endif
 					</div>
 				</div>
 			</div>

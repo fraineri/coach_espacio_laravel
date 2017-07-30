@@ -36,15 +36,30 @@
 				<div class="info-container">
 					<div class="input-box">
 						<label class="label" for>Titular de la tarjeta</label>
-						<input required class ="input" type="text" name="card_name">
+						<input required class ="input" type="text" name="card_name" value="{{ old('card_name') }}">
+	                    @if ($errors->has('card_name'))
+	                        <span class="lbl-error">
+	                            <strong>{{ $errors->first('card_name') }}</strong>
+	                        </span>
+	                    @endif
 					</div>
 					<div class="input-box">
 						<label class="label" for>Numero de tarjeta (solo números)</label>
-						<input required class ="input" type="text" name="card_number" maxlength="16">
+						<input required class ="input" type="text" name="card_number" value="{{ old('card_number') }}">
+	                    @if ($errors->has('card_number'))
+	                        <span class="lbl-error">
+	                            <strong>{{ $errors->first('card_number') }}</strong>
+	                        </span>
+	                    @endif
 					</div>
 					<div class="input-box">
 						<label class="label" for>Código de seguridad</label>
-						<input required class ="input" type="text" name="card_code" maxlength="4">
+						<input required class ="input" type="text" name="card_code" value="{{ old('card_code') }}">
+	                    @if ($errors->has('card_code'))
+	                        <span class="lbl-error">
+	                            <strong>{{ $errors->first('card_code') }}</strong>
+	                        </span>
+	                    @endif
 					</div>
 					<div class="input-box">
 						<label class="label" for>Fecha de vencimiento</label>

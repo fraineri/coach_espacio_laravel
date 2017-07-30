@@ -5,7 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Product;
 
-class Saledetail extends Model{
+class Saledetail extends Model{	
+
+	protected  $table = 'saleDetails';
+
     protected $fillable = [
         'sale_id','product_id','price_unit','qty', 'updated_at'
     ];

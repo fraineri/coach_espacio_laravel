@@ -63,6 +63,12 @@
 				<div class="input-cont">
 					<label class="form-profile-label" for ="profile-picture">Foto de perfil</label>
 					<input type="file" name="avatar">
+					@if (session('file') !== null)
+						<br>
+                        <span class="lbl-error">
+                            <strong>{{ session('file') }}</strong>
+                        </span>
+                    @endif					
 				</div>				
 
 				<div class ="button-change-psw">

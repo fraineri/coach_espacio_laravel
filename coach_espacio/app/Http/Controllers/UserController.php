@@ -8,10 +8,16 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 	public function create_avatar($user, $avatar){
-    		$filename = time().'.'.$avatar->getClientOriginalExtension();
-    		$avatar->storeAs('public/avatars', $filename);
-    		$user->avatar = $filename;
-    		$user->save();
+        if(filesize($avatar)){
+            $filename = time().'.'.$avatar->getClientOriginalExtension();
+            $avatar->storeAs('public/avatars', $filename);
+            $user->avatar = $filename;
+            $user->save();
+        }else{
+            session()->flash('file','Tamaño de archivo muy grande.');
+            return redirect()->back();
+        }
+    		
     }
 
     protected function validator(Request $request)

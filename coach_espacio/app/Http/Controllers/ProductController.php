@@ -86,6 +86,7 @@ class ProductController extends Controller{
         }
 
         if (!$found) {
+            //session aca!
             $item = new Item();
             $item->product_id = $id;
             $item->qty = $qty;

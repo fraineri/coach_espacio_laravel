@@ -103,5 +103,5 @@
 		</div>
 
 		<script src="/js/profile-changepsw.js"></script>
-@section('content')
+@endsection
 	

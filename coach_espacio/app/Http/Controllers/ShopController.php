@@ -24,6 +24,7 @@ class ShopController extends Controller{
     }
 
     public function deleteItem(){ 
+        //session aca!
     	$id = request()->id;
     	$item = Item::find($id);
     	$producto = Product::find($item->product_id);
@@ -121,9 +122,7 @@ class ShopController extends Controller{
         $carrito->delete();
         $order->status = 'finished';
         $order->save();
-
-
-
+        
         return redirect()->action('ShopController@success');
     }
 

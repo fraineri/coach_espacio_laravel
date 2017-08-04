@@ -19,12 +19,10 @@
 
 @section('content')
 	
-	<?php $currStep = "finalizar"?>
-	@include('/layout/partials/shop/steps')
 	<h1 class="page-title">Historial de compras realizadas</h1>
 	@if(!count($historic))
 		<h1>Aún no has realizado ninguna compra</h1>
-		<a style="color: #5DC2E3;" href="/shop/historic"><h1>Puedes comenzar a comprar haciendo click aquí</h1></a>
+		<a style="color: #5DC2E3;" href="/tienda"><h1>Puedes comenzar a comprar haciendo click aquí</h1></a>
 	@else
 		<?php $cont = 1; ?>
 		@foreach($historic as $sell)

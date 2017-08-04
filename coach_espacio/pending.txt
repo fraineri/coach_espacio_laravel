@@ -1,0 +1,19 @@
+LU
+- Agregar Ajax de cuantos usuarios abajo de como trabajamos en home
+- Estilo de mail de confirmación de compra 
+- Estilo de historial de compra
+
+ERIC
+- Estilo responsive de editar perfil
+
+DIANA
+- Habría que hacer un listado de pedidos pendientes para el admin 
+
+FRAN
+- Ver validador de registro / arreglar
+- Barra buscador
+- Envio de mail de contactanos
+- Session carrito
+
+
+- FAQ

@@ -53,7 +53,6 @@
 									<div>
 										<p class="item-title">Cantidad</p>
 										<p class="item-value">{{$item->qty}}</p>
-										<a class="item-modify" href ="/producto/{{$item->product->id}}">Modificar cantidad</a>
 									</div>
 								@endif
 

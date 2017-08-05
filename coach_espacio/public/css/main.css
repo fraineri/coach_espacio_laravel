@@ -280,6 +280,18 @@ button{
 	color: rgb(100,200,228);
 }
 
+.product-searchBar{
+	border: none;
+    background: none;
+    color: #fff;
+    font-size: 1.1em;
+    border-bottom: 2px solid #EfEfEf;
+    width: 60%;
+    margin-left: 3%;
+}
+
+}
+
 /*===============================
  FOOTER > footer-nav
 =================================*/

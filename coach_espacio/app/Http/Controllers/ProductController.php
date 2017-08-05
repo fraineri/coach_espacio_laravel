@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Product;
@@ -11,9 +12,14 @@ use App\Item;
 
 class ProductController extends Controller{
     private $pagination = 8;
-    public function index($find){
+    public function index($find, $keyword=""){
         //$prod = factory(\App\Product::class,15)->create();
-        $products = Product::with('category')->where('type',$find)->where('purchable',1)->paginate($this->pagination);
+        
+        if($keyword == ""){
+            $products = Product::with('category')->where('type',$find)->where('purchable',1)->paginate($this->pagination);
+        }else{
+            $products = Product::with('category')->where('type',$find)->where('purchable',1)->where('name', 'like', "%".$keyword."%")->paginate($this->pagination);
+        }
         $cat = Category::all();
         return view ('products.productos', ['products'=>$products, 'categories'=>$cat, 'currCat'=> false]);
     }
@@ -41,6 +47,11 @@ class ProductController extends Controller{
     public function show($id){
         $product = Product::find($id);    
         return view ('products.producto',['product'=>$product]);
+    }
+
+    public function find(){
+        $keyword = Input::get('keyword');
+        return $this->index("products",$keyword);
     }
 
     public function shop(){

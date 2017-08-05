@@ -71,6 +71,7 @@ Route::get('/admin/categories/zombies', 'Admin\CategoriesController@zombies')->m
 
 /*Productos*/
 Route::get('productos/', 'ProductController@products')->middleware('auth');
+Route::get('/productos/buscar', 'ProductController@find');
 Route::get('cursos/', 'ProductController@courses')->middleware('auth');
 
 Route::get('categoria/{cat}', 'ProductController@category')->middleware('auth');

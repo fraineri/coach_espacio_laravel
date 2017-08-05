@@ -47,8 +47,8 @@
 							@endforeach
 						@endif
 						<div>
-							<form>
-								<input id="txtSearch" type="text" onkeyup="search()" name="" placeholder="Search">
+							<form action="/productos/buscar">
+								<input class="product-searchBar" id="txtSearch" type="text" name="keyword" placeholder="Search">
 							</form>
 						</div>
 					</ul>

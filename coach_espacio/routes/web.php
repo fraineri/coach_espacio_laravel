@@ -19,6 +19,8 @@ Route::get('/contact', function () {
     return view('/static/contact');
 });
 
+Route::post('/contact/send', 'ContactController@send');
+
 Route::get('/faq', function () {
     return view('/static/faq');
 });

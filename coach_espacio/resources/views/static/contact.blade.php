@@ -29,14 +29,15 @@
 		<div class ="form-container">
 			<div class="form-contact-container">
 				<h1 class="form-title">Contacto</h1>
-				<form class="form-contact">
-					<input class="form-contact-txtNombre" type="text" id="nombre" name="Nombre" placeholder="Nombre" required>
+				<form class="form-contact" method="POST" action="/contact/send">
+					{{ csrf_field() }}
+					<input class="form-contact-txtNombre" type="text" id="nombre" name="name" placeholder="Nombre" required>
 				
-					<input class="form-contact-txtApellido" type="text" id="apellido" name="Apellido" placeholder="Apellido" required>
+					<input class="form-contact-txtApellido" type="text" id="apellido" name="surname" placeholder="Apellido" required>
 				
-					<input class="form-contact-txtEmail" for="email" type="email" id="email" name="Email" placeholder="hola@ejemplo.com" required>
+					<input class="form-contact-txtEmail" for="email" type="email" id="email" name="email" placeholder="hola@ejemplo.com" required>
 				
-					<textarea class="form-contact-txtMensaje" name="mensaje" id="mensaje" placeholder="Escriba su mensaje" required></textarea>
+					<textarea class="form-contact-txtMensaje" name="message" id="mensaje" placeholder="Escriba su mensaje" required></textarea>
 
 					<button class="form-button-contact standard-button button-cyan" type="submit">Enviar mensaje</button>
 

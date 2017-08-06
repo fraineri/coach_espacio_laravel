@@ -44,10 +44,11 @@
 }
 
 body{
-	background-image: url("../images/backgrounds/bg1-one.png");
-	background-repeat: repeat;
+	/*background-image: url("../images/backgrounds/bg1-one.png");
+	background-repeat: repeat;*/
 	font-family: 'Raleway', helvetica;
 	margin: auto;
+	background-color:#fffff0;
 	font-size: 1.15em;
 	color:#333;
 }

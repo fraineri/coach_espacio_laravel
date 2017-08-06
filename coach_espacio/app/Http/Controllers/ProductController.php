@@ -12,14 +12,10 @@ use App\Item;
 
 class ProductController extends Controller{
     private $pagination = 8;
-    public function index($find, $keyword=""){
+    public function index($find){
         //$prod = factory(\App\Product::class,15)->create();
         
-        if($keyword == ""){
-            $products = Product::with('category')->where('type',$find)->where('purchable',1)->paginate($this->pagination);
-        }else{
-            $products = Product::with('category')->where('type',$find)->where('purchable',1)->where('name', 'like', "%".$keyword."%")->paginate($this->pagination);
-        }
+        $products = Product::with('category')->where('type',$find)->where('purchable',1)->paginate($this->pagination);
         $cat = Category::all();
         return view ('products.productos', ['products'=>$products, 'categories'=>$cat, 'currCat'=> false]);
     }
@@ -34,10 +30,22 @@ class ProductController extends Controller{
     public function category($id){
         $currCat = Category::find($id);
 
+        $keyword = Input::get('keyword');
+        
+
+
     	if ($currCat->name == "Todos") {
         	$products = Product::paginate($this->pagination);
         } else{
 			$products = Product::where('category_id',$id)->paginate($this->pagination);
+        }
+
+        if($keyword != null){
+            if ($currCat->name == "Todos") {
+                $products = Product::where('name', 'like', "%".$keyword."%")->paginate($this->pagination);
+            } else{
+                $products = Product::where('category_id',$id)->where('name', 'like', "%".$keyword."%")->paginate($this->pagination);
+            }
         }
 
     	$cat = Category::all();
@@ -51,6 +59,8 @@ class ProductController extends Controller{
 
     public function find(){
         $keyword = Input::get('keyword');
+        //$products = Product::with('category')->where('type',$find)->where('purchable',1)->where('name', 'like', "%".$keyword."%")->paginate($this->pagination);
+
         return $this->index("products",$keyword);
     }
 

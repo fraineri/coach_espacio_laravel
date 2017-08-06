@@ -47,9 +47,13 @@
 							@endforeach
 						@endif
 						<div>
-							<form action="/productos/buscar">
-								<input class="product-searchBar" id="txtSearch" type="text" name="keyword" placeholder="Search">
-							</form>
+							@if(isset($currCat->id))
+								<form action="/categoria/{{ $currCat->id }}">
+							@else
+								<form action="/categoria/10">
+							@endif
+									<input class="product-searchBar" id="txtSearch" type="text" name="keyword" placeholder="Search">
+								</form>
 						</div>
 					</ul>
 				</div>

@@ -98,3 +98,38 @@
 	display: block;
 	text-transform: uppercase;
 }
+
+
+@media (max-width: 480px){
+	.input-cont{
+		width: 100%;
+	}
+	.button-change-psw{
+		font-size: 1em;
+	}
+}
+
+@media (max-width: 360px){
+	.form-profile-title{
+		font-size: 1.2em;
+	}
+	.form-profile-txtNombre,
+	.form-profile-txtApellido,
+	.form-profile-txtEmail,
+	.form-profile-txtUsuario,
+	.form-profile-txtPass
+	.form-profile-txtUsuario
+	.form-profile-txtPass{
+		font-size: 0.7em;
+	}
+	.input-cont{
+		width: 100%;
+	}
+	.button-change-psw{
+		margin: 30px 20px;
+	}
+	.form-profile-send{
+		margin: 0 10px;
+	}
+
+}

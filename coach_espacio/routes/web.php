@@ -11,35 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('/static/home');
-});
+Route::get('/', 'staticController@home');
 
-Route::get('/contact', function () {
-    return view('/static/contact');
-});
+Route::get('/contact', 'staticController@contact');
 
 Route::post('/contact/send', 'ContactController@send');
 
-Route::get('/faq', function () {
-    return view('/static/faq');
-});
+Route::get('/faq', 'staticController@faq');
 
-Route::get('/tienda', function () {
-    return view('/static/tienda');
-});
+Route::get('/tienda', 'staticController@tienda');
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', 'staticController@login');
 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/register', 'staticController@register');
 
-Route::get('/recuperar', function(){
-	return view('/password/user');
-});
+Route::get('/recuperar', 'staticController@recuperar');
+
+Route::get('/countUsers', 'staticController@countUsers');
 
 
 /*

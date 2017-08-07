@@ -127,7 +127,39 @@
 					<p class ="work-step-text">Podrás contactarnos para refrescar técnicas de guardado o estrategias si es que has vuelto a tus viejos hábitos</p>
 				</div>
 			</div>		
+		<div class ="count-users">
+			<div class="user-text wow fadeInUp" data-wow-delay="0.25s">
+				<h1>Usuarios en nuestra página</h1>
+			</div>
+			<div class="user-number wow fadeInUp" data-wow-delay="0.55s">
+				<h1 id="users-count"></h1>
+			</div>
+			
+		</div>
 	</div>
+@endsection
+
+<script>
+	countUsers();
+	setInterval(countUsers, 3000);
+
+	function countUsers(){
+		var ajax_url = "/countUsers";
+		var req = new XMLHttpRequest();
+
+		req.onreadystatechange = function(){
+			if (req.readyState === 4) {
+				if (req.status === 200) {
+					document.querySelector("#users-count").innerText = req.responseText; 
+				}
+			}
+		}
+		req.open('GET', ajax_url);
+		req.send();	
+	}
+</script>
+
+
 <script src="js/slide.js"></script>
 
 <script src="js/jquery.js"></script>
@@ -155,5 +187,5 @@
         });  
 	})(jQuery);
 </script>
-@endsection
+
 

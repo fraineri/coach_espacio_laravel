@@ -1,7 +1,6 @@
 LU
-- Agregar Ajax de cuantos usuarios abajo de como trabajamos en home
 - Estilo de mail de confirmación de compra 
-- Estilo de historial de compra
+- FAQ
 
 ERIC
 - Estilo responsive de editar perfil
@@ -15,5 +14,3 @@ FRAN
 - Envio de mail de contactanos
 - Session carrito
 
-
-- FAQ

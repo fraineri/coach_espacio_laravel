@@ -116,12 +116,12 @@ class ShopController extends Controller{
             $item->delete();
         }
 
-        \Mail::to(\Auth::user()->email)->send(new OrderShipped($carritoEmail));
-
         $carritoEmail->delete();
         $carrito->delete();
         $order->status = 'finished';
         $order->save();
+    
+        \Mail::to(\Auth::user()->email)->send(new OrderShipped($carritoEmail, $order));
         
         return redirect()->action('ShopController@success');
     }

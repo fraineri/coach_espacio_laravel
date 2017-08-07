@@ -62,13 +62,14 @@
 
 				<div class="input-cont">
 					<label class="form-profile-label" for ="profile-picture">Foto de perfil</label>
+					<img style="height: 160px; width: auto;" src="{{asset('/storage/avatars/'.Auth::user()->avatar)}}">
 					<input type="file" name="avatar">
 					@if (session('file') !== null)
 						<br>
                         <span class="lbl-error">
                             <strong>{{ session('file') }}</strong>
                         </span>
-                    @endif					
+                    @endif
 				</div>				
 
 				<div class ="button-change-psw">

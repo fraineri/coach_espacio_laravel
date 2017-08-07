@@ -16,9 +16,10 @@ class OrderShipped extends Mailable
      *
      * @return void
      */
-    public function __construct($carritoEmail)
+    public function __construct($carritoEmail, $order)
     {
         $this->carritoEmail = $carritoEmail;
+        $this->order = $order;
     }
 
     /**
@@ -28,6 +29,6 @@ class OrderShipped extends Mailable
      */
     public function build()
     {
-        return $this->view('shop.email')->with(['carritoEmail' => $this->carritoEmail]);
+        return $this->view('shop.email')->with(['carritoEmail' => $this->carritoEmail, 'order' => $this->order]);
     }
 }

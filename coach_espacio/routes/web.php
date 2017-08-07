@@ -62,6 +62,7 @@ Route::get('/admin/sales/{id}/fordeliver','Admin\SalesController@edit')->middlew
 Route::post('/admin/sales/{id}/fordeliver','Admin\SalesController@delivered');
 Route::get('/admin/sales/{id}/show','Admin\SalesController@show')->middleware('lulu');
 
+
 /*Productos*/
 Route::get('productos/', 'ProductController@products')->middleware('auth');
 Route::get('cursos/', 'ProductController@courses')->middleware('auth');

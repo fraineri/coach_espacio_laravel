@@ -37,7 +37,7 @@
 			<div class="menu-products">
 				<div>
 					<ul class='products-section'>
-						@if(count($products) AND $products[0]->type =="products")
+						@if((count($products) AND $products[0]->type =="products"))
 							@foreach($categories as $cat)
 								@if ((!$currCat AND $cat->id ==1) OR ($currCat AND $cat->id == $currCat->id))
 									<li><a class="product-category category-selected" href="/categoria/{{$cat->id}}">{{$cat->name}}</a></li>
@@ -46,15 +46,15 @@
 								@endif
 							@endforeach
 						@endif
-						<div>
+						<li>
 							@if(isset($currCat->id))
 								<form action="/categoria/{{ $currCat->id }}">
 							@else
-								<form action="/categoria/10">
+								<form action="/categoria/1">
 							@endif
 									<input class="product-searchBar" id="txtSearch" type="text" name="keyword" placeholder="Search">
 								</form>
-						</div>
+						</li>
 					</ul>
 				</div>
 				<div>	

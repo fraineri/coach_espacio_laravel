@@ -7,7 +7,9 @@
 			<li style="width: 100%;">
 				<h4><strong>{{$item->product->name}}</strong></h4>
 				<div style="margin-left: 30px;">
-					<p>Cantidad: {{$item->qty}}</p>
+						@if($item->product->type == "products")
+							<p>Cantidad: {{$item->qty}}</p>
+						@endif
 				</div>
 			</li>
 		@endforeach

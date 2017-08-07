@@ -46,7 +46,9 @@
 							<h5>Nombre del Producto: {{$item->product->name}}</h5>
 							<h5>Código del Producto: {{$item->product_id}}</h5>
 							<h5>Precio unitario: {{$item->price_unit}}</h5>
-							<h5>Cantidad: {{$item->qty}}</h5>
+							@if($item->product->type == "products")
+								<h5>Cantidad: {{$item->qty}}</h5>
+							@endif
 						</div>
 	  				</div>
 	  			@endforeach

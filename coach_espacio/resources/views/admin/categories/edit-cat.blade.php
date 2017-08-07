@@ -8,12 +8,12 @@
 
 	<title>C.E. | Editar</title>
 </head>
-<body style="background-image: url(/images/backgrounds/contact-banner-4.jpg);">
-	<div class="container" style="background-color: white; padding: 2%; ">
+<body style="background-image: url(/images/backgrounds/bg-2b.png);">
+	<div class="container" style="background-color: white; padding:0 ;margin-top: 20px; ">
 
 		<form class="form-horizontal" method="POST" action="/admin/categories/{{$cat->id}}/update" enctype="multipart/form-data">
 				{{csrf_field()}}
-			<fieldset class="container">	
+			<fieldset style="padding: 0" class="container">		
 		 		<legend style="padding: 2%; text-align: center; background-color: lightblue;"><h1>Editar {{$cat->name}}</h1></legend>
 				<div class="form-group row">
 

@@ -66,22 +66,24 @@ var timer;
 var listImages=[];
 var respImages=[
 	'images/backgrounds/bg-small.jpg',
+	'images/backgrounds/dressing1.jpeg',
 	'images/backgrounds/bg-small4.jpg',
-	'images/backgrounds/bg-small3.jpg',
-	'images/backgrounds/contact-banner-3-op.png',
-	'images/backgrounds/dt.common.streams.StreamServer.jpg',
-	'images/backgrounds/indice.jpg',
+	'images/backgrounds/office4.jpg',
 	'images/backgrounds/cute-kids-room.jpg',
+	'images/backgrounds/bg-small3.jpg',
+	'images/backgrounds/dt.common.streams.StreamServer.jpg',
 	'images/backgrounds/study.jpg'
 ];
 var desktopImages=[
 	'images/backgrounds/0-Main8.jpg',
-	'images/backgrounds/image1.jpg',
-	'images/backgrounds/closet-21.jpg',
-	'images/backgrounds/contact-banner-3-op.png',
-	'images/backgrounds/contact-banner.jpg',
 	'images/backgrounds/CpCoYGxWYAAVslc.jpg',
-	'images/backgrounds/cuteLiving.jpg'
+	'images/backgrounds/cuteLiving.jpg',
+	'images/backgrounds/office1.jpg',
+	'images/backgrounds/office4.jpg',
+	'images/backgrounds/room1.jpg',
+	'images/backgrounds/dressing1.jpeg',
+	'images/backgrounds/living1.jpg',
+	'images/backgrounds/room2.jpg',
 ];
 
 window.onload = function(){

@@ -29,19 +29,25 @@ class ProductController extends Controller{
         $currCat = Category::find($id);
 
         $keyword = Input::get('keyword');
-    	if ($currCat->name == "Todos") {
-        	$products = Product::paginate($this->pagination);
-        } else{
-			$products = Product::where('category_id',$id)->paginate($this->pagination);
-        }
 
+        /*Si se usó el buscador*/
         if($keyword != null){
             if ($currCat->name == "Todos") {
+                /*Si no hay que filtrar por categoría*/
                 $products = Product::where('name', 'like', "%".$keyword."%")->paginate($this->pagination);
             } else{
+                /*Hay una categoría seleccionada*/
                 $products = Product::where('category_id',$id)->where('name', 'like', "%".$keyword."%")->paginate($this->pagination);
             }
-        }
+        }else
+            /*No se usó el buscador*/ 
+            if ($currCat->name == "Todos") {
+                /*Sin filtrar por categóría*/
+            	$products = Product::paginate($this->pagination);
+            } else{
+                /*Categoría seleccionada*/
+    			$products = Product::where('category_id',$id)->paginate($this->pagination);
+            }
 
     	$cat = Category::where('active',1)->get();
     	return view ('products.productos-category', ['products'=>$products, 'categories'=>$cat,'currCat'=>$currCat]);

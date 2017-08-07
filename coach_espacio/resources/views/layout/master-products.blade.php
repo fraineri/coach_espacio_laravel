@@ -34,7 +34,7 @@
 	
 	@if (!count($products))
 		<div>
-			<h2>Actualmente no contamos con productos de esta categoría :(</h2>
+			<h2>Upss! No se encuentran productos</h2>
 		</div>
 	@else
 		@foreach($products as $product)

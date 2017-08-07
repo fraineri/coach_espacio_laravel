@@ -62,7 +62,7 @@
 				</div>
 				<div>
 					@if($product->type=="products" AND $product->stock == 0)
-						<div class="button-cart stock">Sin stock</div>
+						<div class="button-cart stock">Agotado</div>
 					@else
 				
 					<button type="button" name="buttoncart" class="button-cart" ><i class="fa fa-shopping-cart fa-lg shop-cart" aria-hidden="true"> </i>  Agregar al carrito</button>

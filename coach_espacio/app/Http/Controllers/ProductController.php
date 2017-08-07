@@ -14,7 +14,7 @@ class ProductController extends Controller{
     private $pagination = 8;
     public function index($find){
         $products = Product::with('category')->where('type',$find)->where('purchable',1)->paginate($this->pagination);
-        $cat = Category::all();
+        $cat = Category::where('active',1)->get();
         return view ('products.productos', ['products'=>$products, 'categories'=>$cat, 'currCat'=> false]);
     }
 
@@ -43,7 +43,7 @@ class ProductController extends Controller{
             }
         }
 
-    	$cat = Category::all();
+    	$cat = Category::where('active',1)->get();
     	return view ('products.productos-category', ['products'=>$products, 'categories'=>$cat,'currCat'=>$currCat]);
     }
 

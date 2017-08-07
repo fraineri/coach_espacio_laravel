@@ -103,6 +103,7 @@
 	transition: all .3s;
 }
 
+
 .title:hover{
 	cursor:pointer;
 	text-decoration: underline;
@@ -113,6 +114,7 @@
 	border-top-right-radius: 15px;
 	font-size: 1.4em;
 	margin:auto;
+	color:#70CAE4;
 }
 
 .pregunta > p{
@@ -121,6 +123,7 @@
 	font-size: 1.1em;
 	padding: 5px;
 	transition: all .3s;
+	color:#444;
 }
 
 .fixer{

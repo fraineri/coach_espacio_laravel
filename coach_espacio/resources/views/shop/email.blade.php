@@ -6,9 +6,8 @@
 		@foreach($carritoEmail->items as $item)
 			<li style="width: 100%;">
 				<h4><strong>{{$item->product->name}}</strong></h4>
-				<div style="margin-left: 50px;">
+				<div style="margin-left: 30px;">
 					<p>Cantidad: {{$item->qty}}</p>
-					<p>Total: ${{$item->qty}}*{{$item->price_unit}}</p>
 				</div>
 			</li>
 		@endforeach

@@ -70,8 +70,9 @@ Route::post('/admin/categories/{id}/update','Admin\CategoriesController@update')
 Route::get('/admin/categories/zombies', 'Admin\CategoriesController@zombies')->middleware('lulu');
 /*Admin sales*/
 Route::get ('/admin/sales', 'Admin\SalesController@index')->middleware('lulu');
-Route::get('/admin/sales/{id}/fordeliver','Admin\ProductsController@edit')->middleware('lulu');
-Route::post('/admin/sales/{id}/fordeliver','Admin\ProductsController@delivered');
+Route::get('/admin/sales/{id}/fordeliver','Admin\SalesController@edit')->middleware('lulu');
+Route::post('/admin/sales/{id}/fordeliver','Admin\SalesController@delivered');
+Route::get('/admin/sales/{id}/sale','Admin\SalesController@show')->middleware('lulu');
 
 /*Productos*/
 Route::get('productos/', 'ProductController@products')->middleware('auth');

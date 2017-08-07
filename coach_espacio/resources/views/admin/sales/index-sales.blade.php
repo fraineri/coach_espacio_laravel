@@ -11,8 +11,8 @@
 	<title>C.E. | Admin Ventas</title>
 </head>
 
-<body style="background-image: url(/images/backgrounds/contact-banner-4.jpg);">
-	<div class="container" style="background-color: white; padding: 2%; ">
+<body style="background-image: url(/images/backgrounds/bg-2b.png);">
+	<div class="container" style="background-color: white; padding:0 ;margin-top: 20px; ">
 
   		<nav class="navbar navbar-light navbar-toggleable-sm" style="background-color: #e3f2fd;">
   			<a class="navbar-brand" href="/admin/products/">Productos</a>
@@ -23,7 +23,7 @@
 	</div>
 	<br>
 		<fieldset class="container">	
-		 	<legend style="padding: 2%; text-align: center; "><h1>Ventas </h1></legend>
+		 	<legend style="padding: 0; text-align: center; "><h1>Ventas </h1></legend>
 					<br>
 					<div>
 						<h3>Pendientes de Entrega</h3>

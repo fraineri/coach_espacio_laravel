@@ -8,39 +8,51 @@
 
 	<title>C.E. | Pendiente</title>
 </head>
-<body style="background-image: url(/images/backgrounds/contact-banner-4.jpg);">
-	<div class="container" style="background-color: white; padding: 2%; ">
+<body style="background-image: url(/images/backgrounds/bg-2b.png);">
+	<div class="container" style="background-color: white; padding:0 ;margin-top: 20px; ">
 
-		<form class="form-horizontal" method="POST" action="/admin/sales/{{$sale->id}}/fordeliver" enctype="multipart/form-data">
+		<form class="form-horizontal" method="POST" action="/admin/sales/{{$sale->id}}/fordeliver" style="padding:0" enctype="multipart/form-data">
 				{{csrf_field()}}
-			<fieldset class="container">	
-		 		<legend style="padding: 2%; text-align: center; background-color: lightblue;"><h1>Cliente: {{$sale->name." ".$sale->surname}}</h1></legend>
-				<div class="form-group row">
-				<h4>Código de venta: {{$sale->id}}</h4>
+			<fieldset class="container" style="padding:0; margin-bottom: 60px;" >	
+		 		<legend style="text-align: center; background-color: lightblue;">
+		 			<h1>Cliente: {{$sale->name." ".$sale->surname}}</h1>
+		 		</legend>
+				<div class="form-group ">
+					<h4>Código de venta: {{$sale->id}}</h4>
   				</div>
-  				<div class="form-group row">
-				<h4>Direccón: {{$sale->address}}</h4>
+  				<div class="form-group">
+					<h4>Dirección: {{$sale->address}}</h4>
   				</div>
-  				<div class="form-group row">
-				<h4>Ciudad: {{$sale->city}}</h4>
+  				<div class="form-group">
+					<h4>Ciudad: {{$sale->city}}</h4>
   				</div>
-  				<div class="form-group row">
-				<h4>Provincia: {{$sale->province}}</h4>
+  				<div class="form-group">
+					<h4>Provincia: {{$sale->province}}</h4>
   				</div>
-  				<div class="form-group row">
-				<h4>Código Postal: {{$sale->cp}}</h4>
+  				<div class="form-group">
+					<h4>Código Postal: {{$sale->cp}}</h4>
   				</div>
-  				<div class="form-group row">
-				<h4>Teléfono: {{$sale->phone}}</h4>
+  				<div class="form-group">
+					<h4>Teléfono: {{$sale->phone}}</h4>
   				</div>
-  			@foreach($items as $item)
-  				<div class="form-group row">
-					<h5>Nombre del Producto: {{$item->name}}</h5>
-					<h5>Código del Producto: {{$item->prod_id}}</h5>
-					<h5>Precio unitario: {{$item->price_unit}}</h5>
-					<h5>Cantidad: {{$item->qty}}</h5>
+  				<div class="form-group">
+					<h4>Total: ${{$sale->total}}</h4>
   				</div>
-  			@endforeach
+  				
+				<hr>
+	  			@foreach($items as $item)
+	  				<div class="form-group" style="display: flex">
+		  				<div>
+		  					<img style ="height: 150px; width: auto; margin-right:60px;"src="{{ asset('storage') }}/products/{{$item->product->picture}}">
+		  				</div>
+		  				<div>
+							<h5>Nombre del Producto: {{$item->product->name}}</h5>
+							<h5>Código del Producto: {{$item->product_id}}</h5>
+							<h5>Precio unitario: {{$item->price_unit}}</h5>
+							<h5>Cantidad: {{$item->qty}}</h5>
+						</div>
+	  				</div>
+	  			@endforeach
   				<!--true o false para entregado-->
 				<label>Productos entregados?  </label>
 				<select class="custom-select" name="delivered" required>

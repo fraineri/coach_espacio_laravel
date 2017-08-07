@@ -177,10 +177,12 @@ window.onload = function(){
 				errores[5] = false;
 		}
 		hayError = checkErrores();
+
 	}
 
 //Validador ReContrasenia
 	txtRePass.addEventListener('blur',function(){
+		//validateTxtPass();
 		validateTxtRePass();
 	});
 	function validateTxtRePass(){
@@ -189,11 +191,17 @@ window.onload = function(){
 		var lblError = txtPass.nextElementSibling;
 		if(txtRePass.value != txtPass.value || txtRePass.value == ""){
 			lblError.innerHTML = "Contraseñas distintas";
+		}else if(txtPass.value.length > 30){
+			lblError.innerHTML = "Contraseña mayor a 20 caracteres";
+		}else if(txtPass.value.length < 8){
+			lblError.innerHTML = "Contraseña menor a 8 caracteres";
 		}else{
 			lblError.innerHTML = "";
 			errores[5] = false;
 			if(txtRePass.value == txtPass.value)
 				errores[4] = false;
+
+			console.log("clear");
 		}
 		hayError = checkErrores();
 	}
@@ -222,7 +230,7 @@ window.onload = function(){
 			var users;
 
 			var req = new XMLHttpRequest();
-			req.open("GET", "js/findUser.php?username="+input.value);
+			req.open("GET", "/js/findUser.php?username="+input.value);
 			req.send();
 			req.onreadystatechange = function() {
 				if (req.readyState == 4 && req.status == 200) {

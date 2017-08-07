@@ -53,6 +53,8 @@
 					<input id="txtUser" class="form-register-txtUsuario" type="text" name="username" placeholder="Usuario"  value="{{ old('username') }}">
 					<span class="lbl-error"></span>
 					<span id="user-lbl-ok" class="lbl-ok"></span>
+                    <span id="user-lbl-error" class="lbl-error"></span>
+
 					@if ($errors->has('username'))
                         <span id="user-lbl-error" class="lbl-error">
                             <strong>{{ $errors->first('username') }}</strong>
@@ -72,6 +74,12 @@
 
 					<label for="avatar" class="form-register-label-foto">Foto de perfil</label>
 					<input class="form-register-foto" type="file" name="avatar">
+					@if (session('file') !== null)
+						<br>
+                        <span class="lbl-error">
+                            <strong>{{ session('file') }}</strong>
+                        </span>
+                    @endif						
 
 					<button id="btnRegister" class="form-button-register standard-button button-white" type="submit" name="submit">REGISTRAR</button>
 				</form>

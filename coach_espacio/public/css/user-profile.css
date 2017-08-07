@@ -101,6 +101,9 @@
 
 
 @media (max-width: 480px){
+	.page-title{
+		font-size: 1em;
+	}
 	.input-cont{
 		width: 100%;
 	}
@@ -130,6 +133,9 @@
 	}
 	.form-profile-send{
 		margin: 0 10px;
+	}
+	.page-title{
+		font-size: 1em;
 	}
 
 }

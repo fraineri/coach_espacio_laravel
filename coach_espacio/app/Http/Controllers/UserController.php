@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\User;
 
 class UserController extends Controller
 {
@@ -66,5 +68,17 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/user/edit');
+    }
+
+    public function text(){
+        $username = Input::get('user');
+        $user = User::where('username',$username)->get();
+        if(isset($user[0])){
+            return "existe"; //existe
+        }
+        else{
+            return "no_existe"; //no existe
+        }
+
     }
 }

@@ -59,6 +59,7 @@ window.onload = function(){
 	function checkErrores(){
 		for (var i = 0; i < 6; i++) {
 			if(errores[i]){
+				console.log("Username:"+errores[3]);
 				button.className = "form-button-register-blocked";
 				button.innerHTML = "Faltan Datos";
 				return true;
@@ -135,7 +136,7 @@ window.onload = function(){
 
 //Validador Usuario
 	txtUser.addEventListener('blur',function(){
-		validateTxtUsername();
+		//validateTxtUsername();
 	});
 	function validateTxtUsername(){
 		flags[3] = false;
@@ -224,25 +225,43 @@ window.onload = function(){
 
 //Validador usuario existente
 	input.addEventListener('change', function(e){
+		flags[3] = false;
+		errores[3] = true;
+		var lblError = txtUser.nextElementSibling;
+
+		hayError = checkErrores();
 		document.getElementById("user-lbl-error").innerHTML = " ";
 		document.getElementById("user-lbl-ok").innerHTML = " ";
 		if (input.value && input.value.length>6 && input.value.length<20) {
 			var users;
 
+			lblError.innerHTML = "";
 			var req = new XMLHttpRequest();
-			req.open("GET", "/js/findUser.php?username="+input.value);
+			req.open("GET", "/register/text?user="+input.value);
 			req.send();
 			req.onreadystatechange = function() {
 				if (req.readyState == 4 && req.status == 200) {
-					$response = JSON.parse(req.responseText);
-					if ($response['exists']) {
+					response = req.responseText;
+					if (response === "existe") {
 						document.getElementById("user-lbl-error").innerHTML = "El usuario ingresado ya se encuentra en uso";
-					} else{
+						errores[3] = true;
+					}else if(response === "no_existe"){
 						document.getElementById("user-lbl-ok").innerHTML = "El usuario esta disponible!";
+						errores[3] = false;
+						hayError = checkErrores();
+
 					}
 				}
 			};	
+		}else if(txtUser.value == ""){
+			lblError.innerHTML = "Usuario obligatorio";
+		}else if(txtUser.value.length > 20){
+			lblError.innerHTML = "Usuario mayor a 20 caracteres";
+		}else if(txtUser.value.length < 6){
+			lblError.innerHTML = "Usuario menor a 6 caracteres";
 		}
+
+		hayError = checkErrores();
 	})
 
 }

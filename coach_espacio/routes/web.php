@@ -18,6 +18,11 @@ Route::get('/faq', 'staticController@faq');
 Route::get('/tienda', 'staticController@tienda');
 Route::get('/login', 'staticController@login');
 Route::get('/register', 'staticController@register');
+
+
+Route::get('/register/text', 'UserController@text');
+
+
 Route::get('/recuperar', 'staticController@recuperar');
 Route::get('/countUsers', 'staticController@countUsers');
 
@@ -30,7 +35,7 @@ Route::get('user-profile', function (){
 //Route::post('/user-profile','UserController@update');
 
 Route::get('/user/edit', 'UserController@edit');
-Route::post('/user/update', 'UserController@update');
+Route::get('/user/update', 'UserController@update');
 
 
 /*Admin products*/
